@@ -8,58 +8,125 @@ import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useState } from 'react'
 
-const plans = [
+export const plans = [
   {
-    name: 'Starter',
-    price: 39,
+    name: 'Delta Basic',
+    speed: '20 Mbps',
+    price: 525,
     period: '/month',
-    description: 'Perfect for light internet users',
+    description: 'Perfect for basic browsing and streaming',
+    currency: '৳',
     features: [
-      { name: '50 Mbps Download', included: true },
-      { name: '10 Mbps Upload', included: true },
-      { name: 'Email Support', included: true },
-      { name: '24/7 Support', included: false },
-      { name: 'Free Router', included: false },
+      { name: '20 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
-      { name: 'Basic Security', included: true },
-      { name: 'Priority Support', included: false },
+      { name: '24/7 Support', included: true },
+      { name: 'Fiber Optic', included: true },
+      { name: 'Public IP', included: false },
+      { name: 'Real IP', included: false },
+      { name: 'BDIX Connected', included: true },
+      { name: '4k Streaming', included: true },
     ],
     cta: 'Get Started',
   },
   {
-    name: 'Professional',
-    price: 79,
+    name: 'Delta Plus',
+    speed: '30 Mbps',
+    price: 630,
     period: '/month',
-    description: 'Ideal for families and remote workers',
+    description: 'Great for small families and HD streaming',
+    currency: '৳',
     features: [
-      { name: '300 Mbps Download', included: true },
-      { name: '50 Mbps Upload', included: true },
-      { name: 'Email Support', included: true },
-      { name: '24/7 Support', included: true },
-      { name: 'Free Router', included: true },
+      { name: '30 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
-      { name: 'Advanced Security', included: true },
-      { name: 'Priority Support', included: true },
+      { name: '24/7 Support', included: true },
+      { name: 'Fiber Optic', included: true },
+      { name: 'Public IP', included: false },
+      { name: 'Real IP', included: false },
+      { name: 'BDIX Connected', included: true },
+      { name: '4k Streaming', included: true },
+    ],
+    cta: 'Get Started',
+  },
+  {
+    name: 'Delta Power',
+    speed: '40 Mbps',
+    price: 735,
+    period: '/month',
+    description: 'Ideal for gaming and multiple devices',
+    currency: '৳',
+    features: [
+      { name: '40 Mbps Speed', included: true },
+      { name: 'Unlimited Data', included: true },
+      { name: '24/7 Support', included: true },
+      { name: 'Fiber Optic', included: true },
+      { name: 'Public IP', included: true },
+      { name: 'Real IP', included: false },
+      { name: 'BDIX Connected', included: true },
+      { name: '4k Streaming', included: true },
     ],
     cta: 'Get Started',
     popular: true,
   },
   {
-    name: 'Enterprise',
-    price: 149,
+    name: 'Delta Ultra',
+    speed: '50 Mbps',
+    price: 840,
     period: '/month',
-    description: 'For businesses requiring maximum performance',
+    description: 'Heavy usage and 4K streaming for power users',
+    currency: '৳',
     features: [
-      { name: '1 Gbps Download', included: true },
-      { name: '500 Mbps Upload', included: true },
-      { name: 'Email Support', included: true },
-      { name: '24/7 Support', included: true },
-      { name: 'Free Equipment', included: true },
+      { name: '50 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
-      { name: 'Enterprise Security', included: true },
-      { name: 'Dedicated Support', included: true },
+      { name: '24/7 Support', included: true },
+      { name: 'Fiber Optic', included: true },
+      { name: 'Public IP', included: true },
+      { name: 'Real IP', included: true },
+      { name: 'BDIX Connected', included: true },
+      { name: '4k Streaming', included: true },
+    ],
+    cta: 'Get Started',
+  },
+  {
+    name: 'Delta Max',
+    speed: '60 Mbps',
+    price: 1050,
+    period: '/month',
+    description: 'Ultimate speed for seamless experience',
+    currency: '৳',
+    features: [
+      { name: '60 Mbps Speed', included: true },
+      { name: 'Unlimited Data', included: true },
+      { name: '24/7 Support', included: true },
+      { name: 'Fiber Optic', included: true },
+      { name: 'Public IP', included: true },
+      { name: 'Real IP', included: true },
+      { name: 'BDIX Connected', included: true },
+      { name: '4k Streaming', included: true },
+    ],
+    cta: 'Get Started',
+    popular: true,
+    badgeText: "Gamers Choice",
+    badgeColor: "#eb262f",
+  },
+  {
+    name: 'Delta Enterprise',
+    speed: 'Custom',
+    price: 0,
+    period: '',
+    description: 'Dedicated bandwidth for business needs',
+    currency: '৳',
+    features: [
+      { name: 'Custom Speed', included: true },
+      { name: 'Unlimited Data', included: true },
+      { name: 'Priority Support', included: true },
+      { name: 'SLA Guarantee', included: true },
+      { name: 'Dedicated Manager', included: true },
+      { name: 'Real IP', included: true },
+      { name: 'Redundant Link', included: true },
+      { name: '24/7 Monitoring', included: true },
     ],
     cta: 'Contact Sales',
+    isEnterprise: true,
   },
 ]
 
@@ -122,11 +189,11 @@ export function PricingPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 mb-16"
         >
           {plans.map((plan) => {
-            const displayPrice = billingPeriod === 'yearly' 
-              ? Math.floor(plan.price * 12 * 0.8) 
+            const displayPrice = billingPeriod === 'yearly' && !plan.isEnterprise
+              ? Math.floor(plan.price * 12 * 0.9)
               : plan.price
 
             return (
@@ -134,16 +201,20 @@ export function PricingPage() {
                 key={plan.name}
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
-                className={`relative h-full rounded-2xl border transition-all duration-300 ${
-                  plan.popular
-                    ? 'border-primary bg-gradient-to-b from-primary/10 to-background shadow-lg shadow-primary/20 md:scale-105'
-                    : 'border-border bg-card hover:border-primary/50'
-                }`}
+                className={`relative h-full rounded-2xl border transition-all duration-300 ${plan.popular
+                  ? 'border-primary bg-gradient-to-b from-primary/10 to-background shadow-lg shadow-primary/20 md:scale-105'
+                  : 'border-border bg-card hover:border-primary/50'
+                  }`}
               >
                 {/* Popular Badge */}
-                {plan.popular && (
+                {(plan.popular || plan.badgeText) && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-gradient-to-r from-primary to-secondary">Most Popular</Badge>
+                    <Badge
+                      className={plan.badgeColor ? "" : "bg-gradient-to-r from-primary to-secondary"}
+                      style={plan.badgeColor ? { backgroundColor: plan.badgeColor } : {}}
+                    >
+                      {plan.badgeText || 'Most Popular'}
+                    </Badge>
                   </div>
                 )}
 
@@ -151,14 +222,21 @@ export function PricingPage() {
                   {/* Plan Header */}
                   <div className="mb-8">
                     <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                    <div className="text-primary font-semibold mb-2">{plan.speed}</div>
                     <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-5xl font-bold">${displayPrice}</span>
-                      <span className="text-muted-foreground text-sm">{billingPeriod === 'yearly' ? '/year' : '/month'}</span>
+                      {plan.isEnterprise ? (
+                        <span className="text-3xl font-bold">Contact Sales</span>
+                      ) : (
+                        <>
+                          <span className="text-5xl font-bold">{plan.currency}{displayPrice}</span>
+                          <span className="text-muted-foreground text-sm">{billingPeriod === 'yearly' ? '/year' : '/month'}</span>
+                        </>
+                      )}
                     </div>
-                    {billingPeriod === 'yearly' && (
+                    {billingPeriod === 'yearly' && !plan.isEnterprise && (
                       <p className="text-xs text-secondary mt-2">
-                        ${Math.floor(displayPrice / 12)}/month billed annually
+                        {plan.currency}{Math.floor(displayPrice / 12)}/month billed annually
                       </p>
                     )}
                   </div>
@@ -166,11 +244,10 @@ export function PricingPage() {
                   {/* CTA Button */}
                   <Button
                     asChild
-                    className={`w-full mb-8 ${
-                      plan.popular
-                        ? 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
-                        : 'border border-primary/50 text-primary hover:bg-primary/10'
-                    }`}
+                    className={`w-full mb-8 ${plan.popular
+                      ? 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
+                      : 'border border-primary/50 text-primary hover:bg-primary/10'
+                      }`}
                     variant={plan.popular ? 'default' : 'outline'}
                   >
                     <Link href="/contact">
@@ -209,14 +286,14 @@ export function PricingPage() {
           className="mt-20"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Detailed Comparison</h2>
-          
+
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-4 px-4 font-semibold">Feature</th>
+                  <th className="text-left py-4 px-4 font-semibold min-w-[200px]">Feature</th>
                   {plans.map((plan) => (
-                    <th key={plan.name} className="text-center py-4 px-4 font-semibold">
+                    <th key={plan.name} className="text-center py-4 px-4 font-semibold min-w-[140px]">
                       {plan.name}
                     </th>
                   ))}
@@ -224,16 +301,16 @@ export function PricingPage() {
               </thead>
               <tbody>
                 {[
-                  { label: 'Download Speed', values: ['50 Mbps', '300 Mbps', '1 Gbps'] },
-                  { label: 'Upload Speed', values: ['10 Mbps', '50 Mbps', '500 Mbps'] },
-                  { label: 'Unlimited Data', values: [true, true, true] },
-                  { label: 'Email Support', values: [true, true, true] },
-                  { label: '24/7 Phone Support', values: [false, true, true] },
-                  { label: 'Dedicated Support', values: [false, false, true] },
-                  { label: 'Free Equipment', values: [false, true, true] },
-                  { label: 'Installation Fee', values: ['$49', 'Free', 'Free'] },
-                  { label: 'Router Rental', values: ['$10/mo', 'Free', 'Free'] },
-                  { label: 'Uptime Guarantee', values: ['99.9%', '99.99%', '99.99%'] },
+                  { label: 'Download Speed', values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
+                  { label: 'Upload Speed', values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
+                  { label: 'Unlimited Data', values: [true, true, true, true, true, true] },
+                  { label: '24/7 Support', values: [true, true, true, true, true, true] },
+                  { label: 'Real IP', values: [false, false, false, true, true, true] },
+                  { label: 'BDIX Speed', values: ['100 Mbps', '100 Mbps', '100 Mbps', '1 Gbps', '1 Gbps', '10 Gbps'] },
+                  { label: 'Installation', values: ['৳1000', '৳1000', '৳500', 'Free', 'Free', 'Custom'] },
+                  { label: 'Bufferless YT', values: [true, true, true, true, true, true] },
+                  { label: 'Gaming Ping', values: ['Standard', 'Standard', 'Better', 'Good', 'Best', 'Ultra Low'] },
+                  { label: 'SLA Guarantee', values: [false, false, false, false, false, '99.9%'] },
                 ].map((row, idx) => (
                   <tr key={row.label} className={`border-b border-border ${idx % 2 === 0 ? 'bg-card/30' : ''}`}>
                     <td className="py-4 px-4 font-medium text-sm">{row.label}</td>
@@ -266,7 +343,7 @@ export function PricingPage() {
           className="mt-20 bg-card rounded-xl p-8 border border-border"
         >
           <h2 className="text-2xl font-bold mb-8">Frequently Asked Questions</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {

@@ -134,7 +134,7 @@ export function ServicesPageContent() {
                   >
                     <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-0.5 mb-6`}>
                       <div className="w-full h-full rounded-lg bg-background flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-transparent bg-clip-text bg-gradient-to-br" style={{ backgroundImage: `linear-gradient(to bottom right, rgb(34, 197, 237), rgb(6, 182, 212))` }} />
+                        <Icon className="w-8 h-8 text-primary" />
                       </div>
                     </div>
 
@@ -202,7 +202,7 @@ export function ServicesPageContent() {
           className="mt-20 bg-card rounded-2xl border border-border p-12"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Service Add-ons</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {

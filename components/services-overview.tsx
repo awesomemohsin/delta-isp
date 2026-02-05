@@ -98,7 +98,7 @@ export function ServicesOverview() {
                     {/* Icon Background */}
                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} p-0.5 mb-4 group-hover:scale-110 transition-transform`}>
                       <div className="w-full h-full rounded-md bg-card flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-transparent bg-clip-text bg-gradient-to-br" style={{ backgroundImage: `linear-gradient(to bottom right, rgb(34, 197, 237), rgb(6, 182, 212))` }} />
+                        <Icon className="w-6 h-6 text-primary" />
                       </div>
                     </div>
 

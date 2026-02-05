@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -11,8 +12,9 @@ export function Navbar() {
 
   const links = [
     { href: '/', label: 'Home' },
-    { href: '/pricing', label: 'Pricing' },
     { href: '/services', label: 'Services' },
+    { href: '/pricing', label: 'Pricing' },
+    { href: '/pay-bill', label: 'Pay Bill' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ]
@@ -22,11 +24,15 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
-              <span className="text-white font-bold text-sm">D</span>
-            </div>
-            <span className="font-bold text-lg bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Delta ISP</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/delta-logo.svg"
+              alt="Delta ISP"
+              width={500}
+              height={100}
+              className="h-20 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Links */}

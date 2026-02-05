@@ -53,7 +53,7 @@ export function PricingTeaser() {
   }, [emblaApi])
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-card/50 via-background to-background overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
         <motion.div
@@ -72,7 +72,7 @@ export function PricingTeaser() {
         </motion.div>
 
         {/* Slider Controls */}
-        <div className="absolute top-1/2 -left-4 -right-4 z-10 flex justify-between pointer-events-none translate-y-8 md:translate-y-0">
+        <div className="absolute top-1/2 -left-8 -right-8 md:-left-16 md:-right-16 z-10 flex justify-between pointer-events-none translate-y-8 md:translate-y-0">
           <Button
             variant="outline"
             size="icon"

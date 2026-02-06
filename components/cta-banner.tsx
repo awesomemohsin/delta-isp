@@ -18,7 +18,7 @@ export function CTABanner() {
         >
           {/* Animated Background Elements */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl -z-0" />
-          
+
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Content */}
             <motion.div
@@ -33,7 +33,7 @@ export function CTABanner() {
               <p className="text-lg text-muted-foreground mb-6 text-balance">
                 Join thousands of satisfied customers experiencing the Delta ISP difference. Get connected today.
               </p>
-              
+
               {/* Features List */}
               <ul className="space-y-2 mb-8">
                 {[
@@ -55,10 +55,10 @@ export function CTABanner() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <a href="tel:1-800-ISP-FAST">
+                <a href="tel:+8809611678064">
                   <Button variant="outline" className="border-primary/50 hover:bg-primary/10 bg-transparent">
                     <Phone className="mr-2 h-4 w-4" />
-                    Call Us: 1-800-ISP-FAST
+                    Call Us: +880 9611678064
                   </Button>
                 </a>
               </div>

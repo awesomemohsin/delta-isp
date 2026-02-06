@@ -27,7 +27,7 @@ export function Footer() {
   }
 
   const socialLinks = [
-    { Icon: Facebook, href: '#', label: 'Facebook' },
+    { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61568434629601', label: 'Facebook' },
     { Icon: Twitter, href: '#', label: 'Twitter' },
     { Icon: Linkedin, href: '#', label: 'LinkedIn' },
     { Icon: Instagram, href: '#', label: 'Instagram' },
@@ -43,9 +43,9 @@ export function Footer() {
               <Image
                 src="/images/delta-logo.svg"
                 alt="Delta Logo"
-                width={50}
-                height={50}
-                className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+                width={70}
+                height={70}
+                className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
               />
               <span className="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
                 Delta Software and <br className="hidden sm:block" /> Communication
@@ -95,7 +95,7 @@ export function Footer() {
                 <li className="flex items-start space-x-3 text-sm">
                   <MapPin size={16} className="text-primary mt-1 shrink-0" />
                   <span className="text-muted-foreground">
-                    House:-35, sonargaon jonopath, Sector:-7, uttara, Dhaka.
+                    House: 35, Sonargaon Janapath Road, Uttara, Dhaka -1230, Bangladesh.
                   </span>
                 </li>
               </ul>

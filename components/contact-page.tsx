@@ -32,26 +32,26 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Call Us',
-    content: '1-800-ISP-FAST',
-    desc: 'Available 24/7',
+    content: '+880 9611678064',
+    desc: 'Available 24/7 for support',
   },
   {
     icon: Mail,
     title: 'Email Us',
-    content: 'support@deltaisp.com',
+    content: 'info@deltasoftwareandcommunication.com',
     desc: 'Response within 2 hours',
   },
   {
     icon: MapPin,
     title: 'Visit Us',
-    content: '123 Tech Street',
-    desc: 'Silicon Valley, CA 94000',
+    content: 'House: 35, Sonargaon Janapath Road',
+    desc: 'Uttara, Dhaka -1230, Bangladesh.',
   },
   {
     icon: Clock,
     title: 'Business Hours',
-    content: 'Mon - Fri: 8am - 8pm',
-    desc: 'Sat - Sun: 10am - 6pm PST',
+    content: '24/7 Service',
+    desc: 'Office: Sat - Thu (10 AM - 6 PM)',
   },
 ]
 
@@ -107,7 +107,7 @@ export function ContactPageContent() {
             Get In <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Touch</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            Have questions? Our team is here to help. Reach out and we'll get back to you as soon as possible.
+            Whether you need a new connection or support for your existing one, our team is ready to assist you nationwide.
           </p>
         </motion.div>
 
@@ -205,7 +205,7 @@ export function ContactPageContent() {
                         <FormItem>
                           <FormLabel>Phone (Optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="(555) 000-0000" {...field} />
+                            <Input placeholder="+880 1XXX XXXXXX" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -258,7 +258,7 @@ export function ContactPageContent() {
           </motion.div>
         </div>
 
-        {/* Map Placeholder */}
+        {/* Map Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -267,8 +267,8 @@ export function ContactPageContent() {
           className="h-96 rounded-2xl border border-border bg-card overflow-hidden"
         >
           <iframe
-            title="Delta ISP Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.5267950376487!2d-121.93887!3d37.3313604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb7e42df8c62f%3A0x1234567890abcdef!2s123%20Tech%20Street%2C%20San%20Jose%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890"
+            title="Delta Software and Communication Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.4357640244795!2d90.39805407584104!3d23.87413666012674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4280b396791%3A0xf639a04a5840ca84!2sHouse%2035%2C%20Sonargaon%20Janapath%2C%20Dhaka%201230!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -287,24 +287,24 @@ export function ContactPageContent() {
           className="mt-20 bg-card rounded-2xl border border-border p-12"
         >
           <h2 className="text-2xl font-bold mb-8 text-center">Common Questions</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 q: 'How quickly will I get a response?',
-                a: 'Our support team typically responds to emails within 2 hours during business hours. For urgent matters, call 1-800-ISP-FAST.',
+                a: 'Our support team typically responds to inquiries within 2 hours during business hours. For urgent connectivity issues, call our 24/7 hotline.',
               },
               {
-                q: 'What\'s the best way to reach you?',
-                a: 'You can reach us via phone, email, or by filling out the contact form above. Choose the method that works best for you.',
+                q: 'Do you provide services outside Dhaka?',
+                a: 'Yes! We offer nationwide internet solutions for enterprises and businesses across Bangladesh.',
               },
               {
-                q: 'Do you offer free consultations?',
-                a: 'Yes! We offer free consultations for potential customers. Contact our sales team to schedule yours today.',
+                q: 'How can I pay my bill?',
+                a: 'You can pay your bill online through our Pay Bill page or via various mobile banking services like bKash/Nagad.',
               },
               {
-                q: 'Can I schedule a site visit?',
-                a: 'Absolutely. Our technicians can visit your location to assess your connectivity needs. Call or email to schedule.',
+                q: 'What should I do if my internet is slow?',
+                a: 'Try restarting your router first. If the issue persists, contact our support team with your Account ID for immediate assistance.',
               },
             ].map((faq) => (
               <div key={faq.q}>

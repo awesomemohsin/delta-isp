@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Check, X, ArrowRight } from 'lucide-react'
+import { Check, X, ArrowRight, Download, Upload } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
@@ -165,7 +165,7 @@ export function PricingPage() {
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-balance">
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Pricing Plans
+              Internet Packages
             </span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 text-balance">
@@ -178,7 +178,7 @@ export function PricingPage() {
               <TabsTrigger value="monthly">Monthly</TabsTrigger>
               <TabsTrigger value="yearly">
                 Yearly
-                <Badge variant="secondary" className="ml-2">Save 20%</Badge>
+                <Badge variant="secondary" className="ml-2">Save 10%</Badge>
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -229,14 +229,17 @@ export function PricingPage() {
                         <span className="text-3xl font-bold">Contact Sales</span>
                       ) : (
                         <>
-                          <span className="text-5xl font-bold">{plan.currency}{displayPrice}</span>
+                          <span className="text-5xl font-black flex items-baseline gap-[-0.1em]">
+                            <span className="text-4xl md:text-5xl tracking-tight">৳</span>
+                            {displayPrice}
+                          </span>
                           <span className="text-muted-foreground text-sm">{billingPeriod === 'yearly' ? '/year' : '/month'}</span>
                         </>
                       )}
                     </div>
                     {billingPeriod === 'yearly' && !plan.isEnterprise && (
                       <p className="text-xs text-secondary mt-2">
-                        {plan.currency}{Math.floor(displayPrice / 12)}/month billed annually
+                        <span className="font-bold">৳</span>{Math.floor(displayPrice / 12)}/month billed annually
                       </p>
                     )}
                   </div>
@@ -301,8 +304,8 @@ export function PricingPage() {
               </thead>
               <tbody>
                 {[
-                  { label: 'Download Speed', values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
-                  { label: 'Upload Speed', values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
+                  { label: 'Download Speed', icon: <Download className="w-4 h-4 text-primary" />, values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
+                  { label: 'Upload Speed', icon: <Upload className="w-4 h-4 text-primary" />, values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
                   { label: 'Unlimited Data', values: [true, true, true, true, true, true] },
                   { label: '24/7 Support', values: [true, true, true, true, true, true] },
                   { label: 'Real IP', values: [false, false, false, true, true, true] },
@@ -313,7 +316,12 @@ export function PricingPage() {
                   { label: 'SLA Guarantee', values: [false, false, false, false, false, '99.9%'] },
                 ].map((row, idx) => (
                   <tr key={row.label} className={`border-b border-border ${idx % 2 === 0 ? 'bg-card/30' : ''}`}>
-                    <td className="py-4 px-4 font-medium text-sm">{row.label}</td>
+                    <td className="py-4 px-4 font-medium text-sm">
+                      <div className="flex items-center gap-2">
+                        {row.icon}
+                        {row.label}
+                      </div>
+                    </td>
                     {row.values.map((value, i) => (
                       <td key={`${row.label}-${i}`} className="py-4 px-4 text-center text-sm">
                         {typeof value === 'boolean' ? (
@@ -348,7 +356,7 @@ export function PricingPage() {
             {[
               {
                 q: 'Do you offer any discounts for annual billing?',
-                a: 'Yes! Save 20% when you choose annual billing. You\'ll see the savings reflected when you select the yearly option above.',
+                a: 'Yes! Save 10% when you choose annual billing. You\'ll see the savings reflected when you select the yearly option above.',
               },
               {
                 q: 'Can I change my plan at any time?',

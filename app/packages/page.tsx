@@ -4,10 +4,10 @@ import { Footer } from '@/components/footer'
 import { PricingPage } from '@/components/pricing-page'
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: 'Packages',
 }
 
-export default function Pricing() {
+export default function Packages() {
   return (
     <main className="min-h-screen bg-background">
       <Navbar />

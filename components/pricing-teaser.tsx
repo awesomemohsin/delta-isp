@@ -36,24 +36,40 @@ export function PricingTeaser() {
     slidesToScroll: 1,
   })
 
-  useEffect(() => {
+  const intervalRef = React.useRef<NodeJS.Timeout>(null)
+
+  const resetAutoplay = useCallback(() => {
     if (!emblaApi) return
-    const interval = setInterval(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => {
       emblaApi.scrollNext()
     }, 5000)
-    return () => clearInterval(interval)
   }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    resetAutoplay()
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [emblaApi, resetAutoplay])
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev()
-  }, [emblaApi])
+    if (emblaApi) {
+      emblaApi.scrollPrev()
+      resetAutoplay()
+    }
+  }, [emblaApi, resetAutoplay])
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext()
-  }, [emblaApi])
+    if (emblaApi) {
+      emblaApi.scrollNext()
+      resetAutoplay()
+    }
+  }, [emblaApi, resetAutoplay])
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
         <motion.div
@@ -61,10 +77,10 @@ export function PricingTeaser() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">
-            Simple, <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Transparent</span> Pricing
+            Simple, <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Transparent</span> Packages
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
             Choose the perfect plan for your needs. Explore our high-speed fiber internet packages.
@@ -131,7 +147,10 @@ export function PricingTeaser() {
                           <span className="text-3xl font-bold">Contact Sales</span>
                         ) : (
                           <>
-                            <span className="text-4xl font-bold">{plan.currency}{plan.price}</span>
+                            <span className="text-4xl font-black flex items-baseline gap-[-0.1em]">
+                              <span className="text-3xl md:text-4xl">৳</span>
+                              {plan.price}
+                            </span>
                             <span className="text-muted-foreground text-sm">/month</span>
                           </>
                         )}
@@ -197,7 +216,7 @@ export function PricingTeaser() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <Link href="/pricing">
+          <Link href="/packages">
             <Button variant="link" size="lg" className="text-primary hover:gap-3 transition-all">
               View All Packages and Features
               <ArrowRight className="ml-2 h-4 w-4" />

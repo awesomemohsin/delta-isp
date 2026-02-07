@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { toast } from 'sonner'
+import { sendContactEmail } from '@/app/actions/contact'
 import {
   Form,
   FormControl,
@@ -79,17 +81,30 @@ export function ContactPageContent() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    },
   })
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      // Simulate form submission
-      console.log('[v0] Form submitted:', data)
-      setIsSubmitted(true)
-      form.reset()
-      setTimeout(() => setIsSubmitted(false), 5000)
+      const result = await sendContactEmail(data)
+
+      if (result.success) {
+        setIsSubmitted(true)
+        form.reset()
+        toast.success('Message sent successfully!')
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        toast.error(result.error || 'Failed to send message')
+      }
     } catch (error) {
       console.error('[v0] Form submission error:', error)
+      toast.error('An unexpected error occurred. Please try again.')
     }
   }
 

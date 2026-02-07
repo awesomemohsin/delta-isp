@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -18,6 +18,7 @@ const banners = [
 
 export function BannerSlider() {
     const [selectedIndex, setSelectedIndex] = useState(0)
+    const intervalRef = useRef<NodeJS.Timeout>(null)
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: true,
         duration: 30,
@@ -28,6 +29,14 @@ export function BannerSlider() {
         setSelectedIndex(emblaApi.selectedScrollSnap())
     }, [emblaApi])
 
+    const resetAutoplay = useCallback(() => {
+        if (!emblaApi) return
+        if (intervalRef.current) clearInterval(intervalRef.current)
+        intervalRef.current = setInterval(() => {
+            emblaApi.scrollNext()
+        }, 5000)
+    }, [emblaApi])
+
     useEffect(() => {
         if (!emblaApi) return
 
@@ -35,28 +44,39 @@ export function BannerSlider() {
         emblaApi.on('select', onSelect)
         emblaApi.on('reInit', onSelect)
 
-        const interval = setInterval(() => {
-            emblaApi.scrollNext()
-        }, 5000)
+        resetAutoplay()
 
         return () => {
-            clearInterval(interval)
+            if (intervalRef.current) clearInterval(intervalRef.current)
             emblaApi.off('select', onSelect)
         }
-    }, [emblaApi, onSelect])
+    }, [emblaApi, onSelect, resetAutoplay])
 
     const scrollPrev = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev()
-    }, [emblaApi])
+        if (emblaApi) {
+            emblaApi.scrollPrev()
+            resetAutoplay()
+        }
+    }, [emblaApi, resetAutoplay])
 
     const scrollNext = useCallback(() => {
-        if (emblaApi) emblaApi.scrollNext()
-    }, [emblaApi])
+        if (emblaApi) {
+            emblaApi.scrollNext()
+            resetAutoplay()
+        }
+    }, [emblaApi, resetAutoplay])
+
+    const scrollTo = useCallback((index: number) => {
+        if (emblaApi) {
+            emblaApi.scrollTo(index)
+            resetAutoplay()
+        }
+    }, [emblaApi, resetAutoplay])
 
     return (
         <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">
             <div className="max-w-7xl mx-auto px-4 relative group z-10">
-                <div className="embla overflow-hidden rounded-2xl shadow-2xl border border-border" ref={emblaRef}>
+                <div className="embla overflow-hidden rounded-2xl border border-border" ref={emblaRef}>
                     <div className="embla__container flex">
                         {banners.map((src, index) => (
                             <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 relative aspect-video">
@@ -98,7 +118,7 @@ export function BannerSlider() {
                 {banners.map((_, index) => (
                     <button
                         key={index}
-                        onClick={() => emblaApi?.scrollTo(index)}
+                        onClick={() => scrollTo(index)}
                         className={`transition-all duration-300 rounded-full ${selectedIndex === index
                             ? "w-10 h-1.5 bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]"
                             : "w-2 h-1.5 bg-primary/20 hover:bg-primary/40"

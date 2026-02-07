@@ -193,57 +193,73 @@ export function ServicesPageContent() {
           })}
         </motion.div>
 
-        {/* Add-ons Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-20 bg-card rounded-2xl border border-border p-12"
+          className="mt-20 bg-card/50 backdrop-blur-md rounded-[2.5rem] border border-border p-12 relative overflow-hidden"
         >
-          <h2 className="text-3xl font-bold mb-8 text-center">Service Add-ons</h2>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -z-10" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Premium Add-ons</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: 'Premium Support',
-                desc: 'Priority phone support, guaranteed 1-hour response time',
-                price: '$19/mo',
+                title: 'OTT Premium Access',
+                desc: 'Get access to Bioscope, Hoichoi, and Bongo with your connection.',
+                price: '৳150/mo',
+                icon: <Zap className="w-5 h-5 text-primary" />,
               },
               {
-                title: 'Static IP Bundle',
-                desc: '5 static IP addresses, perfect for business servers',
-                price: '$29/mo',
+                title: 'Safe Internet',
+                desc: 'Parental controls and malicious site blocking for your family.',
+                price: '৳100/mo',
+                icon: <Shield className="w-5 h-5 text-primary" />,
               },
               {
-                title: 'Advanced Analytics',
-                desc: 'Real-time network monitoring and usage analytics dashboard',
-                price: '$9/mo',
+                title: 'Public Real IP',
+                desc: 'Dedicated Real IP for hosting, gaming, or remote access.',
+                price: '৳200/mo',
+                icon: <Building2 className="w-5 h-5 text-primary" />,
               },
               {
-                title: 'Backup Connectivity',
-                desc: 'Automatic failover 4G LTE backup when primary goes down',
-                price: '$39/mo',
+                title: 'Gaming Boost',
+                desc: 'Low latency routing for professional gaming and competitive play.',
+                price: '৳150/mo',
+                icon: <Zap className="w-5 h-5 text-primary" />,
               },
               {
-                title: 'White-Glove Setup',
-                desc: 'Premium installation and network optimization service',
-                price: '$149/one-time',
+                title: 'Mesh Wi-Fi System',
+                desc: 'Professional mesh router setup for full home coverage.',
+                price: 'Starts at ৳2500',
+                icon: <Wifi className="w-5 h-5 text-primary" />,
               },
               {
-                title: 'Equipment Insurance',
-                desc: 'Full coverage replacement for damaged equipment',
-                price: '$10/mo',
+                title: 'BDIX Premium Cache',
+                desc: 'Uncapped speeds for local BDIX servers and file sharing.',
+                price: 'Free with Plus+',
+                icon: <CheckCircle className="w-5 h-5 text-primary" />,
               },
             ].map((addon) => (
               <motion.div
                 key={addon.title}
-                whileHover={{ y: -4 }}
-                className="p-6 rounded-xl border border-border bg-background/50 hover:bg-background transition-colors"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="p-8 rounded-2xl border border-border bg-background/40 hover:bg-card hover:border-primary/30 transition-all duration-300 group"
               >
-                <h3 className="font-semibold mb-2">{addon.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{addon.desc}</p>
-                <p className="font-bold text-primary">{addon.price}</p>
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors text-primary font-bold">
+                  {addon.icon}
+                </div>
+                <h3 className="font-bold text-lg mb-2">{addon.title}</h3>
+                <p className="text-sm text-muted-foreground mb-6 line-clamp-2">{addon.desc}</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-black text-primary text-lg">{addon.price}</span>
+                  <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ArrowRight className="w-4 h-4 text-secondary" />
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

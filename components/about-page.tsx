@@ -13,7 +13,7 @@ const stats = [
 ]
 
 const milestones = [
-  { year: '2009', title: 'Founded', description: 'Delta ISP founded with a mission to provide reliable internet to underserved communities.' },
+  { year: '2009', title: 'Founded', description: 'Delta Software and Communication founded with a mission to provide reliable internet to underserved communities.' },
   { year: '2012', title: 'First 10K Customers', description: 'Reached 10,000 residential customers across three states.' },
   { year: '2015', title: 'Fiber Network Launch', description: 'Launched our proprietary fiber-optic network reaching 100 Gbps backbone.' },
   { year: '2018', title: 'Enterprise Solutions', description: 'Introduced corporate internet packages with SLA guarantees.' },
@@ -76,7 +76,7 @@ export function AboutPageContent() {
           className="text-center mb-20"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-balance">
-            About <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Delta ISP</span>
+            About <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Delta Software and Communication</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
             Leading the way in internet connectivity with a commitment to speed, reliability, and exceptional customer service.
@@ -147,7 +147,7 @@ export function AboutPageContent() {
           className="mb-20"
         >
           <h2 className="text-3xl font-bold text-center mb-12">Our Journey</h2>
-          
+
           <div className="relative">
             {/* Timeline Line */}
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-transparent" />
@@ -199,7 +199,7 @@ export function AboutPageContent() {
           className="mb-20"
         >
           <h2 className="text-3xl font-bold text-center mb-12">Our Values</h2>
-          
+
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -241,7 +241,7 @@ export function AboutPageContent() {
           <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-8">
             Our talented team of network engineers, customer service professionals, and business experts are dedicated to delivering exceptional service every single day.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { name: 'John Smith', role: 'CEO & Founder', dept: 'Leadership' },

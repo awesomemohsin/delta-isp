@@ -4,6 +4,7 @@ import { HeroSection } from '@/components/hero-section'
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision'
 import { ServicesOverview } from '@/components/services-overview'
 import { PricingTeaser } from '@/components/pricing-teaser'
+import { SpeedTestSection } from '@/components/speed-test-section'
 import { Testimonials } from '@/components/testimonials'
 import { CTABanner } from '@/components/cta-banner'
 import { Footer } from '@/components/footer'
@@ -35,9 +36,10 @@ export default function Home() {
         <BackgroundBeamsWithCollision className="h-auto md:min-h-[80vh] bg-transparent pb-8">
           <BannerSlider />
         </BackgroundBeamsWithCollision>
-        <HeroSection />
+        {/* <HeroSection /> */}
         <ServicesOverview />
         <PricingTeaser />
+        <SpeedTestSection />
         <Testimonials />
         <CTABanner />
         <Footer />

@@ -13,7 +13,7 @@ export function Navbar() {
   const links = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/pricing', label: 'Pricing' },
+    { href: '/packages', label: 'Packages' },
     { href: '/pay-bill', label: 'Pay Bill' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },

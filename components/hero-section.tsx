@@ -75,7 +75,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 border border-secondary/50"
           >
             <Zap size={16} className="text-secondary" />
-            <span className="text-sm font-medium text-secondary">Broadband & ICT Solutions</span>
+            <span className="text-sm font-medium text-secondary">Built for Speed. Powered by Trust.</span>
           </motion.div>
 
           {/* Main Headline */}

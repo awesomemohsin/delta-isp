@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import useEmblaCarousel from 'embla-carousel-react'
 
+
 const banners = [
     '/images/banner1.webp',
     '/images/banner2.webp',
@@ -54,7 +55,7 @@ export function BannerSlider() {
 
     return (
         <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">
-            <div className="max-w-7xl mx-auto px-4 relative group">
+            <div className="max-w-7xl mx-auto px-4 relative group z-10">
                 <div className="embla overflow-hidden rounded-2xl shadow-2xl border border-border" ref={emblaRef}>
                     <div className="embla__container flex">
                         {banners.map((src, index) => (
@@ -99,8 +100,8 @@ export function BannerSlider() {
                         key={index}
                         onClick={() => emblaApi?.scrollTo(index)}
                         className={`transition-all duration-300 rounded-full ${selectedIndex === index
-                                ? "w-10 h-1.5 bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]"
-                                : "w-2 h-1.5 bg-primary/20 hover:bg-primary/40"
+                            ? "w-10 h-1.5 bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]"
+                            : "w-2 h-1.5 bg-primary/20 hover:bg-primary/40"
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />

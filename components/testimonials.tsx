@@ -7,21 +7,21 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 const testimonials = [
   {
     quote: "Delta ISP has completely transformed our work-from-home experience. The speeds are incredible and the connection is rock solid.",
-    author: 'Sarah Johnson',
+    author: 'Md. Mohsin',
     role: 'Remote Software Developer',
-    initials: 'SJ',
+    initials: 'MM',
   },
   {
     quote: "We switched our business to Delta ISP and couldn't be happier. Their support team is responsive and the uptime guarantee gives us peace of mind.",
-    author: 'Mike Chen',
-    role: 'Business Owner',
-    initials: 'MC',
+    author: 'Nahidul Islam',
+    role: 'Manager',
+    initials: 'NI',
   },
   {
     quote: "Finally, an ISP that delivers on its promises. No throttling, no hidden fees, just fast and reliable internet.",
-    author: 'Emma Rodriguez',
-    role: 'Freelance Designer',
-    initials: 'ER',
+    author: 'Konok Hossain',
+    role: 'Graphics Designer',
+    initials: 'KH',
   },
 ]
 

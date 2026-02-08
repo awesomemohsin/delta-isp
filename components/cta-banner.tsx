@@ -31,7 +31,7 @@ export function CTABanner() {
                 Ready to upgrade your internet?
               </h2>
               <p className="text-lg text-muted-foreground mb-6 text-balance">
-                Join thousands of satisfied customers experiencing the Delta ISP difference. Get connected today.
+                Join thousands of satisfied customers experiencing the Delta Internet difference. Get connected today.
               </p>
 
               {/* Features List */}

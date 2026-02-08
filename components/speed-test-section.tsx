@@ -37,7 +37,7 @@ export function SpeedTestSection() {
                                     <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient">Connection Speed</span>
                                 </h2>
                                 <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 text-balance leading-relaxed">
-                                    Experience the true power of Delta ISP fiber. Verify your real-time download and upload speeds using our optimized test server.
+                                    Experience the true power of Delta Internet fiber. Verify your real-time download and upload speeds using our optimized test server.
                                 </p>
                             </motion.div>
 

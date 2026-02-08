@@ -151,9 +151,9 @@ export function ServicesPageContent() {
                       ))}
                     </ul>
 
-                    <Link href="/packages">
+                    <Link href={idx < 2 ? "/packages" : "/contact"}>
                       <Button className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 transition-all">
-                        Explore Packages
+                        {idx < 2 ? "Explore Packages" : "Learn More & Contact"}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>

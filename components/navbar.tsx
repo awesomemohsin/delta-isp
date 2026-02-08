@@ -28,7 +28,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center">
             <Image
               src="/images/delta-logo.svg"
-              alt="Delta ISP"
+              alt="Delta Internet"
               width={500}
               height={100}
               className="h-20 w-auto object-contain"

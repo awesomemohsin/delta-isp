@@ -6,13 +6,13 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 
 const testimonials = [
   {
-    quote: "Delta ISP has completely transformed our work-from-home experience. The speeds are incredible and the connection is rock solid.",
+    quote: "Delta Internet has completely transformed our work-from-home experience. The speeds are incredible and the connection is rock solid.",
     author: 'Md. Mohsin',
     role: 'Software Engineer',
     initials: 'MM',
   },
   {
-    quote: "We switched our business to Delta ISP and couldn't be happier. Their support team is responsive and the uptime guarantee gives us peace of mind.",
+    quote: "We switched our business to Delta Internet and couldn't be happier. Their support team is responsive and the uptime guarantee gives us peace of mind.",
     author: 'Nahidul Islam',
     role: 'Manager',
     initials: 'NI',
@@ -61,7 +61,7 @@ export function Testimonials() {
             Loved by <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Thousands</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            See what our happy customers have to say about Delta ISP.
+            See what our happy customers have to say about Delta Internet.
           </p>
         </motion.div>
 

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Award, Users, Globe, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion, animate, useInView } from 'framer-motion'
@@ -260,17 +261,33 @@ export function AboutPageContent() {
             Our talented team of network engineers, customer service professionals, and business experts are dedicated to delivering exceptional service every single day.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
-              { name: 'Md Benzir Rashed Khan', role: 'CEO & Founder', dept: 'Leadership' },
-              { name: 'Md Kawcher Ahmed', role: 'Chief Technology Officer', dept: 'Engineering' },
-              { name: 'Kamal Munnasef', role: 'Head of Operations', dept: 'Operations' },
+              {
+                name: 'Md Benzir Rashed Khan',
+                role: 'Managing Director',
+                dept: 'Leadership',
+                image: '/images/md.webp'
+              },
+              {
+                name: 'Md Kawcher Ahmed',
+                role: 'Marketing head',
+                dept: 'Marketing',
+                image: '/images/marketing.webp'
+              },
             ].map((member) => (
-              <div key={member.name} className="p-6 rounded-xl border border-border bg-background/50 hover:bg-background transition-colors text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary" />
-                <h3 className="font-semibold">{member.name}</h3>
-                <p className="text-sm text-primary mb-1">{member.role}</p>
-                <p className="text-xs text-muted-foreground">{member.dept}</p>
+              <div key={member.name} className="p-8 rounded-2xl border border-border bg-background/50 hover:bg-background transition-all hover:shadow-xl group text-center">
+                <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-primary/20 group-hover:ring-primary transition-all">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                <p className="text-primary font-medium mb-1">{member.role}</p>
+                <p className="text-sm text-muted-foreground">{member.dept}</p>
               </div>
             ))}
           </div>
@@ -284,7 +301,7 @@ export function AboutPageContent() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-2xl font-bold mb-4">Join the Delta ISP Community</h2>
+          <h2 className="text-2xl font-bold mb-4">Join the Delta Internet Community</h2>
           <p className="text-muted-foreground mb-8">
             Experience the difference that a truly reliable internet provider can make.
           </p>

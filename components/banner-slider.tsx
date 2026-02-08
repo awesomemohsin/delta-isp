@@ -14,6 +14,7 @@ const banners = [
     '/images/banner4.webp',
     '/images/banner5.webp',
     '/images/banner6.webp',
+    '/images/banner7.webp',
 ]
 
 export function BannerSlider() {

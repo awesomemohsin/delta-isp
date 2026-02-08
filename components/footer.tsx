@@ -43,9 +43,9 @@ export function Footer() {
               <Image
                 src="/images/delta-logo.svg"
                 alt="Delta Logo"
-                width={70}
-                height={70}
-                className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                width={100}
+                height={100}
+                className="h-20 w-auto object-contain transition-transform group-hover:scale-105"
               />
               <span className="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
                 Delta Software and <br className="hidden sm:block" /> Communication

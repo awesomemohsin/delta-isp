@@ -124,7 +124,7 @@ export function SpeedTestSection() {
                                         />
 
                                         {/* SVG Gauge */}
-                                        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_0_15px_rgba(var(--primary),0.3)]">
+                                        <svg viewBox="0 0 100 100" className="w-full h-full">
                                             <path d="M 20 80 A 40 40 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" className="text-muted-foreground/10" />
                                             <motion.path
                                                 d="M 20 80 A 40 40 0 1 1 80 80" fill="none" stroke="url(#speedGradient)" strokeWidth="8" strokeLinecap="round" strokeDasharray="188.5"

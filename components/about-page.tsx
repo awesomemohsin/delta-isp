@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react'
 const stats = [
   { label: 'Years of Experience', value: 6, suffix: '+' },
   { label: 'Happy Customers', value: 50, suffix: 'K+' },
-  { label: 'Coverage Areas', value: 45, suffix: '+' },
+  { label: 'Districts Covered', value: 37, suffix: '+' },
   { label: 'Uptime Record', value: 99.99, suffix: '%', decimals: 2 },
 ]
 

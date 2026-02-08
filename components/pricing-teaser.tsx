@@ -69,7 +69,7 @@ export function PricingTeaser() {
   }, [emblaApi, resetAutoplay])
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
+    <section className="py-6 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
         <motion.div
@@ -77,7 +77,7 @@ export function PricingTeaser() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-6"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">
             Simple, <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Transparent</span> Packages

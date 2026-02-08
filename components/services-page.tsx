@@ -151,9 +151,9 @@ export function ServicesPageContent() {
                       ))}
                     </ul>
 
-                    <Link href="/contact">
+                    <Link href="/packages">
                       <Button className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 transition-all">
-                        Learn More & Contact
+                        Explore Packages
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>

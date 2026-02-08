@@ -190,11 +190,15 @@ export function PayBillContent() {
                     <div className="inline-flex items-center gap-4 bg-card p-6 rounded-full border border-border shadow-lg">
                         <HelpCircle size={24} className="text-primary" />
                         <p className="text-sm font-medium">Need help? WhatsApp us at <span className="text-primary font-bold">+880 1958113265</span></p>
-                        <Link href="/contact">
+                        <a
+                            href="https://wa.me/8801958113265"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <Button size="sm" className="rounded-full bg-secondary/20 text-foreground hover:bg-primary hover:text-white transition-all">
                                 Support Chat
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </motion.div>
             </div>

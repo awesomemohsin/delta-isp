@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Wifi, Building2, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { DESIGN_VERSION } from '@/lib/site-config'
 import { motion } from 'framer-motion'
 
 const servicesDetail = [
@@ -152,7 +153,12 @@ export function ServicesPageContent() {
                     </ul>
 
                     <Link href={idx < 2 ? "/packages" : "/contact"}>
-                      <Button className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 transition-all">
+                      <Button
+                        className={`transition-all ${DESIGN_VERSION === 'hot'
+                            ? 'h-14 px-8 rounded-2xl bg-[#0C58A4] hover:bg-[#0C58A4]/90 shadow-lg shadow-[#0C58A4]/20'
+                            : 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
+                          }`}
+                      >
                         {idx < 2 ? "Explore Packages" : "Learn More & Contact"}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>

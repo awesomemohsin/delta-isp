@@ -7,9 +7,12 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
 import { GetConnectedDialog } from '@/components/get-connected-dialog'
+import { DESIGN_VERSION } from '@/lib/site-config'
+import { usePathname } from 'next/navigation'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   const links = [
     { href: '/', label: 'Home' },
@@ -21,39 +24,63 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${DESIGN_VERSION === 'hot'
+      ? 'bg-background/90 backdrop-blur-xl border-b-2 border-[#EA2630]/20 shadow-[0_4px_20px_-10px_rgba(12,88,164,0.15)]'
+      : 'bg-background/80 backdrop-blur-md border-b border-border'
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center group">
             <Image
               src="/images/delta-logo.svg"
               alt="Delta Internet"
               width={500}
               height={100}
-              className="h-20 w-auto object-contain"
+              className={`h-16 md:h-24 w-auto object-contain transition-transform duration-500 ${DESIGN_VERSION === 'hot' ? 'group-hover:scale-110' : 'group-hover:scale-105'}`}
               priority
             />
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group"
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center space-x-6">
+            {links.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-bold tracking-tight transition-all relative group py-2 ${DESIGN_VERSION === 'hot'
+                    ? isActive
+                      ? 'text-[#0C58A4]'
+                      : 'text-black hover:text-[#0C58A4]'
+                    : 'text-foreground/80 hover:text-foreground'
+                    }`}
+                >
+                  {link.label}
+                  <span className={`absolute bottom-0 left-0 transition-all duration-300 ${DESIGN_VERSION === 'hot'
+                    ? isActive
+                      ? 'w-full h-1 bg-[#EA2630]'
+                      : 'w-0 h-1 bg-gradient-to-r from-[#0C58A4] to-[#EA2630] group-hover:w-full'
+                    : 'h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full'
+                    }`} />
+                </Link>
+              )
+            })}
           </div>
 
           {/* Right Section */}
           <div className="hidden md:flex items-center space-x-4">
             <ModeToggle />
-            <GetConnectedDialog />
+            {DESIGN_VERSION === 'hot' ? (
+              <GetConnectedDialog />
+            ) : (
+              <Link href="/contact">
+                <Button className="bg-gradient-to-r from-primary to-secondary text-white font-medium px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                  Connect Now
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -70,18 +97,35 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2 animate-in slide-in-from-top-2">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-secondary/10 rounded-lg transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
+          <div className={`md:hidden pb-6 pt-2 space-y-2 animate-in slide-in-from-top-4 duration-300 ${DESIGN_VERSION === 'hot' ? 'border-t border-[#EA2630]/10' : ''
+            }`}>
+            {links.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`block px-4 py-3 text-sm font-bold tracking-tight rounded-xl transition-all ${DESIGN_VERSION === 'hot'
+                      ? isActive
+                        ? 'bg-[#0C58A4]/10 text-[#0C58A4] border-l-4 border-[#EA2630]'
+                        : 'text-black hover:bg-[#0C58A4]/5 hover:text-[#0C58A4]'
+                      : 'font-medium text-foreground/80 hover:text-foreground hover:bg-secondary/10'
+                    }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
+            {DESIGN_VERSION === 'hot' ? (
+              <GetConnectedDialog className="w-full mt-4" />
+            ) : (
+              <Link href="/contact" className="block w-full mt-4" onClick={() => setIsOpen(false)}>
+                <Button className="w-full bg-gradient-to-r from-primary to-secondary text-white">
+                  Connect Now
+                </Button>
               </Link>
-            ))}
-            <GetConnectedDialog className="w-full mt-4" />
+            )}
           </div>
         )}
       </div>

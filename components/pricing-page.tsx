@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useState } from 'react'
+import { DESIGN_VERSION } from '@/lib/site-config'
 
 export const plans = [
   {
@@ -200,20 +201,28 @@ export function PricingPage() {
               <motion.div
                 key={plan.name}
                 variants={itemVariants}
-                whileHover={{ y: -8 }}
-                className={`relative h-full rounded-2xl border transition-all duration-300 ${plan.popular
-                  ? 'border-primary bg-gradient-to-b from-primary/10 to-background shadow-lg shadow-primary/20 md:scale-105'
-                  : 'border-border bg-card hover:border-primary/50'
+                whileHover={DESIGN_VERSION === 'hot' ? { y: -8, scale: 1.03 } : { y: -8 }}
+                className={`relative h-full transition-all duration-300 flex flex-col ${DESIGN_VERSION === 'hot'
+                  ? `rounded-[2rem] border-t-4 backdrop-blur-md ${plan.popular
+                    ? 'border-t-[#EA2630] border-x border-b border-[#EA2630]/20 bg-card/80 shadow-[0_20px_40px_-15px_rgba(234,38,48,0.15)] md:scale-105'
+                    : 'border-t-[#0C58A4] border-x border-b border-border bg-card/60 hover:shadow-[0_20px_40px_-15px_rgba(12,88,164,0.15)]'
+                  }`
+                  : `rounded-2xl border ${plan.popular
+                    ? 'border-primary bg-gradient-to-b from-primary/10 to-background shadow-lg shadow-primary/20 md:scale-105'
+                    : 'border-border bg-card hover:border-primary/50'
+                  }`
                   }`}
               >
-                {/* Popular Badge */}
+                {/* Badge */}
                 {(plan.popular || plan.badgeText) && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 z-10 ${DESIGN_VERSION === 'hot' ? '-top-3' : '-top-4'}`}>
                     <Badge
-                      className={plan.badgeColor ? "" : "bg-gradient-to-r from-primary to-secondary"}
-                      style={plan.badgeColor ? { backgroundColor: plan.badgeColor } : {}}
+                      className={DESIGN_VERSION === 'hot' ? "px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg" : (plan.badgeColor ? "" : "bg-gradient-to-r from-primary to-secondary")}
+                      style={DESIGN_VERSION === 'hot'
+                        ? { backgroundColor: plan.popular ? '#EA2630' : '#0C58A4', color: '#FFFFFF' }
+                        : (plan.badgeColor ? { backgroundColor: plan.badgeColor } : {})}
                     >
-                      {plan.badgeText || 'Most Popular'}
+                      {plan.badgeText || (plan.popular ? 'Most Popular' : 'Best Value')}
                     </Badge>
                   </div>
                 )}
@@ -247,11 +256,20 @@ export function PricingPage() {
                   {/* CTA Button */}
                   <Button
                     asChild
-                    className={`w-full mb-8 ${plan.popular
-                      ? 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
-                      : 'border border-primary/50 text-primary hover:bg-primary/10'
+                    className={`w-full mb-8 h-12 rounded-xl text-sm font-bold transition-all duration-300 ${DESIGN_VERSION === 'hot'
+                      ? ""
+                      : plan.popular
+                        ? 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 text-white'
+                        : 'border border-primary/50 text-primary hover:bg-primary/10'
                       }`}
-                    variant={plan.popular ? 'default' : 'outline'}
+                    style={DESIGN_VERSION === 'hot' ? {
+                      background: plan.popular
+                        ? 'linear-gradient(135deg, #EA2630 0%, #B21C24 100%)'
+                        : 'transparent',
+                      border: plan.popular ? 'none' : '2px solid #0C58A4',
+                      color: plan.popular ? '#FFFFFF' : '#0C58A4',
+                      boxShadow: plan.popular ? '0 10px 20px -5px rgba(234,38,48,0.4)' : 'none'
+                    } : {}}
                   >
                     <Link href="/contact">
                       {plan.cta}
@@ -260,20 +278,28 @@ export function PricingPage() {
                   </Button>
 
                   {/* Features */}
-                  <ul className="space-y-4">
-                    {plan.features.map((feature) => (
-                      <li key={feature.name} className="flex items-start gap-3">
-                        {feature.included ? (
-                          <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                        ) : (
-                          <X className="w-5 h-5 text-muted-foreground/30 flex-shrink-0 mt-0.5" />
-                        )}
-                        <span className={feature.included ? 'text-sm' : 'text-sm text-muted-foreground/50'}>
-                          {feature.name}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex-grow">
+                    {DESIGN_VERSION === 'hot' && <div className="text-xs font-bold text-[#999A9B] uppercase tracking-widest mb-4">Included Features</div>}
+                    <ul className="space-y-4">
+                      {plan.features.map((feature) => (
+                        <li key={feature.name} className="flex items-start gap-3 text-sm group/item">
+                          <div className={DESIGN_VERSION === 'hot' ? `p-1 rounded-full ${plan.popular ? 'bg-[#EA2630]/10' : 'bg-[#0C58A4]/10'}` : ""}>
+                            {feature.included ? (
+                              <Check
+                                className={DESIGN_VERSION === 'hot' ? "w-3 h-3" : "w-5 h-5 text-secondary flex-shrink-0 mt-0.5"}
+                                style={DESIGN_VERSION === 'hot' ? { color: plan.popular ? '#EA2630' : '#0C58A4' } : {}}
+                              />
+                            ) : (
+                              <X className="w-5 h-5 text-muted-foreground/30 flex-shrink-0 mt-0.5" />
+                            )}
+                          </div>
+                          <span className={`${feature.included ? 'text-black font-medium' : 'text-muted-foreground/50'} line-clamp-1 group-hover/item:translate-x-1 transition-transform ${DESIGN_VERSION === 'hot' ? '' : 'text-muted-foreground'}`} style={DESIGN_VERSION === 'hot' ? {} : { color: feature.included && DESIGN_VERSION === 'cold' ? '#999A9B' : undefined }}>
+                            {feature.name}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
             )

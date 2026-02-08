@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { DESIGN_VERSION } from '@/lib/site-config'
 import { ArrowRight, Award, Users, Globe, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion, animate, useInView } from 'framer-motion'
@@ -276,17 +277,27 @@ export function AboutPageContent() {
                 image: '/images/marketing.webp'
               },
             ].map((member) => (
-              <div key={member.name} className="p-8 rounded-2xl border border-border bg-background/50 hover:bg-background transition-all hover:shadow-xl group text-center">
-                <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-primary/20 group-hover:ring-primary transition-all">
+              <div
+                key={member.name}
+                className={`p-8 transition-all hover:shadow-xl group text-center ${DESIGN_VERSION === 'hot'
+                    ? 'rounded-[2.5rem] border-2 border-primary/10 bg-card/50 hover:bg-card hover:border-primary/30'
+                    : 'rounded-2xl border border-border bg-background/50 hover:bg-background'
+                  }`}
+              >
+                <div className={`relative mx-auto mb-6 overflow-hidden transition-all duration-500 ${DESIGN_VERSION === 'hot'
+                    ? 'w-56 h-56 rounded-[2rem] ring-8 ring-primary/5 group-hover:ring-primary/10'
+                    : 'w-48 h-48 rounded-full ring-4 ring-primary/20 group-hover:ring-primary'
+                  }`}>
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className={`object-cover transition-transform duration-700 ${DESIGN_VERSION === 'hot' ? 'group-hover:scale-105' : 'group-hover:scale-110'
+                      }`}
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-primary font-medium mb-1">{member.role}</p>
+                <p className="text-primary font-bold mb-1 uppercase tracking-wider text-sm">{member.role}</p>
                 <p className="text-sm text-muted-foreground">{member.dept}</p>
               </div>
             ))}

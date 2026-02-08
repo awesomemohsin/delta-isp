@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { toast } from 'sonner'
+import { DESIGN_VERSION } from '@/lib/site-config'
 import { sendContactEmail } from '@/app/actions/contact'
 import {
   Form,
@@ -261,7 +262,10 @@ export function ContactPageContent() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 transition-all"
+                    className={`w-full transition-all ${DESIGN_VERSION === 'hot'
+                      ? 'h-14 rounded-2xl bg-[#EA2630] hover:bg-[#EA2630]/90 shadow-lg shadow-[#EA2630]/20 text-white border-none'
+                      : 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
+                      }`}
                     disabled={form.formState.isSubmitting}
                   >
                     {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
@@ -283,7 +287,10 @@ export function ContactPageContent() {
         >
           <iframe
             title="Delta Software and Communication Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.435!2d90.395!3d23.874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4280b396791%3A0xf639a04a5840ca84!2sDelta%20Software%20And%20Communication!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd"
+            src={DESIGN_VERSION === 'hot'
+              ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.435!2d90.395!3d23.874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4280b396791%3A0xf639a04a5840ca84!2sDelta%20Software%20And%20Communication!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd"
+              : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.435!2d90.395!3d23.874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c428178149ef%3A0xa97b98f244588e7b!2sUttara%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd"
+            }
             width="100%"
             height="100%"
             style={{ border: 0 }}

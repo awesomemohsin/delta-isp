@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import { DESIGN_VERSION } from '@/lib/site-config'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -47,7 +48,10 @@ export function Footer() {
                 height={100}
                 className="h-20 w-auto object-contain transition-transform group-hover:scale-105"
               />
-              <span className="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
+              <span className={`font-bold text-xl leading-tight ${DESIGN_VERSION === 'hot'
+                  ? 'bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'
+                  : 'text-foreground'
+                }`}>
                 Delta Software and <br className="hidden sm:block" /> Communication
               </span>
             </Link>

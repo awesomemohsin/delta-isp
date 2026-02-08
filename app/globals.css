@@ -9,6 +9,20 @@
     text-wrap: balance;
   }
 
+  @keyframes border-flow-top {
+    0% {
+      left: -100%;
+    }
+
+    50% {
+      left: 100%;
+    }
+
+    100% {
+      left: 100%;
+    }
+  }
+
   .fade-in {
     animation: fadeIn 0.5s ease-in-out;
   }
@@ -23,6 +37,20 @@
 
   .glow {
     box-shadow: 0 0 20px rgba(34, 197, 237, 0.3);
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
   }
 }
 
@@ -139,6 +167,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
   }

@@ -128,6 +128,8 @@ export const plans = [
     ],
     cta: 'Contact Sales',
     isEnterprise: true,
+    badgeText: "For Business",
+    badgeColor: "#0C58A4",
   },
 ]
 

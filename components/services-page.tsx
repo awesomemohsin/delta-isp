@@ -122,8 +122,9 @@ export function ServicesPageContent() {
             return (
               <motion.div
                 key={service.title}
+                id={service.title.toLowerCase().replace(/\s+/g, '-')}
                 variants={itemVariants}
-                className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${isEven ? '' : 'md:grid-flow-dense'}`}
+                className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center pt-20 -mt-20 ${isEven ? '' : 'md:grid-flow-dense'}`}
               >
                 {/* Content */}
                 <div className={isEven ? 'md:col-span-1' : 'md:col-span-1 md:order-2'}>
@@ -155,8 +156,8 @@ export function ServicesPageContent() {
                     <Link href={idx < 2 ? "/packages" : "/contact"}>
                       <Button
                         className={`transition-all ${DESIGN_VERSION === 'hot'
-                            ? 'h-14 px-8 rounded-2xl bg-[#0C58A4] hover:bg-[#0C58A4]/90 shadow-lg shadow-[#0C58A4]/20'
-                            : 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
+                          ? 'h-14 px-8 rounded-2xl bg-[#0C58A4] hover:bg-[#0C58A4]/90 shadow-lg shadow-[#0C58A4]/20'
+                          : 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
                           }`}
                       >
                         {idx < 2 ? "Explore Packages" : "Learn More & Contact"}

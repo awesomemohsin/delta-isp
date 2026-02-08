@@ -1,50 +1,84 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Gauge, Zap, Activity, ArrowRight, X, RefreshCw } from 'lucide-react'
+import { Gauge, Activity, ArrowRight, X, RefreshCw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { DESIGN_VERSION } from '@/lib/site-config'
+
+function DigitalReadout({ value, label }: { value: string, label: string }) {
+    return (
+        <div className="relative group/readout">
+            <div className={`text-3xl md:text-4xl font-mono font-black tracking-tighter transition-all duration-300 ${DESIGN_VERSION === 'hot' ? 'text-foreground group-hover/readout:text-[#EA2630]' : 'text-primary'}`}>
+                {value}
+            </div>
+            <div className="text-[10px] text-muted-foreground uppercase tracking-[0.2em] font-black mt-1 opacity-70 group-hover/readout:opacity-100 transition-opacity">
+                {label}
+            </div>
+            {/* Glitch Effect Line */}
+            <div className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#EA2630] group-hover/readout:w-full transition-all duration-500 shadow-[0_0_10px_#EA2630]" />
+        </div>
+    )
+}
 
 export function SpeedTestSection() {
     const [isTesting, setIsTesting] = useState(false)
+    const [glitch, setGlitch] = useState(false)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setGlitch(true)
+            setTimeout(() => setGlitch(false), 150)
+        }, 3000)
+        return () => clearInterval(interval)
+    }, [])
 
     return (
-        <section className="py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-transparent">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-transparent">
             {/* Background Decorative Elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full blur-[160px] -z-10 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/5' : 'bg-primary/5'}`} />
 
             <div className="max-w-7xl mx-auto">
-                <div className="relative group overflow-hidden rounded-[3rem] border border-border bg-card/30 backdrop-blur-xl p-8 md:p-16">
-                    {/* Glassmorphism Background Pattern */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-50" />
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-700" />
+                <div className={`relative group overflow-hidden p-6 md:p-10 transition-all duration-700 ${DESIGN_VERSION === 'hot'
+                    ? 'rounded-[2rem] border-2 border-[#EA2630]/20 bg-card/40 backdrop-blur-3xl shadow-[0_40px_100px_-20px_rgba(234,38,48,0.15)] hover:shadow-[0_40px_100px_-20px_rgba(234,38,48,0.25)]'
+                    : 'rounded-[1.5rem] border border-border bg-card/30 backdrop-blur-xl'
+                    }`}>
 
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    {/* Background Texture & Gradients */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0C58A4]/10 via-transparent to-[#EA2630]/10 opacity-60" />
+                    <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+
+                    <div className={`absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 transition-all duration-1000 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/30 group-hover:bg-[#EA2630]/30' : 'bg-primary/20 group-hover:bg-primary/30'}`} />
+
+                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
                         {/* Content Side */}
-                        <div className="space-y-8 text-center lg:text-left">
+                        <div className="space-y-10 text-center lg:text-left">
                             <motion.div
-                                initial={{ opacity: 0, x: -20 }}
+                                initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.6 }}
+                                transition={{ duration: 0.8 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6">
+                                <div className={`inline-flex items-center gap-3 px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-[0.3em] mb-8 shadow-inner ${DESIGN_VERSION === 'hot'
+                                    ? 'bg-[#EA2630]/10 border border-[#EA2630]/30 text-[#EA2630] shadow-[#EA2630]/5'
+                                    : 'bg-primary/10 border border-primary/20 text-primary'
+                                    }`}>
                                     <Activity className="w-4 h-4 animate-pulse" />
-                                    Network Diagnostics
+                                    Diagnostic Protocol ACTIVE
                                 </div>
-                                <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-balance">
-                                    Check Your <br />
-                                    <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient">Connection Speed</span>
+                                <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-balance leading-[0.9] uppercase italic group-hover:not-italic transition-all duration-500">
+                                    Unleash <br />
+                                    <span className={DESIGN_VERSION === 'hot' ? "text-[#EA2630] drop-shadow-[0_4px_15px_rgba(234,38,48,0.3)]" : "bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"}>Titan Speed</span>
                                 </h2>
-                                <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 text-balance leading-relaxed">
-                                    Experience the true power of Delta Internet fiber. Verify your real-time download and upload speeds using our optimized test server.
+                                <p className="text-sm text-muted-foreground max-w-xl mx-auto lg:mx-0 text-balance leading-relaxed font-medium">
+                                    Verify your real-time fiber performance. Experience the consistent, high-speed stability that defines Delta Internet.
                                 </p>
                             </motion.div>
 
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.2 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
                                 viewport={{ once: true }}
                                 className="flex flex-wrap justify-center lg:justify-start gap-4"
                             >
@@ -52,20 +86,26 @@ export function SpeedTestSection() {
                                     <Button
                                         onClick={() => setIsTesting(true)}
                                         size="lg"
-                                        className="h-14 px-8 rounded-full bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/40 transition-all font-bold text-lg group"
+                                        className={`h-14 px-8 rounded-xl transition-all font-black text-base group shadow-xl relative overflow-hidden ${DESIGN_VERSION === 'hot'
+                                            ? 'bg-[#0C58A4] hover:bg-[#084175] text-white hover:shadow-[#0C58A4]/40'
+                                            : 'bg-gradient-to-r from-primary to-secondary hover:shadow-primary/50'
+                                            }`}
                                     >
-                                        Start Speed Test
-                                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                        <span className="relative z-10 flex items-center gap-2">
+                                            INITIATE SCAN
+                                            <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
+                                        </span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                     </Button>
                                 ) : (
                                     <Button
                                         onClick={() => setIsTesting(false)}
                                         variant="outline"
                                         size="lg"
-                                        className="h-14 px-8 rounded-full border-destructive/50 text-destructive hover:bg-destructive/10 bg-transparent font-bold"
+                                        className="h-16 px-10 rounded-2xl border-destructive/30 text-destructive hover:bg-destructive/10 bg-transparent font-black uppercase tracking-[0.2em] shadow-lg"
                                     >
                                         <X className="mr-2 w-5 h-5" />
-                                        Close Test Tool
+                                        Abort Tool
                                     </Button>
                                 )}
                             </motion.div>
@@ -73,113 +113,126 @@ export function SpeedTestSection() {
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
-                                transition={{ duration: 1, delay: 0.4 }}
+                                transition={{ duration: 1, delay: 0.5 }}
                                 viewport={{ once: true }}
-                                className="grid grid-cols-3 gap-8 pt-8 border-t border-border/50 max-w-md mx-auto lg:mx-0"
+                                className="grid grid-cols-3 gap-8 pt-8 border-t border-black/5 dark:border-white/5 max-w-md mx-auto lg:mx-0"
                             >
-                                <div>
-                                    <div className="text-2xl font-black text-primary">99.9%</div>
-                                    <div className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Uptime</div>
-                                </div>
-                                <div>
-                                    <div className="text-2xl font-black text-secondary"> &lt; 5ms</div>
-                                    <div className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Latency</div>
-                                </div>
-                                <div>
-                                    <div className="text-2xl font-black text-blue-500">1 Gbps</div>
-                                    <div className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Max Speed</div>
-                                </div>
+                                <DigitalReadout value="99.9%" label="Uptime" />
+                                <DigitalReadout value="<5ms" label="Latency" />
+                                <DigitalReadout value="1Gbps" label="Max Cap" />
                             </motion.div>
                         </div>
 
                         {/* Interactive Gauge / Test Iframe Side */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 1 }}
                             viewport={{ once: true }}
-                            className="relative flex justify-center w-full min-h-[400px]"
+                            className="relative flex justify-center w-full min-h-[450px]"
                         >
                             <AnimatePresence mode="wait">
                                 {!isTesting ? (
                                     <motion.div
                                         key="gauge"
-                                        initial={{ opacity: 0, rotate: -10 }}
-                                        animate={{ opacity: 1, rotate: 0 }}
-                                        exit={{ opacity: 0, scale: 0.9 }}
-                                        className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]"
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                                        className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex items-center justify-center group/gauge"
                                     >
-                                        {/* Outer Ring */}
-                                        <div className="absolute inset-0 rounded-full border-[10px] border-border/20 shadow-inner" />
-                                        <div className="absolute inset-4 rounded-full border border-primary/10" />
-
-                                        {/* Moving Hub/Glow */}
+                                        {/* Outer Rotating Ring */}
                                         <motion.div
-                                            animate={{
-                                                rotate: [0, 180, 0],
-                                                scale: [1, 1.1, 1]
-                                            }}
-                                            transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-                                            className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-secondary/20 rounded-full blur-3xl opacity-30"
+                                            animate={{ rotate: 360 }}
+                                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                            className={`absolute inset-0 rounded-full border border-dashed ${DESIGN_VERSION === 'hot' ? 'border-[#EA2630]/20' : 'border-primary/20'}`}
                                         />
 
-                                        {/* SVG Gauge */}
-                                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                                            <path d="M 20 80 A 40 40 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" className="text-muted-foreground/10" />
-                                            <motion.path
-                                                d="M 20 80 A 40 40 0 1 1 80 80" fill="none" stroke="url(#speedGradient)" strokeWidth="8" strokeLinecap="round" strokeDasharray="188.5"
-                                                initial={{ strokeDashoffset: 188.5 }} whileInView={{ strokeDashoffset: 40 }} transition={{ duration: 2, delay: 0.5, ease: "easeOut" }} viewport={{ once: true }}
+                                        {/* Counter Rotating Ring */}
+                                        <motion.div
+                                            animate={{ rotate: -360 }}
+                                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                            className={`absolute inset-8 rounded-full border border-dotted ${DESIGN_VERSION === 'hot' ? 'border-[#0C58A4]/20' : 'border-secondary/20'}`}
+                                        />
+
+                                        {/* Main Gauge SVG */}
+                                        <svg viewBox="0 0 200 200" className="w-full h-full absolute inset-0 rotate-[90deg]">
+                                            {/* Background Circle */}
+                                            <circle cx="100" cy="100" r="80" fill="none" strokeWidth="2" stroke={DESIGN_VERSION === 'hot' ? '#EA2630' : 'currentColor'} className="opacity-10" />
+
+                                            {/* Progress Arc */}
+                                            <motion.circle
+                                                cx="100"
+                                                cy="100"
+                                                r="80"
+                                                fill="none"
+                                                strokeWidth="4"
+                                                strokeLinecap="round"
+                                                stroke={DESIGN_VERSION === 'hot' ? '#EA2630' : 'currentColor'}
+                                                className={DESIGN_VERSION === 'hot' ? 'drop-shadow-[0_0_10px_rgba(234,38,48,0.5)]' : 'text-primary drop-shadow-[0_0_10px_rgba(var(--primary),0.5)]'}
+                                                initial={{ pathLength: 0 }}
+                                                animate={{ pathLength: 0.75 }}
+                                                transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatType: "reverse" }}
                                             />
-                                            <defs>
-                                                <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                    <stop offset="0%" stopColor="var(--primary)" />
-                                                    <stop offset="100%" stopColor="var(--secondary)" />
-                                                </linearGradient>
-                                            </defs>
-                                            <motion.line
-                                                x1="50" y1="50" x2="50" y2="15" stroke="var(--primary)" strokeWidth="3" strokeLinecap="round"
-                                                initial={{ rotate: -120, transformOrigin: '50% 50%' }} whileInView={{ rotate: 60, transformOrigin: '50% 50%' }} transition={{ duration: 2, delay: 0.5, ease: "easeOut" }} viewport={{ once: true }}
-                                            />
-                                            <circle cx="50" cy="50" r="4" fill="var(--primary)" className="shadow-lg" />
                                         </svg>
 
-                                        {/* Center UI */}
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center pt-48">
-                                            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 2 }} className="text-center">
-                                                <div className="text-3xl md:text-5xl font-black tracking-tighter bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
-                                                    READY
-                                                </div>
-                                            </motion.div>
+                                        {/* Center Content */}
+                                        <div className="flex flex-col items-center justify-center relative z-10 p-10 rounded-full bg-background/50 backdrop-blur-md border border-white/10 shadow-2xl">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className={`text-5xl font-black tracking-tighter ${DESIGN_VERSION === 'hot' ? 'text-[#EA2630]' : 'text-primary'}`}>
+                                                    DELTA
+                                                </span>
+                                                <span className="text-sm font-bold opacity-70">
+                                                    FIBER
+                                                </span>
+                                            </div>
+                                            <div className="text-[10px] uppercase tracking-[0.2em] opacity-50 font-bold mt-1">
+                                                Ready to Test
+                                            </div>
+
+                                            {/* Pulse Indicator */}
+                                            <div className={`mt-4 w-2 h-2 rounded-full animate-pulse ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]' : 'bg-secondary'}`} />
                                         </div>
 
-                                        <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="absolute -top-4 left-1/2 -translate-x-1/2 p-3 rounded-2xl bg-background border border-border shadow-xl">
-                                            <Gauge className="w-6 h-6 text-primary" />
+                                        {/* Floating Badge */}
+                                        <motion.div
+                                            animate={{ y: [0, -10, 0] }}
+                                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                            className={`absolute -bottom-4 bg-background/90 backdrop-blur border px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl flex items-center gap-2 ${DESIGN_VERSION === 'hot' ? 'border-[#EA2630]/30 text-[#EA2630]' : 'border-primary/30 text-primary'}`}
+                                        >
+                                            <RefreshCw className="w-3 h-3 animate-spin" />
+                                            GRID ONLINE
                                         </motion.div>
                                     </motion.div>
                                 ) : (
                                     <motion.div
                                         key="test"
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, scale: 0.9 }}
-                                        className="w-full max-w-2xl h-[450px] md:h-[550px] rounded-3xl overflow-hidden bg-card/50 border border-border flex flex-col shadow-2xl relative z-10"
+                                        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                                        className="w-full max-w-3xl h-[500px] md:h-[650px] rounded-[4rem] overflow-hidden bg-[#0A0A0A] border-4 border-[#1a1a1a] flex flex-col shadow-[0_80px_100px_-30px_rgba(0,0,0,0.5)] relative z-10"
                                     >
-                                        <div className="flex items-center justify-between p-4 border-b border-border bg-background/50 backdrop-blur-md">
-                                            <div className="flex items-center gap-2">
-                                                <RefreshCw className="w-4 h-4 text-primary animate-spin" />
-                                                <span className="text-sm font-bold uppercase tracking-wider">Live Speed Test Tool</span>
+                                        <div className="flex items-center justify-between p-8 border-b border-white/5 bg-white/5 backdrop-blur-3xl">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                                                <span className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-white/60 text-orange-500">
+                                                    Secure Terminal | v4.0.2
+                                                </span>
                                             </div>
-                                            <Button size="sm" variant="ghost" onClick={() => setIsTesting(false)} className="hover:bg-destructive/10 hover:text-destructive">
-                                                <X className="w-4 h-4" />
+                                            <Button size="icon" variant="ghost" onClick={() => setIsTesting(false)} className="hover:bg-white/10 text-white/40 hover:text-white rounded-2xl w-12 h-12">
+                                                <X className="w-7 h-7" />
                                             </Button>
                                         </div>
-                                        <div className="flex-grow bg-[#1a1a1a] relative">
+
+                                        <div className="flex-grow relative group/frame">
                                             <iframe
-                                                src="https://openspeedtest.com/speedtest"
-                                                className="w-full h-full border-none"
+                                                src="https://openspeedtest.com/Get-widget.php"
+                                                className="w-full h-full border-none opacity-90 group-hover/frame:opacity-100 transition-all duration-700"
                                                 title="Internet Speed Test"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             />
+                                            {/* CRT Scanline Overlay */}
+                                            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20" />
+                                            <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
                                         </div>
                                     </motion.div>
                                 )}

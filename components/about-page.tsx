@@ -9,18 +9,13 @@ import { motion, animate, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
 const stats = [
-  { label: 'Years of Experience', value: 6, suffix: '+' },
-  { label: 'Happy Customers', value: 50, suffix: 'K+' },
-  { label: 'Districts Covered', value: 37, suffix: '+' },
+  { label: 'Happy Customers', value: 60, suffix: 'K+' },
+  { label: 'Districts Covered', value: 53, suffix: '' },
+  { label: 'Upazilas Covered', value: 149, suffix: '' },
   { label: 'Uptime Record', value: 99.99, suffix: '%', decimals: 2 },
 ]
 
-const milestones = [
-  { year: '2018', title: 'Founded', description: 'Delta Software and Communication started its journey to provide reliable internet connectivity.' },
-  { year: '2022', title: 'Fiber & Support', description: 'Upgraded to a full optical fiber network and established a dedicated 24/7 customer support center.' },
-  { year: '2024', title: 'Coverage Growth', description: 'Recognized as a leading ISP in the region with rapidly growing coverage and customer base.' },
-  { year: '2026', title: 'Nationwide Expansion', description: 'Scaling our footprint to cover all major districts across Bangladesh, ensuring digital inclusion for all.' },
-]
+
 
 const values = [
   {
@@ -158,57 +153,7 @@ export function AboutPageContent() {
           </div>
         </motion.div>
 
-        {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">Our Journey</h2>
 
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-transparent" />
-
-            {/* Timeline Items */}
-            <div className="space-y-8 md:space-y-0">
-              {milestones.map((milestone, idx) => (
-                <motion.div
-                  key={milestone.year}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className={`flex gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  {/* Content */}
-                  <div className={`flex-1 ${idx % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className={`p-6 rounded-xl border border-border bg-card hover:bg-card/80 transition-colors ${idx % 2 === 0 ? 'md:ml-auto md:w-5/6' : 'md:mr-auto md:w-5/6'}`}>
-                      <p className="text-sm font-semibold text-primary mb-2">{milestone.year}</p>
-                      <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
-                      <p className="text-sm text-muted-foreground">{milestone.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Timeline Dot */}
-                  <div className="hidden md:flex justify-center items-start pt-6">
-                    <motion.div
-                      whileInView={{ scale: 1 }}
-                      initial={{ scale: 0 }}
-                      transition={{ type: 'spring', stiffness: 100 }}
-                      className="w-4 h-4 rounded-full bg-gradient-to-r from-primary to-secondary ring-4 ring-background"
-                    />
-                  </div>
-
-                  {/* Empty Space */}
-                  <div className="hidden md:block flex-1" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
 
         {/* Core Values */}
         <motion.div
@@ -280,13 +225,13 @@ export function AboutPageContent() {
               <div
                 key={member.name}
                 className={`p-8 transition-all hover:shadow-xl group text-center ${DESIGN_VERSION === 'hot'
-                    ? 'rounded-[2.5rem] border-2 border-primary/10 bg-card/50 hover:bg-card hover:border-primary/30'
-                    : 'rounded-2xl border border-border bg-background/50 hover:bg-background'
+                  ? 'rounded-[2.5rem] border-2 border-primary/10 bg-card/50 hover:bg-card hover:border-primary/30'
+                  : 'rounded-2xl border border-border bg-background/50 hover:bg-background'
                   }`}
               >
                 <div className={`relative mx-auto mb-6 overflow-hidden transition-all duration-500 ${DESIGN_VERSION === 'hot'
-                    ? 'w-56 h-56 rounded-[2rem] ring-8 ring-primary/5 group-hover:ring-primary/10'
-                    : 'w-48 h-48 rounded-full ring-4 ring-primary/20 group-hover:ring-primary'
+                  ? 'w-56 h-56 rounded-[2rem] ring-8 ring-primary/5 group-hover:ring-primary/10'
+                  : 'w-48 h-48 rounded-full ring-4 ring-primary/20 group-hover:ring-primary'
                   }`}>
                   <Image
                     src={member.image}

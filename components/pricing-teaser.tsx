@@ -70,7 +70,7 @@ export function PricingTeaser() {
   }, [emblaApi, resetAutoplay])
 
   return (
-    <section className="py-6 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
+    <section className="py-10 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
         <motion.div
@@ -80,7 +80,7 @@ export function PricingTeaser() {
           viewport={{ once: true }}
           className="text-center mb-6"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">
+          <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-balance">
             Simple, <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Transparent</span> Packages
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
@@ -109,7 +109,7 @@ export function PricingTeaser() {
         </div>
 
         {/* Carousel Container */}
-        <div className="embla overflow-hidden px-2" ref={emblaRef}>
+        <div className="embla overflow-hidden py-12 px-2" ref={emblaRef}>
           <div className="embla__container flex">
             {plans.map((plan, index) => (
               <div key={plan.name} className="embla__slide flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%] p-4">
@@ -119,11 +119,11 @@ export function PricingTeaser() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={DESIGN_VERSION === 'hot' ? { y: -8, scale: 1.03 } : { y: -8 }}
-                  className={`relative h-full transition-all duration-300 flex flex-col ${DESIGN_VERSION === 'hot'
-                    ? `rounded-[2rem] border-t-4 backdrop-blur-md ${plan.popular
-                      ? 'border-t-[#EA2630] border-x border-b border-[#EA2630]/20 bg-card/80 shadow-[0_20px_40px_-15px_rgba(234,38,48,0.15)]'
-                      : 'border-t-[#0C58A4] border-x border-b border-border bg-card/60 hover:shadow-[0_20px_40px_-15px_rgba(12,88,164,0.15)]'
+                  whileHover={DESIGN_VERSION === 'hot' ? { y: -12, scale: 1.02 } : { y: -8 }}
+                  className={`relative transition-all duration-500 flex flex-col h-full group/card ${DESIGN_VERSION === 'hot'
+                    ? `rounded-[2.5rem] backdrop-blur-3xl border border-black/10 dark:border-white/10 ${plan.popular
+                      ? 'shadow-[0_20px_50px_-20px_rgba(234,38,48,0.3)]'
+                      : 'hover:shadow-[0_20px_50px_-20px_rgba(12,88,164,0.15)]'
                     }`
                     : `rounded-2xl border ${plan.popular
                       ? 'border-primary bg-gradient-to-b from-primary/10 to-background shadow-lg shadow-primary/20'
@@ -133,9 +133,9 @@ export function PricingTeaser() {
                 >
                   {/* Badge */}
                   {(plan.popular || plan.badgeText) && (
-                    <div className={`absolute left-1/2 transform -translate-x-1/2 z-10 ${DESIGN_VERSION === 'hot' ? '-top-3' : '-top-4'}`}>
+                    <div className={`absolute left-1/2 transform -translate-x-1/2 z-[30] ${DESIGN_VERSION === 'hot' ? '-top-3' : '-top-4'}`}>
                       <Badge
-                        className={DESIGN_VERSION === 'hot' ? "px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg" : (plan.badgeColor ? "" : "bg-gradient-to-r from-primary to-secondary")}
+                        className={DESIGN_VERSION === 'hot' ? "px-6 py-2 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl border-none whitespace-nowrap" : (plan.badgeColor ? "" : "bg-gradient-to-r from-primary to-secondary")}
                         style={DESIGN_VERSION === 'hot'
                           ? { backgroundColor: plan.popular ? '#EA2630' : '#0C58A4', color: '#FFFFFF' }
                           : (plan.badgeColor ? { backgroundColor: plan.badgeColor } : {})}
@@ -145,36 +145,46 @@ export function PricingTeaser() {
                     </div>
                   )}
 
-                  <div className="p-8 flex flex-col h-full relative z-0">
+                  {/* Speed Beam Animation */}
+                  {DESIGN_VERSION === 'hot' && (
+                    <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none z-0">
+                      <div className={`absolute -inset-[400%] animate-[spin_3s_linear_infinite] opacity-100`}
+                        style={{
+                          background: `conic-gradient(from 0deg, transparent 0deg, transparent 320deg, ${plan.popular ? '#EA2630' : '#0C58A4'} 360deg)`
+                        }}
+                      />
+                      {/* Inner Mask to create the border look */}
+                      <div className="absolute inset-[1.5px] rounded-[2.5rem] bg-background z-10" />
+                    </div>
+                  )}
+
+                  <div className="p-8 flex flex-col h-full relative z-20">
                     {/* Plan Header */}
-                    <div className={DESIGN_VERSION === 'hot' ? "mb-8" : "mb-6"}>
-                      <h3 className={DESIGN_VERSION === 'hot' ? "text-sm font-bold tracking-widest uppercase mb-2" : "text-2xl font-bold mb-2 text-black"} style={DESIGN_VERSION === 'hot' ? { color: '#0C58A4' } : {}}>
+                    <div className={DESIGN_VERSION === 'hot' ? "mb-6" : "mb-6"}>
+                      <h3 className={DESIGN_VERSION === 'hot' ? "text-xs font-black tracking-[0.3em] uppercase mb-3 opacity-70" : "text-2xl font-bold mb-2 text-foreground"} style={DESIGN_VERSION === 'hot' ? { color: plan.popular ? '#EA2630' : '#0C58A4' } : {}}>
                         {plan.name}
                       </h3>
-                      <div className="flex items-center gap-2 mb-2">
-                        {DESIGN_VERSION === 'hot' && <Zap className="w-5 h-5" style={{ color: '#EA2630' }} />}
+                      <div className="flex items-center gap-3 mb-4 relative">
+                        {DESIGN_VERSION === 'hot' && <Zap className={`w-6 h-6 ${plan.popular ? 'text-[#EA2630]' : 'text-[#0C58A4]'} fill-current`} />}
                         <div
                           className={DESIGN_VERSION === 'hot' ? "text-4xl font-black italic tracking-tighter" : "text-primary font-semibold"}
-                          style={DESIGN_VERSION === 'hot' ? { color: '#EA2630' } : {}}
+                          style={DESIGN_VERSION === 'hot' ? { color: plan.popular ? '#EA2630' : '#0C58A4' } : {}}
                         >
                           {plan.speed}
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{plan.description}</p>
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">{plan.description}</p>
 
-                      <div className={DESIGN_VERSION === 'hot' ? "flex items-baseline gap-1 bg-muted/30 p-4 rounded-2xl border border-border/50" : "flex items-baseline gap-1"}>
+                      <div className={DESIGN_VERSION === 'hot' ? "flex items-baseline gap-1 bg-black/5 dark:bg-white/5 p-4 rounded-2xl border border-white/10" : "flex items-baseline gap-1"}>
                         {plan.isEnterprise ? (
-                          <span className={DESIGN_VERSION === 'hot' ? "text-2xl font-bold text-black italic" : "text-3xl font-bold text-black"}>Contact Sales</span>
+                          <span className={DESIGN_VERSION === 'hot' ? "text-2xl font-black text-foreground italic uppercase tracking-tighter" : "text-3xl font-bold text-foreground"}>Talk to us</span>
                         ) : (
                           <>
-                            <span
-                              className={DESIGN_VERSION === 'hot' ? "text-4xl font-black flex items-baseline gap-1" : "text-4xl font-black flex items-baseline gap-[-0.1em] text-black"}
-                              style={DESIGN_VERSION === 'hot' ? { color: '#000000' } : {}}
-                            >
-                              <span className={DESIGN_VERSION === 'hot' ? "text-2xl" : "text-3xl md:text-4xl"}>৳</span>
-                              {plan.price}
-                            </span>
-                            <span className="text-muted-foreground text-sm">/month</span>
+                            <div className="flex items-baseline gap-0.5">
+                              <span className="text-3xl font-black">৳</span>
+                              <span className="text-3xl font-black tracking-tighter">{plan.price}</span>
+                              <span className="text-[10px] text-muted-foreground ml-1 font-bold uppercase tracking-widest">{plan.period}</span>
+                            </div>
                           </>
                         )}
                       </div>
@@ -182,17 +192,17 @@ export function PricingTeaser() {
 
                     {/* Features List */}
                     <div className="mb-8 flex-grow">
-                      {DESIGN_VERSION === 'hot' && <div className="text-xs font-bold text-[#999A9B] uppercase tracking-widest mb-4">Included Features</div>}
-                      <ul className="space-y-4">
+                      {DESIGN_VERSION === 'hot' && <div className="text-[10px] font-black text-[#999A9B] uppercase tracking-[0.2em] mb-4 border-b border-border/50 pb-2">Premium Perks</div>}
+                      <ul className="space-y-3">
                         {plan.features.slice(0, 4).map((feature) => (
                           <li key={feature.name} className="flex items-center gap-3 text-sm group/item">
                             <div className={DESIGN_VERSION === 'hot' ? `p-1 rounded-full ${plan.popular ? 'bg-[#EA2630]/10' : 'bg-[#0C58A4]/10'}` : ""}>
                               <Check
-                                className={DESIGN_VERSION === 'hot' ? "w-3 h-3" : "w-4 h-4 text-secondary flex-shrink-0 mt-0.5"}
+                                className={DESIGN_VERSION === 'hot' ? "w-2.5 h-2.5" : "w-4 h-4 text-secondary flex-shrink-0 mt-0.5"}
                                 style={DESIGN_VERSION === 'hot' ? { color: plan.popular ? '#EA2630' : '#0C58A4' } : {}}
                               />
                             </div>
-                            <span className={`text-black font-medium line-clamp-1 group-hover/item:translate-x-1 transition-transform ${DESIGN_VERSION === 'hot' ? '' : 'text-muted-foreground'}`} style={DESIGN_VERSION === 'hot' ? {} : { color: '#999A9B' }}>
+                            <span className={`font-bold tracking-tight transition-transform group-hover/item:translate-x-1 ${DESIGN_VERSION === 'hot' ? 'text-foreground/80' : 'text-muted-foreground'}`}>
                               {feature.name}
                             </span>
                           </li>
@@ -203,11 +213,11 @@ export function PricingTeaser() {
                     {/* CTA Button */}
                     <Button
                       asChild
-                      className={`w-full h-14 rounded-2xl text-base font-bold transition-all duration-300 ${DESIGN_VERSION === 'hot'
-                          ? ""
-                          : plan.popular
-                            ? 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 text-white'
-                            : 'border border-primary/50 text-primary hover:bg-primary/10'
+                      className={`w-full h-12 rounded-lg text-xs font-black uppercase tracking-widest transition-all duration-300 relative overflow-hidden group/btn ${DESIGN_VERSION === 'hot'
+                        ? ""
+                        : plan.popular
+                          ? 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 text-white'
+                          : 'border border-primary/50 text-primary hover:bg-primary/10'
                         }`}
                       style={DESIGN_VERSION === 'hot' ? {
                         background: plan.popular
@@ -218,9 +228,12 @@ export function PricingTeaser() {
                         boxShadow: plan.popular ? '0 10px 20px -5px rgba(234,38,48,0.4)' : 'none'
                       } : {}}
                     >
-                      <Link href="/contact" className="hover:gap-3 transition-all">
-                        {plan.cta}
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                      <Link href="/contact" className="flex items-center justify-center gap-2">
+                        <span className="relative z-10">{plan.cta}</span>
+                        <ArrowRight className="h-5 w-5 group-hover/btn:translate-x-2 transition-transform relative z-10" />
+                        {plan.popular && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+                        )}
                       </Link>
                     </Button>
                   </div>

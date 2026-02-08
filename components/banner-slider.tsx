@@ -5,24 +5,17 @@ import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import useEmblaCarousel from 'embla-carousel-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
-
-const banners = [
-    '/images/banner1.webp',
-    '/images/banner2.webp',
-    '/images/banner3.webp',
-    '/images/banner4.webp',
-    '/images/banner5.webp',
-    '/images/banner6.webp',
-    '/images/banner7.webp',
-]
+import { banners } from '@/lib/homepage-data'
+import { DESIGN_VERSION } from '@/lib/site-config'
 
 export function BannerSlider() {
     const [selectedIndex, setSelectedIndex] = useState(0)
     const intervalRef = useRef<NodeJS.Timeout>(null)
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: true,
-        duration: 30,
+        duration: 40,
     })
 
     const onSelect = useCallback(() => {
@@ -35,7 +28,7 @@ export function BannerSlider() {
         if (intervalRef.current) clearInterval(intervalRef.current)
         intervalRef.current = setInterval(() => {
             emblaApi.scrollNext()
-        }, 5000)
+        }, 6000)
     }, [emblaApi])
 
     useEffect(() => {
@@ -77,55 +70,85 @@ export function BannerSlider() {
     return (
         <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">
             <div className="max-w-7xl mx-auto px-4 relative group z-10">
-                <div className="embla overflow-hidden rounded-2xl border border-border" ref={emblaRef}>
+                <div className={`embla overflow-hidden transition-all duration-700 ${DESIGN_VERSION === 'hot' ? 'rounded-[2.5rem] border-2 border-[#EA2630]/20 shadow-[0_40px_80px_-20px_rgba(12,88,164,0.4)]' : 'rounded-2xl border border-border'}`} ref={emblaRef}>
                     <div className="embla__container flex">
                         {banners.map((src, index) => (
-                            <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 relative aspect-video">
-                                <Image
-                                    src={src}
-                                    alt={`Banner ${index + 1}`}
-                                    fill
-                                    priority={index === 0}
-                                    className="object-cover"
-                                />
+                            <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 relative aspect-[21/9] md:aspect-video overflow-hidden">
+                                <motion.div
+                                    initial={{ scale: 1 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ duration: 0.8, ease: "easeOut" }}
+                                    className="absolute inset-0"
+                                >
+                                    <Image
+                                        src={src}
+                                        alt={`Banner ${index + 1}`}
+                                        fill
+                                        priority={index === 0}
+                                        className="object-cover"
+                                    />
+                                </motion.div>
+                                {DESIGN_VERSION === 'hot' && (
+                                    <>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+                                        <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+                                    </>
+                                )}
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Navigation Arrows - Increased gap and always visible on desktop */}
-                <div className="absolute inset-y-0 -left-6 -right-6 md:-left-12 md:-right-12 flex items-center justify-between pointer-events-none z-10">
+                {/* Navigation Arrows */}
+                <div className="absolute inset-y-0 -left-6 -right-6 md:-left-12 md:-right-12 flex items-center justify-between pointer-events-none z-20">
                     <Button
-                        variant="outline"
+                        variant="ghost"
                         size="icon"
-                        className="rounded-full bg-background/80 backdrop-blur-md border-primary/20 pointer-events-auto hover:bg-primary hover:text-white transition-all hover:scale-110 shadow-lg hidden md:flex"
+                        className={`w-14 h-14 rounded-full backdrop-blur-xl pointer-events-auto transition-all duration-300 hover:scale-110 shadow-2xl hidden md:flex ${DESIGN_VERSION === 'hot'
+                            ? 'bg-white/10 border border-white/20 text-black dark:text-white hover:bg-[#EA2630] hover:border-[#EA2630] hover:text-white hover:shadow-[#EA2630]/40'
+                            : 'bg-background/80 border border-primary/20 hover:bg-primary hover:text-white'
+                            }`}
                         onClick={scrollPrev}
                     >
-                        <ChevronLeft className="h-6 w-6" />
+                        <ChevronLeft className="h-8 w-8" />
                     </Button>
                     <Button
-                        variant="outline"
+                        variant="ghost"
                         size="icon"
-                        className="rounded-full bg-background/80 backdrop-blur-md border-primary/20 pointer-events-auto hover:bg-primary hover:text-white transition-all hover:scale-110 shadow-lg hidden md:flex"
+                        className={`w-14 h-14 rounded-full backdrop-blur-xl pointer-events-auto transition-all duration-300 hover:scale-110 shadow-2xl hidden md:flex ${DESIGN_VERSION === 'hot'
+                            ? 'bg-white/10 border border-white/20 text-black dark:text-white hover:bg-[#EA2630] hover:border-[#EA2630] hover:text-white hover:shadow-[#EA2630]/40'
+                            : 'bg-background/80 border border-primary/20 hover:bg-primary hover:text-white'
+                            }`}
                         onClick={scrollNext}
                     >
-                        <ChevronRight className="h-6 w-6" />
+                        <ChevronRight className="h-8 w-8" />
                     </Button>
                 </div>
             </div>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-4 mt-8">
                 {banners.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => scrollTo(index)}
-                        className={`transition-all duration-300 rounded-full ${selectedIndex === index
-                            ? "w-10 h-1.5 bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]"
-                            : "w-2 h-1.5 bg-primary/20 hover:bg-primary/40"
+                        className={`group relative h-3 transition-all duration-500 rounded-full overflow-hidden ${selectedIndex === index
+                            ? "w-12 bg-transparent"
+                            : "w-3 bg-[#0C58A4]/20 hover:bg-[#0C58A4]/40"
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
-                    />
+                    >
+                        {selectedIndex === index && (
+                            <motion.div
+                                layoutId="activeDot"
+                                className={`absolute inset-0 rounded-full ${DESIGN_VERSION === 'hot' ? 'bg-[#EA2630]' : 'bg-primary'}`}
+                                initial={false}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            >
+                                <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                            </motion.div>
+                        )}
+                    </button>
                 ))}
             </div>
         </section>

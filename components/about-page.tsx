@@ -3,22 +3,21 @@
 import Link from 'next/link'
 import { ArrowRight, Award, Users, Globe, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { motion } from 'framer-motion'
+import { motion, animate, useInView } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 const stats = [
-  { label: 'Years in Business', value: '15+' },
-  { label: 'Happy Customers', value: '50K+' },
-  { label: 'Coverage Areas', value: '45+' },
-  { label: 'Uptime Record', value: '99.99%' },
+  { label: 'Years of Experience', value: 6, suffix: '+' },
+  { label: 'Happy Customers', value: 50, suffix: 'K+' },
+  { label: 'Coverage Areas', value: 45, suffix: '+' },
+  { label: 'Uptime Record', value: 99.99, suffix: '%', decimals: 2 },
 ]
 
 const milestones = [
-  { year: '2009', title: 'Founded', description: 'Delta Software and Communication founded with a mission to provide reliable internet to underserved communities.' },
-  { year: '2012', title: 'First 10K Customers', description: 'Reached 10,000 residential customers across three states.' },
-  { year: '2015', title: 'Fiber Network Launch', description: 'Launched our proprietary fiber-optic network reaching 100 Gbps backbone.' },
-  { year: '2018', title: 'Enterprise Solutions', description: 'Introduced corporate internet packages with SLA guarantees.' },
-  { year: '2021', title: 'Security Suite', description: 'Launched comprehensive network security and threat detection services.' },
-  { year: '2024', title: 'Industry Leaders', description: 'Recognized as #1 ISP for customer satisfaction and reliability in the region.' },
+  { year: '2018', title: 'Founded', description: 'Delta Software and Communication started its journey to provide reliable internet connectivity.' },
+  { year: '2022', title: 'Fiber & Support', description: 'Upgraded to a full optical fiber network and established a dedicated 24/7 customer support center.' },
+  { year: '2024', title: 'Coverage Growth', description: 'Recognized as a leading ISP in the region with rapidly growing coverage and customer base.' },
+  { year: '2026', title: 'Nationwide Expansion', description: 'Scaling our footprint to cover all major districts across Bangladesh, ensuring digital inclusion for all.' },
 ]
 
 const values = [
@@ -43,6 +42,28 @@ const values = [
     description: 'Our mission is to provide fast, reliable internet that our customers can count on 24/7.',
   },
 ]
+
+function Counter({ value, suffix = '', decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(0, value, {
+        duration: 2,
+        ease: "easeOut",
+        onUpdate(val) {
+          if (ref.current) {
+            ref.current.textContent = val.toFixed(decimals) + suffix
+          }
+        },
+      })
+      return () => controls.stop()
+    }
+  }, [value, suffix, decimals, isInView])
+
+  return <span ref={ref}>0</span>
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -96,14 +117,11 @@ export function AboutPageContent() {
               variants={itemVariants}
               className="text-center"
             >
-              <motion.div
-                whileInView={{ scale: 1 }}
-                initial={{ scale: 0 }}
-                transition={{ type: 'spring', stiffness: 100 }}
+              <div
                 className="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text mb-2"
               >
-                {stat.value}
-              </motion.div>
+                <Counter value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
+              </div>
               <p className="text-sm md:text-base text-muted-foreground">{stat.label}</p>
             </motion.div>
           ))}
@@ -244,9 +262,9 @@ export function AboutPageContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { name: 'John Smith', role: 'CEO & Founder', dept: 'Leadership' },
-              { name: 'Sarah Johnson', role: 'Chief Technology Officer', dept: 'Engineering' },
-              { name: 'Michael Chen', role: 'Head of Customer Success', dept: 'Operations' },
+              { name: 'Md Benzir Rashed Khan', role: 'CEO & Founder', dept: 'Leadership' },
+              { name: 'Md Kawcher Ahmed', role: 'Chief Technology Officer', dept: 'Engineering' },
+              { name: 'Kamal Munnasef', role: 'Head of Operations', dept: 'Operations' },
             ].map((member) => (
               <div key={member.name} className="p-6 rounded-xl border border-border bg-background/50 hover:bg-background transition-colors text-center">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary" />

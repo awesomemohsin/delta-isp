@@ -8,7 +8,7 @@ const testimonials = [
   {
     quote: "Delta ISP has completely transformed our work-from-home experience. The speeds are incredible and the connection is rock solid.",
     author: 'Md. Mohsin',
-    role: 'Remote Software Developer',
+    role: 'Software Engineer',
     initials: 'MM',
   },
   {

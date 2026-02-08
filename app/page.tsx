@@ -22,6 +22,8 @@ export default function Home() {
         className="fixed inset-0 pointer-events-none z-0"
       />
 
+
+
       {/* Restored & Enhanced Vibrant Background Blobs */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[5%] left-[10%] w-[600px] h-[600px] bg-primary/25 rounded-full blur-[120px] animate-pulse" />

@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
+import { GetConnectedDialog } from '@/components/get-connected-dialog'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -52,9 +53,7 @@ export function Navbar() {
           {/* Right Section */}
           <div className="hidden md:flex items-center space-x-4">
             <ModeToggle />
-            <Button className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 transition-shadow">
-              Get Connected
-            </Button>
+            <GetConnectedDialog />
           </div>
 
           {/* Mobile Menu Button */}
@@ -82,9 +81,7 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Button className="w-full bg-gradient-to-r from-primary to-secondary mt-4">
-              Get Connected
-            </Button>
+            <GetConnectedDialog className="w-full mt-4" />
           </div>
         )}
       </div>

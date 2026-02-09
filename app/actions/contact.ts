@@ -40,7 +40,7 @@ export async function sendContactEmail(data: ContactFormData) {
             from: `"Contact Form" <${senderEmail}>`,
             replyTo: email,
             to: 'mdmohsin.work@gmail.com',
-            subject: `New Contact Form Submission: ${subject} (from ${name})`,
+            subject: `Delta Website contact: ${subject} (from ${name})`,
             text: `
 Name: ${name}
 Email: ${email}

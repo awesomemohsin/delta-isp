@@ -51,18 +51,21 @@ export const testimonials = [
         author: 'Md. Mohsin',
         role: 'Software Engineer',
         initials: 'MM',
+        image: '/images/review1.webp'
     },
     {
         quote: "We switched our business to Delta Internet and couldn't be happier. Their support team is responsive and the uptime guarantee gives us peace of mind.",
         author: 'Nahidul Islam',
         role: 'Manager',
         initials: 'NI',
+        image: '/images/review2.webp'
     },
     {
         quote: "Finally, an ISP that delivers on its promises. No throttling, no hidden fees, just fast and reliable internet.",
         author: 'Konok Hossain',
         role: 'Graphics Designer',
         initials: 'KH',
+        image: '/images/review3.webp'
     },
 ]
 

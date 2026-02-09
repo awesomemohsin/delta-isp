@@ -3,7 +3,7 @@
 import React from 'react'
 import { Star } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { testimonials } from '@/lib/homepage-data'
 import { DESIGN_VERSION } from '@/lib/site-config'
 
@@ -90,6 +90,13 @@ export function Testimonials() {
               {/* Author */}
               <div className="flex items-center gap-4 pt-6 border-t border-border/40 relative z-10">
                 <Avatar className={`w-12 h-12 shadow-2xl p-0.5 ${DESIGN_VERSION === 'hot' ? 'bg-gradient-to-br from-[#0C58A4] via-black to-[#EA2630]' : 'bg-gradient-to-br from-primary to-secondary'}`}>
+                  {testimonial.image && (
+                    <AvatarImage
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      className="object-cover rounded-full"
+                    />
+                  )}
                   <AvatarFallback className="text-white font-black text-lg bg-card rounded-full">{testimonial.initials}</AvatarFallback>
                 </Avatar>
                 <div>

@@ -40,15 +40,14 @@ export function SpeedTestSection() {
 
             <div className="max-w-7xl mx-auto">
                 <div className={`relative group overflow-hidden p-6 md:p-10 transition-all duration-700 ${DESIGN_VERSION === 'hot'
-                    ? 'rounded-[2rem] border-2 border-[#EA2630]/20 bg-card/40 backdrop-blur-3xl shadow-[0_40px_100px_-20px_rgba(234,38,48,0.15)] hover:shadow-[0_40px_100px_-20px_rgba(234,38,48,0.25)]'
-                    : 'rounded-[1.5rem] border border-border bg-card/30 backdrop-blur-xl'
+                    ? 'rounded-[2rem] border border-[#EA2630]/10 bg-card/40 backdrop-blur-xl shadow-lg'
+                    : 'rounded-[1.5rem] border border-border bg-card/20 backdrop-blur-lg'
                     }`}>
 
-                    {/* Background Texture & Gradients */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0C58A4]/10 via-transparent to-[#EA2630]/10 opacity-60" />
-                    <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+                    {/* Background Texture & Gradients - Simplified */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0C58A4]/5 to-[#EA2630]/5 opacity-40" />
 
-                    <div className={`absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 transition-all duration-1000 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/30 group-hover:bg-[#EA2630]/30' : 'bg-primary/20 group-hover:bg-primary/30'}`} />
+                    <div className={`absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 transition-all duration-1000 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/15' : 'bg-primary/10'}`} />
 
                     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
                         {/* Content Side */}
@@ -92,7 +91,7 @@ export function SpeedTestSection() {
                                             }`}
                                     >
                                         <span className="relative z-10 flex items-center gap-2">
-                                            INITIATE SCAN
+                                            START SPEEDTEST
                                             <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
                                         </span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -209,12 +208,12 @@ export function SpeedTestSection() {
                                         initial={{ opacity: 0, y: 50, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                                        className="w-full max-w-3xl h-[500px] md:h-[650px] rounded-[4rem] overflow-hidden bg-[#0A0A0A] border-4 border-[#1a1a1a] flex flex-col shadow-[0_80px_100px_-30px_rgba(0,0,0,0.5)] relative z-10"
+                                        className="w-full max-w-3xl h-[500px] md:h-[650px] rounded-[3rem] overflow-hidden bg-black border-4 border-[#1a1a1a] flex flex-col shadow-2xl relative z-10"
                                     >
-                                        <div className="flex items-center justify-between p-8 border-b border-white/5 bg-white/5 backdrop-blur-3xl">
+                                        <div className="flex items-center justify-between p-8 border-b border-white/5 bg-white/5 backdrop-blur-3xl rounded-t-[3rem]">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-                                                <span className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-white/60 text-orange-500">
+                                                <span className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-white/60">
                                                     Secure Terminal | v4.0.2
                                                 </span>
                                             </div>
@@ -223,7 +222,7 @@ export function SpeedTestSection() {
                                             </Button>
                                         </div>
 
-                                        <div className="flex-grow relative group/frame">
+                                        <div className="flex-grow relative group/frame bg-black">
                                             <iframe
                                                 src="https://openspeedtest.com/Get-widget.php"
                                                 className="w-full h-full border-none opacity-90 group-hover/frame:opacity-100 transition-all duration-700"

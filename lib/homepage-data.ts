@@ -67,10 +67,10 @@ export const testimonials = [
 ]
 
 export const stats = [
-    { value: '99.99%', label: 'Uptime Guarantee' },
     { value: '60K+', label: 'Happy Customers' },
     { value: '53', label: 'Districts Covered' },
     { value: '149', label: 'Upazilas Covered' },
+    { value: '99.99%', label: 'Uptime Guarantee' },
 ]
 
 export const ctaFeatures = [

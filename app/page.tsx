@@ -15,10 +15,10 @@ export default function Home() {
     <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Global Interactive Net Background */}
       <InteractiveBackground
-        particleCount={200}
-        speed={0.6}
-        opacity={0.5}
-        interactionRadius={300}
+        particleCount={80}
+        speed={0.4}
+        opacity={0.4}
+        interactionRadius={200}
         className="fixed inset-0 pointer-events-none z-0"
       />
 

@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { DESIGN_VERSION } from '@/lib/site-config'
 import { sendContactEmail } from '@/app/actions/contact'
+import { contactInfo as centralizedContactInfo } from '@/lib/homepage-data'
 import {
   Form,
   FormControl,
@@ -31,24 +32,24 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>
 
-const contactInfo = [
+const contactCards = [
   {
     icon: Phone,
     title: 'Call Us',
-    content: '+880 9611678064',
+    content: centralizedContactInfo.phone,
     desc: 'Available 24/7 for support',
   },
   {
     icon: Mail,
     title: 'Email Us',
-    content: 'info@deltasoftwareandcommunication.com',
+    content: centralizedContactInfo.email,
     desc: 'Response within 2 hours',
   },
   {
     icon: MapPin,
     title: 'Visit Us',
-    content: 'House: 35, Sonargaon Janapath Road',
-    desc: 'Uttara, Dhaka -1230, Bangladesh.',
+    content: centralizedContactInfo.address.split(',')[0],
+    desc: centralizedContactInfo.address.split(',').slice(1).join(','),
   },
   {
     icon: Clock,
@@ -135,7 +136,7 @@ export function ContactPageContent() {
             animate="visible"
             className="space-y-6"
           >
-            {contactInfo.map((info) => {
+            {contactCards.map((info) => {
               const Icon = info.icon
               return (
                 <motion.div

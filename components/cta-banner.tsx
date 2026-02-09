@@ -38,42 +38,27 @@ export function CTABanner() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className={`relative p-6 md:p-8 overflow-hidden transition-all duration-700 ${DESIGN_VERSION === 'hot'
-            ? 'rounded-[2rem] border-2 border-[#EA2630]/20 bg-card/40 backdrop-blur-3xl shadow-[0_40px_100px_-20px_rgba(12,88,164,0.2)]'
-            : 'rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 to-secondary/5'
+            ? 'rounded-[2rem] border border-[#EA2630]/10 bg-card/40 backdrop-blur-xl shadow-xl'
+            : 'rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5'
             }`}
         >
-          {/* Mesh Gradient Foundation */}
           <div className="absolute inset-0 z-0">
-            <div className={`absolute top-0 left-0 w-full h-full opacity-60 ${DESIGN_VERSION === 'hot' ? 'bg-gradient-to-br from-[#0C58A4]/10 via-transparent to-[#EA2630]/10' : ''}`} />
+            <div className={`absolute top-0 left-0 w-full h-full opacity-40 ${DESIGN_VERSION === 'hot' ? 'bg-gradient-to-br from-[#0C58A4]/5 via-transparent to-[#EA2630]/5' : ''}`} />
 
-            {/* Moving Mesh Blobs */}
+            {/* Moving Mesh Blobs - Simplified */}
             <motion.div
               animate={{
-                x: [0, 100, 0],
-                y: [0, 50, 0],
-                scale: [1, 1.1, 1]
+                x: [0, 50, 0],
+                y: [0, 20, 0],
               }}
-              transition={{ duration: 15, repeat: Infinity }}
-              className={`absolute -top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full blur-[120px] ${DESIGN_VERSION === 'hot' ? 'bg-[#EA2630]/20' : 'bg-primary/20'}`}
-            />
-            <motion.div
-              animate={{
-                x: [0, -80, 0],
-                y: [0, -100, 0],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{ duration: 18, repeat: Infinity }}
-              className={`absolute -bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full blur-[100px] ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/20' : 'bg-secondary/20'}`}
+              transition={{ duration: 20, repeat: Infinity }}
+              className={`absolute -top-[10%] -right-[5%] w-[400px] h-[400px] rounded-full blur-[80px] ${DESIGN_VERSION === 'hot' ? 'bg-[#EA2630]/10' : 'bg-primary/10'}`}
             />
           </div>
 
-          {/* Floating Geometric Elements */}
-          <FloatingShape className="bg-[#EA2630] w-64 h-64 top-10 left-20" duration={25} />
-          <FloatingShape className="bg-[#0C58A4] w-96 h-96 bottom-20 right-40" delay={2} duration={30} />
-          <FloatingShape className="bg-white w-40 h-40 top-1/2 left-1/2" delay={5} duration={20} />
-
-          {/* Noise Texture Overaly */}
-          <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none z-[1]" />
+          {/* Floating Geometric Elements - Reduced */}
+          <FloatingShape className="bg-[#EA2630] w-32 h-32 top-10 left-10" duration={30} />
+          <FloatingShape className="bg-[#0C58A4] w-48 h-48 bottom-10 right-20" delay={2} duration={35} />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}

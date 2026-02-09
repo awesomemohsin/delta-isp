@@ -1,8 +1,9 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { CheckCircle2, CreditCard, Smartphone, HelpCircle, ArrowRight, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { CheckCircle2, CreditCard, Smartphone, HelpCircle, ArrowRight, X, Maximize2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
@@ -58,6 +59,20 @@ const itemVariants = {
 }
 
 export function PayBillContent() {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+    // Scroll Lock
+    useEffect(() => {
+        if (selectedImage) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [selectedImage])
+
     return (
         <div className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-background">
             <div className="max-w-7xl mx-auto relative z-10">
@@ -155,20 +170,40 @@ export function PayBillContent() {
                     <div className="flex flex-col gap-20 relative z-10">
                         {paymentMethods.map((method) => (
                             <div key={method.name} className="space-y-8">
-                                <div className="flex items-center justify-between px-4 max-w-4xl mx-auto">
+                                <div className="flex flex-col sm:flex-row items-center justify-between px-4 max-w-4xl mx-auto gap-4">
                                     <h3 className="text-2xl font-bold flex items-center gap-3">
                                         <Smartphone size={24} className="text-primary" />
                                         {method.name} Application Guide
                                     </h3>
                                     <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground/60 bg-secondary/20 px-4 py-1.5 rounded-full">Manual Pay</span>
                                 </div>
-                                <div className="group relative max-w-4xl mx-auto aspect-[4/5] sm:aspect-[16/10] overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-2xl">
+                                <div
+                                    className="group relative max-w-4xl mx-auto aspect-[4/5] sm:aspect-[16/10] overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-2xl cursor-pointer"
+                                    onClick={() => setSelectedImage(method.poster)}
+                                >
                                     <Image
                                         src={method.poster}
                                         alt={`${method.name} Payment Guide`}
                                         fill
-                                        className="object-contain opacity-100 group-hover:scale-[1.02] transition-all duration-1000 p-4"
+                                        className="object-contain opacity-100 group-hover:scale-[1.01] transition-all duration-1000 p-4"
                                     />
+
+                                    {/* Full Preview Button at Bottom of Banner */}
+                                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 transition-all duration-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                        <Button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setSelectedImage(method.poster);
+                                            }}
+                                            className="h-10 px-6 rounded-full bg-primary text-white font-black text-xs uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(var(--primary),0.4)] hover:scale-105 transition-all flex items-center gap-2"
+                                        >
+                                            <Maximize2 size={14} />
+                                            Full Preview
+                                        </Button>
+                                    </div>
+
+                                    {/* Subtle Hover Glow */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                                 </div>
                             </div>
                         ))}
@@ -201,6 +236,61 @@ export function PayBillContent() {
                         </a>
                     </div>
                 </motion.div>
+
+                {/* Image Modal */}
+                <AnimatePresence>
+                    {selectedImage && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-[1000000] bg-black/98 flex items-center justify-center p-4 md:p-8 cursor-zoom-out pt-24 md:pt-28"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            <motion.div
+                                initial={{ scale: 0.95, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.95, opacity: 0 }}
+                                className="relative w-full h-full flex flex-col items-center justify-center max-w-[98vw] max-h-[98vh]"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {/* Image Container - MORE ZOOMED */}
+                                <div
+                                    className="relative w-full h-full flex items-center justify-center z-[100005] p-2 md:p-6 cursor-zoom-out"
+                                    onClick={() => setSelectedImage(null)}
+                                >
+                                    <div className="relative max-w-[98vw] max-h-[96vh] w-full h-full flex items-center justify-center">
+                                        <Image
+                                            src={selectedImage}
+                                            alt="Full Size Bill View"
+                                            width={2560}
+                                            height={1440}
+                                            className="max-w-full max-h-full w-auto h-auto object-contain rounded-2xl select-none shadow-[0_0_150px_rgba(0,0,0,1)] border border-white/10"
+                                            priority
+                                            onClick={(e) => e.stopPropagation()}
+                                        />
+
+                                        {/* Global Close Button - Pinned further down to avoid Navbar overlap */}
+                                        <div className="fixed top-20 right-4 md:top-24 md:right-8 z-[1000010]">
+                                            <Button
+                                                onClick={() => setSelectedImage(null)}
+                                                size="icon"
+                                                className="bg-white text-black hover:bg-[#EA2630] hover:text-white rounded-full w-12 h-12 md:w-16 md:h-16 transition-all shadow-2xl border-2 border-black/40"
+                                            >
+                                                <X size={28} strokeWidth={3} className="md:w-8 md:h-8" />
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Bottom Hint */}
+                                <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.4em] mt-6 flex items-center gap-2 relative z-[10005] pointer-events-none">
+                                    Click anywhere to exit
+                                </p>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </div>
     )

@@ -59,9 +59,9 @@ export function Testimonials() {
             <motion.div
               key={testimonial.author}
               variants={itemVariants}
-              whileHover={DESIGN_VERSION === 'hot' ? { y: -15, scale: 1.03 } : { y: -4 }}
+              whileHover={DESIGN_VERSION === 'hot' ? { y: -8 } : { y: -4 }}
               className={`p-6 transition-all duration-500 relative flex flex-col group/testi overflow-hidden ${DESIGN_VERSION === 'hot'
-                ? 'rounded-[2rem] border border-[#0C58A4]/20 backdrop-blur-2xl bg-card/40 shadow-xl hover:shadow-[0_40px_80px_-20px_rgba(12,88,164,0.2)]'
+                ? 'rounded-[2rem] border border-[#0C58A4]/10 backdrop-blur-xl bg-card/40 shadow-lg'
                 : 'rounded-xl border border-border bg-card'
                 }`}
             >

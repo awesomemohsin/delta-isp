@@ -35,8 +35,9 @@ export async function sendContactEmail(data: ContactFormData) {
 
     try {
         // Send email
+        const senderEmail = process.env.SMTP_FROM_EMAIL || 'mdmohsin.work@gmail.com'
         await transporter.sendMail({
-            from: `"Contact Form" <${process.env.SMTP_USER}>`,
+            from: `"Contact Form" <${senderEmail}>`,
             replyTo: email,
             to: 'mdmohsin.work@gmail.com',
             subject: `New Contact Form Submission: ${subject} (from ${name})`,

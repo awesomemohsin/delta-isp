@@ -295,7 +295,7 @@ export function PricingPage() {
                               <X className="w-5 h-5 text-muted-foreground/30 flex-shrink-0 mt-0.5" />
                             )}
                           </div>
-                          <span className={`${feature.included ? 'text-black font-medium' : 'text-muted-foreground/50'} line-clamp-1 group-hover/item:translate-x-1 transition-transform ${DESIGN_VERSION === 'hot' ? '' : 'text-muted-foreground'}`} style={DESIGN_VERSION === 'hot' ? {} : { color: feature.included && DESIGN_VERSION === 'cold' ? '#999A9B' : undefined }}>
+                          <span className={`${feature.included ? 'text-foreground dark:text-gray-200 font-medium' : 'text-muted-foreground/50'} line-clamp-1 group-hover/item:translate-x-1 transition-transform ${DESIGN_VERSION === 'hot' ? '' : 'text-muted-foreground'}`} style={DESIGN_VERSION === 'hot' ? {} : { color: feature.included && DESIGN_VERSION === 'cold' ? '#999A9B' : undefined }}>
                             {feature.name}
                           </span>
                         </li>

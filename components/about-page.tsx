@@ -130,11 +130,11 @@ export function AboutPageContent() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EA2630]/10 border border-[#EA2630]/20 text-[#EA2630] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
             <Zap size={14} /> Our Journey
           </div>
-          <h1 className="flex flex-col items-center gap-2 mb-6 uppercase">
-            <span className="text-3xl md:text-5xl font-black tracking-tighter opacity-80">About</span>
-            <span className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter whitespace-nowrap ${DESIGN_VERSION === 'hot'
-                ? "text-[#0C58A4]"
-                : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+          <h1 className="flex flex-col items-center gap-2 mb-6 uppercase text-balance">
+            <span className="text-2xl md:text-5xl font-black tracking-tighter opacity-80">About</span>
+            <span className={`text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] md:whitespace-nowrap ${DESIGN_VERSION === 'hot'
+              ? "text-[#0C58A4]"
+              : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
               }`}>
               Delta Software & Communication
             </span>

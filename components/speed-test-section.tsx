@@ -238,9 +238,9 @@ export function SpeedTestSection() {
                                             {/* Masking Container */}
                                             <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden">
                                                 <iframe
-                                                    src="http://www.speedtest.com.sg/"
+                                                    src="http://www.speedtest.sg/speedtest/"
                                                     className="w-[100%] h-[220%] border-none absolute -top-[65%] left-0"
-                                                    title="Official Speedtest.com.sg"
+                                                    title="Official Speedtest.sg"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                     scrolling="no"
                                                 />

@@ -24,6 +24,11 @@ function DigitalReadout({ value, label }: { value: string, label: string }) {
 export function SpeedTestSection() {
     const [isTesting, setIsTesting] = useState(false)
     const [glitch, setGlitch] = useState(false)
+    const sectionRef = React.useRef<HTMLElement>(null)
+
+    const handleStartTest = () => {
+        setIsTesting(true)
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -34,7 +39,7 @@ export function SpeedTestSection() {
     }, [])
 
     return (
-        <section className="py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-transparent">
+        <section ref={sectionRef} className="hidden md:block py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-transparent">
             {/* Background Decorative Elements */}
             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full blur-[160px] -z-10 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/5' : 'bg-primary/5'}`} />
 
@@ -49,78 +54,80 @@ export function SpeedTestSection() {
 
                     <div className={`absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 transition-all duration-1000 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/15' : 'bg-primary/10'}`} />
 
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+                    <div className={`relative z-10 grid grid-cols-1 ${isTesting ? 'place-items-center' : 'lg:grid-cols-2'} gap-6 items-center transition-all duration-500`}>
                         {/* Content Side */}
-                        <div className="space-y-10 text-center lg:text-left">
-                            <motion.div
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className={`inline-flex items-center gap-3 px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-[0.3em] mb-8 shadow-inner ${DESIGN_VERSION === 'hot'
-                                    ? 'bg-[#EA2630]/10 border border-[#EA2630]/30 text-[#EA2630] shadow-[#EA2630]/5'
-                                    : 'bg-primary/10 border border-primary/20 text-primary'
-                                    }`}>
-                                    <Activity className="w-4 h-4 animate-pulse" />
-                                    Diagnostic Protocol ACTIVE
-                                </div>
-                                <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-balance leading-[0.9] uppercase italic group-hover:not-italic transition-all duration-500">
-                                    Unleash <br />
-                                    <span className={DESIGN_VERSION === 'hot' ? "text-[#EA2630] drop-shadow-[0_4px_15px_rgba(234,38,48,0.3)]" : "bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"}>Titan Speed</span>
-                                </h2>
-                                <p className="text-sm text-muted-foreground max-w-xl mx-auto lg:mx-0 text-balance leading-relaxed font-medium">
-                                    Verify your real-time fiber performance. Experience the consistent, high-speed stability that defines Delta Internet.
-                                </p>
-                            </motion.div>
+                        {!isTesting && (
+                            <div className="space-y-10 text-center lg:text-left">
+                                <motion.div
+                                    initial={{ opacity: 0, x: -30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.8 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <div className={`inline-flex items-center gap-3 px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-[0.3em] mb-8 shadow-inner ${DESIGN_VERSION === 'hot'
+                                        ? 'bg-[#EA2630]/10 border border-[#EA2630]/30 text-[#EA2630] shadow-[#EA2630]/5'
+                                        : 'bg-primary/10 border border-primary/20 text-primary'
+                                        }`}>
+                                        <Activity className="w-4 h-4 animate-pulse" />
+                                        Diagnostic Protocol ACTIVE
+                                    </div>
+                                    <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-balance leading-[0.9] uppercase italic group-hover:not-italic transition-all duration-500">
+                                        Unleash <br />
+                                        <span className={DESIGN_VERSION === 'hot' ? "text-[#EA2630] drop-shadow-[0_4px_15px_rgba(234,38,48,0.3)]" : "bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"}>Titan Speed</span>
+                                    </h2>
+                                    <p className="text-sm text-muted-foreground max-w-xl mx-auto lg:mx-0 text-balance leading-relaxed font-medium">
+                                        Verify your real-time fiber performance. Experience the consistent, high-speed stability that defines Delta Internet.
+                                    </p>
+                                </motion.div>
 
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                viewport={{ once: true }}
-                                className="flex flex-wrap justify-center lg:justify-start gap-4"
-                            >
-                                {!isTesting ? (
-                                    <Button
-                                        onClick={() => setIsTesting(true)}
-                                        size="lg"
-                                        className={`h-14 px-8 rounded-xl transition-all font-black text-base group shadow-xl relative overflow-hidden ${DESIGN_VERSION === 'hot'
-                                            ? 'bg-[#0C58A4] hover:bg-[#084175] text-white hover:shadow-[#0C58A4]/40'
-                                            : 'bg-gradient-to-r from-primary to-secondary hover:shadow-primary/50'
-                                            }`}
-                                    >
-                                        <span className="relative z-10 flex items-center gap-2">
-                                            START SPEEDTEST
-                                            <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
-                                        </span>
-                                        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                    </Button>
-                                ) : (
-                                    <Button
-                                        onClick={() => setIsTesting(false)}
-                                        variant="outline"
-                                        size="lg"
-                                        className="h-16 px-10 rounded-2xl border-destructive/30 text-destructive hover:bg-destructive/10 bg-transparent font-black uppercase tracking-[0.2em] shadow-lg"
-                                    >
-                                        <X className="mr-2 w-5 h-5" />
-                                        Abort Tool
-                                    </Button>
-                                )}
-                            </motion.div>
+                                <motion.div
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: 0.2 }}
+                                    viewport={{ once: true }}
+                                    className="flex flex-wrap justify-center lg:justify-start gap-4"
+                                >
+                                    {!isTesting ? (
+                                        <Button
+                                            onClick={handleStartTest}
+                                            size="lg"
+                                            className={`h-14 px-8 rounded-xl transition-all font-black text-base group shadow-xl relative overflow-hidden ${DESIGN_VERSION === 'hot'
+                                                ? 'bg-[#0C58A4] hover:bg-[#084175] text-white hover:shadow-[#0C58A4]/40'
+                                                : 'bg-gradient-to-r from-primary to-secondary hover:shadow-primary/50'
+                                                }`}
+                                        >
+                                            <span className="relative z-10 flex items-center gap-2">
+                                                START SPEEDTEST
+                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
+                                            </span>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                        </Button>
+                                    ) : (
+                                        <Button
+                                            onClick={() => setIsTesting(false)}
+                                            variant="outline"
+                                            size="lg"
+                                            className="h-16 px-10 rounded-2xl border-destructive/30 text-destructive hover:bg-destructive/10 bg-transparent font-black uppercase tracking-[0.2em] shadow-lg"
+                                        >
+                                            <X className="mr-2 w-5 h-5" />
+                                            Abort Tool
+                                        </Button>
+                                    )}
+                                </motion.div>
 
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ duration: 1, delay: 0.5 }}
-                                viewport={{ once: true }}
-                                className="grid grid-cols-3 gap-8 pt-8 border-t border-black/5 dark:border-white/5 max-w-md mx-auto lg:mx-0"
-                            >
-                                <DigitalReadout value="99.9%" label="Uptime" />
-                                <DigitalReadout value="<5ms" label="Latency" />
-                                <DigitalReadout value="1Gbps" label="Max Cap" />
-                            </motion.div>
-                        </div>
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ duration: 1, delay: 0.5 }}
+                                    viewport={{ once: true }}
+                                    className="grid grid-cols-3 gap-8 pt-8 border-t border-black/5 dark:border-white/5 max-w-md mx-auto lg:mx-0"
+                                >
+                                    <DigitalReadout value="99.9%" label="Uptime" />
+                                    <DigitalReadout value="<5ms" label="Latency" />
+                                    <DigitalReadout value="1Gbps" label="Max Cap" />
+                                </motion.div>
+                            </div>
+                        )}
 
                         {/* Interactive Gauge / Test Iframe Side */}
                         <motion.div
@@ -128,7 +135,7 @@ export function SpeedTestSection() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1 }}
                             viewport={{ once: true }}
-                            className="relative flex justify-center w-full min-h-[450px]"
+                            className={`relative flex justify-center w-full min-h-[450px] ${isTesting ? 'col-span-full' : ''}`}
                         >
                             <AnimatePresence mode="wait">
                                 {!isTesting ? (
@@ -208,30 +215,47 @@ export function SpeedTestSection() {
                                         initial={{ opacity: 0, y: 50, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                                        className="w-full max-w-3xl h-[500px] md:h-[650px] rounded-[3rem] overflow-hidden bg-black border-4 border-[#1a1a1a] flex flex-col shadow-2xl relative z-10"
+                                        className="w-full max-w-6xl h-[600px] md:h-[800px] rounded-[3rem] overflow-hidden bg-black border-4 border-[#1a1a1a] flex flex-col shadow-2xl relative z-10"
                                     >
-                                        <div className="flex items-center justify-between p-8 border-b border-white/5 bg-white/5 backdrop-blur-3xl rounded-t-[3rem]">
+                                        <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/5 backdrop-blur-3xl rounded-t-[3rem] z-20 relative">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
                                                 <span className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-white/60">
                                                     Secure Terminal | v4.0.2
                                                 </span>
                                             </div>
-                                            <Button size="icon" variant="ghost" onClick={() => setIsTesting(false)} className="hover:bg-white/10 text-white/40 hover:text-white rounded-2xl w-12 h-12">
-                                                <X className="w-7 h-7" />
+                                            <Button
+                                                size="default"
+                                                variant="destructive"
+                                                onClick={() => setIsTesting(false)}
+                                                className="rounded-full px-6 font-bold tracking-widest uppercase hover:bg-red-600 transition-colors shadow-lg"
+                                            >
+                                                Close <X className="w-4 h-4 ml-2" />
                                             </Button>
                                         </div>
 
-                                        <div className="flex-grow relative group/frame bg-black">
-                                            <iframe
-                                                src="https://openspeedtest.com/Get-widget.php"
-                                                className="w-full h-full border-none opacity-90 group-hover/frame:opacity-100 transition-all duration-700"
-                                                title="Internet Speed Test"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            />
+                                        <div className="flex-grow relative group/frame bg-black overflow-hidden">
+                                            {/* Masking Container */}
+                                            <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden">
+                                                <iframe
+                                                    src="http://www.speedtest.com.sg/"
+                                                    className="w-[100%] h-[220%] border-none absolute -top-[65%] left-0"
+                                                    title="Official Speedtest.com.sg"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    scrolling="no"
+                                                />
+                                            </div>
+
                                             {/* CRT Scanline Overlay */}
-                                            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20" />
-                                            <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
+                                            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20 z-10" />
+                                            <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] z-10" />
+                                        </div>
+
+                                        {/* Explainer Footer */}
+                                        <div className="p-4 bg-white/5 backdrop-blur-xl border-t border-white/5 text-center z-20 relative">
+                                            <p className="text-[10px] md:text-xs text-white/50 font-mono tracking-wider uppercase">
+                                                <span className="text-white/80 font-bold">Download/Upload:</span> Bandwidth Capacity • <span className="text-white/80 font-bold">Ping:</span> Server Latency • <span className="text-white/80 font-bold">Jitter:</span> Signal Stability
+                                            </p>
                                         </div>
                                     </motion.div>
                                 )}

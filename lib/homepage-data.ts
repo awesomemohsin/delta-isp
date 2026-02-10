@@ -78,7 +78,6 @@ export const stats = [
 
 export const ctaFeatures = [
     'Installation within 24-48 hours',
-    'No contracts, cancel anytime',
     'Free professional setup',
 ]
 

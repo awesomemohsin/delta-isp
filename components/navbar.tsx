@@ -19,6 +19,7 @@ export function Navbar() {
     { href: '/services', label: 'Services' },
     { href: '/packages', label: 'Packages' },
     { href: '/pay-bill', label: 'Pay Bill' },
+    { href: '/files/BTRC_Tariff_Delta.pdf', label: 'BTRC Tarrif' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ]

@@ -103,7 +103,7 @@ export function CTABanner() {
                     : "bg-gradient-to-r from-primary to-secondary hover:shadow-primary/50"
                     }`}>
                     <span className="relative z-10 flex items-center gap-2">
-                      GET CONNECTED
+                      APPLY FOR NEW CONNECTION
                       <Zap className="h-5 w-5 group-hover/btn:rotate-12 transition-transform" />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />

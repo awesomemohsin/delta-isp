@@ -391,10 +391,6 @@ export function PricingPage() {
                 a: 'Absolutely. You can upgrade or downgrade your plan anytime. Changes take effect at the start of your next billing cycle.',
               },
               {
-                q: 'Is there a contract required?',
-                a: 'No contracts required. All our plans are month-to-month. You\'re free to cancel anytime.',
-              },
-              {
                 q: 'What\'s included in installation?',
                 a: 'Our technicians will install your modem, router, and run all necessary cables. Setup typically takes 1-2 hours.',
               },

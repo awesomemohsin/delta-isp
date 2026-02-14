@@ -84,6 +84,8 @@ export const ctaFeatures = [
 export const contactInfo = {
     phone: '+880 9611678064',
     phoneRaw: '+8809611678064',
+    whatsapp: '8801958113265',
+    whatsappLink: 'https://wa.me/8801958113265',
     email: 'info@deltasoftwareandcommunication.com',
     address: 'House: 35, Sonargaon Janapath Road, Uttara, Dhaka -1230, Bangladesh.',
 }

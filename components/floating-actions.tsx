@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { contactInfo } from '@/lib/homepage-data'
 
 /**
  * Configuration and Types
@@ -40,7 +41,7 @@ const ACTIONS_CONFIG: FloatingAction[] = [
             </svg>
         ),
         label: 'Contact us through Whatsapp',
-        href: 'https://wa.me/8801958113265',
+        href: contactInfo.whatsappLink,
         color: 'bg-[#25D366] hover:bg-[#20bd5a]',
     },
 ]

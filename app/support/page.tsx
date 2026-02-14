@@ -67,7 +67,7 @@ export default function SupportPage() {
             {/* Background Decorations */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
+            <div className="max-w-7xl mx-auto relative z-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
                 {/* Hero Section */}
                 <div className="text-center mb-20 space-y-6">
                     <motion.div

@@ -40,7 +40,7 @@ export default function BlogDetailPage() {
             {/* Background Accents */}
             <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
 
-            <div className="max-w-4xl mx-auto relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
+            <div className="max-w-4xl mx-auto relative z-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
                 {/* Back Button */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}

@@ -73,7 +73,7 @@ export default function SitemapPage() {
             {/* Background Effects */}
             <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
+            <div className="max-w-7xl mx-auto relative z-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
                 {/* Header */}
                 <div className="text-center mb-20 space-y-6">
                     <motion.div

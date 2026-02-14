@@ -130,7 +130,7 @@ export default function FAQPage() {
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-[#0C58A4]/5 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#EA2630]/5 rounded-full blur-[100px] pointer-events-none" />
 
-            <div className="max-w-5xl mx-auto relative z-20 pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
+            <div className="max-w-5xl mx-auto relative z-20 pt-20 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -169,8 +169,8 @@ export default function FAQPage() {
                         variant={activeCategory === 'all' ? 'default' : 'outline'}
                         onClick={() => setActiveCategory('all')}
                         className={`rounded-full px-6 font-bold uppercase tracking-widest text-[10px] transition-all hover:scale-105 active:scale-95 ${activeCategory === 'all'
-                                ? 'shadow-lg shadow-primary/20 scale-105'
-                                : 'hover:bg-primary/5 hover:border-primary/50 dark:hover:bg-primary/10'
+                            ? 'shadow-lg shadow-primary/20 scale-105'
+                            : 'hover:bg-primary/5 hover:border-primary/50 dark:hover:bg-primary/10'
                             }`}
                     >
                         All Categories
@@ -181,8 +181,8 @@ export default function FAQPage() {
                             variant={activeCategory === cat.id ? 'default' : 'outline'}
                             onClick={() => setActiveCategory(cat.id)}
                             className={`rounded-full px-6 font-bold uppercase tracking-widest text-[10px] transition-all hover:scale-105 active:scale-95 ${activeCategory === cat.id
-                                    ? 'shadow-lg shadow-primary/20 scale-105'
-                                    : 'hover:bg-primary/5 hover:border-primary/50 dark:hover:bg-primary/10'
+                                ? 'shadow-lg shadow-primary/20 scale-105'
+                                : 'hover:bg-primary/5 hover:border-primary/50 dark:hover:bg-primary/10'
                                 }`}
                         >
                             {cat.title}

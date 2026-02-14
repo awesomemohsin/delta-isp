@@ -139,7 +139,7 @@ export function AboutPageContent() {
               Delta Software & Communication
             </span>
           </h1>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto text-balance font-medium leading-relaxed opacity-80">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto text-balance font-medium leading-relaxed opacity-80 mb-12">
             Pioneering the next generation of connectivity with innovative solutions and an unwavering commitment to reliability across Bangladesh.
           </p>
         </motion.div>
@@ -150,12 +150,77 @@ export function AboutPageContent() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-20"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-32"
         >
           {stats.map((stat, index) => (
             <StatCard key={stat.label} value={stat.value} label={stat.label} index={index} />
           ))}
         </motion.div>
+
+        {/* Detailed Brand Story Section */}
+        <div className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start"
+          >
+            <div className="lg:col-span-5 space-y-8 sticky top-32">
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-none uppercase">
+                  Our <br />
+                  <span className={DESIGN_VERSION === 'hot' ? 'text-[#EA2630]' : 'text-primary'}>Legacy</span>
+                </h2>
+              </div>
+              <div className="relative p-8 rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 to-transparent border border-[#0C58A4]/10 shadow-sm overflow-hidden">
+                <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-[#0C58A4]/5 rounded-full blur-3xl" />
+                <p className="text-lg md:text-xl font-medium text-foreground/80 leading-relaxed italic relative z-10">
+                  &quot;Driving digital transformation and empowering connectivity for a smarter, more connected Bangladesh.&quot;
+                </p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 space-y-12">
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-medium">
+                  <span className="italic font-bold text-foreground">Delta Software and Communication Ltd.</span> is a leading nationwide Internet Service Provider (ISP) in Bangladesh, committed to delivering fast, reliable, and secure connectivity solutions. With a strong focus on innovation and customer satisfaction, we provide a wide range of internet and communication services tailored for both residential and corporate clients.
+                </p>
+                <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-medium">
+                  We are deeply committed to our <span className="italic text-foreground font-bold">customers, vendors, and partners</span>, ensuring transparency, reliability, and long-term collaboration in every aspect of our service. Our operations are <span className="text-[#EA2630] font-black bg-[#EA2630]/5 px-2 rounded-md">fully domestic</span>, enabling us to maintain strong control over service quality, compliance, and customer experience across the country.
+                </p>
+              </div>
+
+              <div className="p-1 rounded-[3.5rem] bg-gradient-to-tr from-[#0C58A4]/20 via-transparent to-[#EA2630]/20">
+                <div className="p-8 md:p-12 rounded-[3.5rem] bg-card/60 backdrop-blur-3xl space-y-8">
+                  <div className="flex items-center gap-6">
+                    <div className="w-16 h-16 rounded-[1.5rem] bg-[#0C58A4] flex items-center justify-center text-white shadow-xl shadow-[#0C58A4]/30 rotate-3">
+                      <Globe size={32} />
+                    </div>
+                    <h3 className="text-2xl font-black uppercase tracking-tight">Infrastructure Core</h3>
+                  </div>
+                  <div className="space-y-6 text-lg text-muted-foreground leading-relaxed font-medium">
+                    <p>
+                      Supported by Bangladesh&apos;s best <span className="italic text-foreground font-bold">NTTN, IIG</span>, and an experienced <span className="font-bold text-[#0C58A4]">technology team</span>, we ensure high performance, stable connectivity, and dependable network support.
+                    </p>
+                    <p>
+                      Delta Software and Communication Ltd. always prioritizes and prefers <span className="text-foreground font-bold underline decoration-[#0C58A4] decoration-4 underline-offset-8">our own infrastructure</span>, allowing us to provide consistent service delivery and scalable solutions for growing digital demands.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-8 flex flex-wrap gap-4">
+                {['Reliability', 'Transparency', 'Domestic Control', 'Innovation'].map((tag) => (
+                  <span key={tag} className="px-6 py-2 rounded-full border border-border bg-muted/30 text-[10px] uppercase font-black tracking-widest opacity-60">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
 
         {/* Mission & Vision */}
         <motion.div
@@ -173,10 +238,10 @@ export function AboutPageContent() {
               <span className="w-10 h-10 rounded-lg bg-[#0C58A4] flex items-center justify-center text-white text-base shadow-lg shadow-[#0C58A4]/20">
                 <Target size={20} />
               </span>
-              Our Mission
+              Mission
             </h2>
             <p className="text-sm md:text-base text-muted-foreground mb-4 leading-relaxed group-hover:text-foreground transition-colors relative z-10">
-              To revolutionize internet connectivity by providing fast, reliable, and affordable services to homes and businesses. We're committed to bridging the digital divide and empowering communities with access to world-class internet infrastructure.
+              To deliver reliable and high-quality internet and communication services to residential and corporate clients through our own infrastructure and advanced technologies; ensuring stable performance with expert technical support; and building long-term, trust-based relationships with customers, vendors, and partners.
             </p>
           </div>
 
@@ -188,10 +253,10 @@ export function AboutPageContent() {
               <span className="w-10 h-10 rounded-lg bg-[#EA2630] flex items-center justify-center text-white text-base shadow-lg shadow-[#EA2630]/20">
                 <Eye size={20} />
               </span>
-              Our Vision
+              🌟 Vision
             </h2>
             <p className="text-sm md:text-base text-muted-foreground mb-4 leading-relaxed group-hover:text-foreground transition-colors relative z-10">
-              To become the most trusted internet service provider in the region, recognized for our commitment to customer satisfaction, technological innovation, and community impact.
+              To be a leading, trusted, and technology-driven infrastructure company delivering fast, secure, and uninterrupted connectivity nationwide.
             </p>
           </div>
         </motion.div>
@@ -317,6 +382,6 @@ export function AboutPageContent() {
           </Link>
         </motion.div>
       </div>
-    </div>
+    </div >
   )
 }

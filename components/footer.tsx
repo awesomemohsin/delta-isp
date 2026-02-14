@@ -16,16 +16,16 @@ export function Footer() {
       { label: 'Contact', href: '/contact' },
     ],
     'Resources': [
-      { label: 'FAQ', href: '#' },
-      { label: 'Blog', href: '#' },
-      { label: 'Support', href: '#' },
-      { label: 'Sitemap', href: '#' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Support', href: '/support' },
+      { label: 'Sitemap', href: '/sitemap' },
     ],
     'Legal': [
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Cookie Policy', href: '#' },
-      { label: 'Accessibility', href: '#' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Cookie Policy', href: '/cookies' },
+      { label: 'Accessibility', href: '/accessibility' },
     ],
   }
 

@@ -11,7 +11,7 @@ export default function AccessibilityPage() {
         <div className="min-h-screen bg-background relative overflow-hidden flex flex-col">
             <Navbar />
 
-            <div className="max-w-4xl mx-auto relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
+            <div className="max-w-4xl mx-auto relative z-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

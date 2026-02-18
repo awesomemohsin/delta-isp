@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/hero-section'
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision'
 import { ServicesOverview } from '@/components/services-overview'
 import { PricingTeaser } from '@/components/pricing-teaser'
-import { SpeedTestSection } from '@/components/speed-test-section'
+// import { SpeedTestSection } from '@/components/speed-test-section'
 import { Testimonials } from '@/components/testimonials'
 import { CTABanner } from '@/components/cta-banner'
 import { Footer } from '@/components/footer'
@@ -41,7 +41,7 @@ export default function Home() {
         {/* <HeroSection /> */}
         <ServicesOverview />
         <PricingTeaser />
-        <SpeedTestSection />
+        {/* <SpeedTestSection /> */}
         <Testimonials />
         <CTABanner />
         <Footer />

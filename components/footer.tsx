@@ -15,17 +15,11 @@ export function Footer() {
       { label: 'Packages', href: '/packages' },
       { label: 'Contact', href: '/contact' },
     ],
-    'Resources': [
-      { label: 'FAQ', href: '/faq' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Support', href: '/support' },
-      { label: 'Sitemap', href: '/sitemap' },
-    ],
     'Legal': [
+      { label: 'FAQ', href: '/faq' },
       { label: 'Privacy Policy', href: '/privacy' },
       { label: 'Terms of Service', href: '/terms' },
       { label: 'Cookie Policy', href: '/cookies' },
-      { label: 'Accessibility', href: '/accessibility' },
     ],
   }
 
@@ -57,7 +51,7 @@ export function Footer() {
           </div>
 
           {/* 2. Links Section */}
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="lg:col-span-7 grid grid-cols-2 gap-12 md:gap-24">
             <div className="space-y-4">
               <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#999A9B]">Company</h4>
               <ul className="space-y-2">
@@ -71,19 +65,7 @@ export function Footer() {
               </ul>
             </div>
             <div className="space-y-4">
-              <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#999A9B]">Resources</h4>
-              <ul className="space-y-2">
-                {footerLinks['Resources'].map((link, index) => (
-                  <li key={`resources-${index}`}>
-                    <Link href={link.href} className="text-xs font-bold text-muted-foreground hover:text-[#0C58A4] transition-colors block py-0.5">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="space-y-4 hidden md:block">
-              <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#999A9B]">Legal</h4>
+              <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#999A9B]">Legal & Support</h4>
               <ul className="space-y-2">
                 {footerLinks['Legal'].map((link, index) => (
                   <li key={`legal-${index}`}>

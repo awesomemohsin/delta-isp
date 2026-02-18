@@ -1,86 +1,94 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
-import { ShieldCheck, Lock, Eye, FileText } from 'lucide-react'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
+import { contactInfo } from '@/lib/homepage-data'
 
 export default function PrivacyPage() {
     return (
-        <div className="min-h-screen bg-background relative overflow-hidden flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col font-sans text-slate-900">
             <Navbar />
 
-            <div className="max-w-4xl mx-auto relative z-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 flex-grow w-full">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="space-y-12"
-                >
-                    {/* Header */}
-                    <div className="text-center space-y-4">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.3em]">
-                            <ShieldCheck size={14} /> Legal Center
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">
-                            Privacy <span className="text-primary">Policy</span>
-                        </h1>
-                        <p className="text-muted-foreground font-medium uppercase tracking-widest text-xs">
-                            Last Updated: February 14, 2026
+            <main className="flex-grow container mx-auto px-6 py-20 max-w-4xl">
+                <header className="mb-12 border-b border-slate-100 pb-8">
+                    <h1 className="text-4xl font-bold tracking-tight mb-4 text-slate-900">Privacy Policy</h1>
+                    <div className="flex flex-wrap gap-4 text-sm text-slate-500 font-medium">
+                        <p>Effective Date: 1st January 2026</p>
+                        <p>Last Updated: 1st March 2026</p>
+                    </div>
+                </header>
+
+                <div className="space-y-12 text-slate-600 leading-relaxed text-lg">
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide">Information We Collect</h2>
+                        <p>
+                            We may collect personal information such as your name, email address, phone number, and any details you provide through our website forms.
                         </p>
-                    </div>
+                    </section>
 
-                    {/* Content */}
-                    <div className="bg-card/40 backdrop-blur-md border border-border/50 rounded-[3rem] p-8 md:p-12 prose prose-invert prose-primary max-w-none shadow-2xl shadow-primary/5">
-                        <section className="space-y-6 mb-12">
-                            <h2 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
-                                <Lock className="text-primary" size={24} /> 1. Introduction
-                            </h2>
-                            <p className="text-muted-foreground leading-relaxed font-medium">
-                                Delta Software and Communication Ltd (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you subscribe to our internet services or visit our website.
-                            </p>
-                        </section>
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide">How We Use Information</h2>
+                        <p className="mb-4">We use your information to:</p>
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li>Provide and improve our services</li>
+                            <li>Respond to inquiries</li>
+                            <li>Communicate important updates</li>
+                            <li>Analyze website performance</li>
+                        </ul>
+                    </section>
 
-                        <section className="space-y-6 mb-12">
-                            <h2 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
-                                <Eye className="text-primary" size={24} /> 2. Information We Collect
-                            </h2>
-                            <ul className="list-disc list-inside text-muted-foreground space-y-3 font-medium">
-                                <li>Personal identification information (Name, email address, phone number, NID).</li>
-                                <li>Service usage data and technical logs.</li>
-                                <li>Billing and payment information.</li>
-                                <li>Device information and IP addresses.</li>
-                            </ul>
-                        </section>
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide">Information Sharing</h2>
+                        <p>
+                            We do not sell or rent your personal information. We may share information only when required by law.
+                        </p>
+                    </section>
 
-                        <section className="space-y-6 mb-12">
-                            <h2 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
-                                <FileText className="text-primary" size={24} /> 3. How We Use Data
-                            </h2>
-                            <p className="text-muted-foreground leading-relaxed font-medium">
-                                We use the collected data to provide and maintain our services, notify you about changes, provide customer support, and process billing. We do not sell your personal data to third parties.
-                            </p>
-                        </section>
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide">Data Security</h2>
+                        <p>
+                            We take reasonable measures to protect your information, but no online system is completely secure.
+                        </p>
+                    </section>
 
-                        <section className="space-y-6 mb-12">
-                            <h2 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
-                                <ShieldCheck className="text-primary" size={24} /> 4. Data Security
-                            </h2>
-                            <p className="text-muted-foreground leading-relaxed font-medium">
-                                We implement industry-standard security measures to protect your data. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.
-                            </p>
-                        </section>
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide">Your Rights</h2>
+                        <p>
+                            You may request access, correction, or deletion of your personal information by contacting us.
+                        </p>
+                    </section>
 
-                        <div className="pt-12 border-t border-border/50 text-center">
-                            <p className="text-muted-foreground text-sm font-bold uppercase tracking-widest">
-                                Contact our legal team at <span className="text-primary">legal@deltasoftwareandcommunication.com</span>
-                            </p>
+                    <section className="pt-12 border-t border-slate-100">
+                        <h2 className="text-xl font-bold text-slate-900 mb-6 uppercase tracking-wide text-center lg:text-left">Contact Us</h2>
+                        <p className="mb-8 text-slate-500 text-center lg:text-left">
+                            If you have any questions about this Privacy Policy, please contact:
+                        </p>
+
+                        <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 space-y-4 max-w-lg mx-auto lg:mx-0">
+                            <p className="font-bold text-slate-900 text-xl border-b border-slate-200 pb-2 mb-4">Delta Software and Communication Ltd.</p>
+                            <div className="space-y-3">
+                                <p className="flex flex-col sm:flex-row sm:items-center gap-2">
+                                    <span className="text-slate-400 font-medium sm:w-20 uppercase text-xs tracking-wider">Email</span>
+                                    <a href={`mailto:${contactInfo.email}`} className="text-blue-600 hover:text-blue-700 transition-colors font-semibold">{contactInfo.email}</a>
+                                </p>
+                                <p className="flex flex-col sm:flex-row sm:items-center gap-2">
+                                    <span className="text-slate-400 font-medium sm:w-20 uppercase text-xs tracking-wider">Phone</span>
+                                    <a href={`tel:${contactInfo.phoneRaw}`} className="text-blue-600 hover:text-blue-700 transition-colors font-semibold">{contactInfo.phone}</a>
+                                </p>
+                                <p className="flex flex-col sm:flex-row sm:items-center gap-2">
+                                    <span className="text-slate-400 font-medium sm:w-20 uppercase text-xs tracking-wider">Website</span>
+                                    <a href="https://deltasoftwareandcommunication.com/" className="text-blue-600 hover:text-blue-700 transition-colors font-semibold">https://deltasoftwareandcommunication.com/</a>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </motion.div>
-            </div>
+                    </section>
+                </div>
+            </main>
 
             <Footer />
         </div>
     )
 }
+
+

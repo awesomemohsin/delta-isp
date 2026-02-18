@@ -5,6 +5,7 @@ import { Inter, Space_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { FloatingActions } from '@/components/floating-actions'
+import { FacebookPixel } from '@/components/facebook-pixel'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-space-mono' })
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${spaceMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
+          <FacebookPixel />
           <FloatingActions />
         </ThemeProvider>
       </body>

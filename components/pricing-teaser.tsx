@@ -167,7 +167,7 @@ export function PricingTeaser() {
                       <div className="flex items-center gap-3 mb-4 relative">
                         {DESIGN_VERSION === 'hot' && <Zap className={`w-6 h-6 ${plan.popular ? 'text-[#EA2630]' : 'text-[#0C58A4]'} fill-current`} />}
                         <div
-                          className={DESIGN_VERSION === 'hot' ? "text-4xl font-black italic tracking-tighter" : "text-primary font-semibold"}
+                          className={DESIGN_VERSION === 'hot' ? "text-5xl md:text-6xl font-black italic tracking-tighter" : "text-primary font-bold text-xl md:text-2xl"}
                           style={DESIGN_VERSION === 'hot' ? { color: plan.popular ? '#EA2630' : '#0C58A4' } : {}}
                         >
                           {plan.speed}

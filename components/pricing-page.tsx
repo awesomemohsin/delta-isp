@@ -11,57 +11,54 @@ import { DESIGN_VERSION } from '@/lib/site-config'
 
 export const plans = [
   {
-    name: 'Delta Basic',
+    name: 'Delta Student',
     speed: '20 Mbps',
     price: 525,
     period: '/month',
-    description: 'Perfect for basic browsing and streaming',
+    description: 'Perfect for basic studies and light browsing',
     currency: '৳',
     features: [
       { name: '20 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
-      { name: 'Public IP', included: false },
-      { name: 'Real IP', included: false },
+      { name: 'Real IP (+৳300/mo)', included: false },
       { name: 'BDIX Connected', included: true },
-      { name: '4k Streaming', included: true },
+      { name: '4k Streaming', included: false },
     ],
     cta: 'Get Started',
   },
   {
-    name: 'Delta Plus',
+    name: 'Delta Bachelor',
     speed: '30 Mbps',
     price: 630,
     period: '/month',
-    description: 'Great for small families and HD streaming',
+    description: 'Great for single users and HD streaming',
     currency: '৳',
     features: [
       { name: '30 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
-      { name: 'Public IP', included: false },
-      { name: 'Real IP', included: false },
+      { name: 'Real IP (+৳300/mo)', included: false },
       { name: 'BDIX Connected', included: true },
       { name: '4k Streaming', included: true },
     ],
     cta: 'Get Started',
   },
   {
-    name: 'Delta Power',
+    name: 'Delta Couple',
     speed: '40 Mbps',
     price: 735,
     period: '/month',
-    description: 'Ideal for gaming and multiple devices',
+    description: 'Ideal for small families and multiple devices',
     currency: '৳',
     features: [
       { name: '40 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
-      { name: 'Public IP', included: true },
-      { name: 'Real IP', included: false },
+      { name: 'Real IP (+৳300/mo)', included: false },
       { name: 'BDIX Connected', included: true },
       { name: '4k Streaming', included: true },
     ],
@@ -69,45 +66,64 @@ export const plans = [
     popular: true,
   },
   {
-    name: 'Delta Ultra',
+    name: 'Delta Family',
     speed: '50 Mbps',
     price: 840,
     period: '/month',
-    description: 'Heavy usage and 4K streaming for power users',
+    description: 'Heavy usage and 4K streaming for homes',
     currency: '৳',
     features: [
       { name: '50 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
-      { name: 'Public IP', included: true },
-      { name: 'Real IP', included: true },
+      { name: 'Real IP (+৳300/mo)', included: true },
       { name: 'BDIX Connected', included: true },
       { name: '4k Streaming', included: true },
     ],
     cta: 'Get Started',
   },
   {
-    name: 'Delta Max',
+    name: 'Delta Joint Family',
     speed: '60 Mbps',
     price: 1050,
     period: '/month',
-    description: 'Ultimate speed for seamless experience',
+    description: 'Ultimate speed for large households',
     currency: '৳',
     features: [
       { name: '60 Mbps Speed', included: true },
       { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
-      { name: 'Public IP', included: true },
-      { name: 'Real IP', included: true },
+      { name: 'Real IP (+৳300/mo)', included: true },
+      { name: 'BDIX Connected', included: true },
+      { name: '4k Streaming', included: true },
+    ],
+    cta: 'Get Started',
+    popular: true,
+    badgeText: "Best Seller",
+    badgeColor: "#eb262f",
+  },
+  {
+    name: 'Delta Grand Family',
+    speed: '80 Mbps',
+    price: 1260,
+    period: '/month',
+    description: 'Premium performance for elite connectivity',
+    currency: '৳',
+    features: [
+      { name: '80 Mbps Speed', included: true },
+      { name: 'Unlimited Data', included: true },
+      { name: '24/7 Support', included: true },
+      { name: 'Fiber Optic', included: true },
+      { name: 'Real IP (+৳300/mo)', included: true },
       { name: 'BDIX Connected', included: true },
       { name: '4k Streaming', included: true },
     ],
     cta: 'Get Started',
     popular: true,
     badgeText: "Gamers Choice",
-    badgeColor: "#eb262f",
+    badgeColor: "#0C58A4",
   },
   {
     name: 'Delta Enterprise',
@@ -194,7 +210,7 @@ export function PricingPage() {
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 mb-16"
         >
-          {plans.map((plan) => {
+          {plans.map((plan, index) => {
             const displayPrice = billingPeriod === 'yearly' && !plan.isEnterprise
               ? Math.floor(plan.price * 12 * 0.9)
               : plan.price
@@ -204,7 +220,7 @@ export function PricingPage() {
                 key={plan.name}
                 variants={itemVariants}
                 whileHover={DESIGN_VERSION === 'hot' ? { y: -8, scale: 1.03 } : { y: -8 }}
-                className={`relative h-full transition-all duration-300 flex flex-col ${DESIGN_VERSION === 'hot'
+                className={`relative h-full transition-all duration-300 flex flex-col ${index === 6 ? 'lg:col-start-2 md:col-span-2 lg:col-span-1 max-w-md mx-auto w-full' : ''} ${DESIGN_VERSION === 'hot'
                   ? `rounded-[2rem] border-t-4 backdrop-blur-md ${plan.popular
                     ? 'border-t-[#EA2630] border-x border-b border-[#EA2630]/20 bg-card/80 shadow-[0_20px_40px_-15px_rgba(234,38,48,0.15)] md:scale-105'
                     : 'border-t-[#0C58A4] border-x border-b border-border bg-card/60 hover:shadow-[0_20px_40px_-15px_rgba(12,88,164,0.15)]'
@@ -233,7 +249,7 @@ export function PricingPage() {
                   {/* Plan Header */}
                   <div className="mb-8">
                     <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                    <div className="text-primary font-semibold mb-2">{plan.speed}</div>
+                    <div className="text-primary font-bold mb-2 text-xl md:text-2xl">{plan.speed}</div>
                     <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
                     <div className="flex items-baseline gap-1">
                       {plan.isEnterprise ? (
@@ -249,8 +265,10 @@ export function PricingPage() {
                       )}
                     </div>
                     {billingPeriod === 'yearly' && !plan.isEnterprise && (
-                      <p className="text-xs text-secondary mt-2">
-                        <span className="font-bold">৳</span>{Math.floor(displayPrice / 12)}/month billed annually
+                      <p className="text-xs text-secondary mt-2 flex items-center gap-1.5 font-medium">
+                        <span className="line-through opacity-50">৳{plan.price}</span>
+                        <span className="text-secondary font-bold">৳{Math.floor(displayPrice / 12)}/month</span>
+                        <span className="opacity-70">billed annually</span>
                       </p>
                     )}
                   </div>
@@ -332,16 +350,16 @@ export function PricingPage() {
               </thead>
               <tbody>
                 {[
-                  { label: 'Download Speed', icon: <Download className="w-4 h-4 text-primary" />, values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
-                  { label: 'Upload Speed', icon: <Upload className="w-4 h-4 text-primary" />, values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', 'Custom'] },
-                  { label: 'Unlimited Data', values: [true, true, true, true, true, true] },
-                  { label: '24/7 Support', values: [true, true, true, true, true, true] },
-                  { label: 'Real IP', values: [false, false, false, true, true, true] },
-                  { label: 'BDIX Speed', values: ['100 Mbps', '100 Mbps', '100 Mbps', '1 Gbps', '1 Gbps', '10 Gbps'] },
-                  { label: 'Installation', values: ['৳1000', '৳1000', '৳500', 'Free', 'Free', 'Custom'] },
-                  { label: 'Bufferless YT', values: [true, true, true, true, true, true] },
-                  { label: 'Gaming Ping', values: ['Standard', 'Standard', 'Better', 'Good', 'Best', 'Ultra Low'] },
-                  { label: 'SLA Guarantee', values: [false, false, false, false, false, '99.9%'] },
+                  { label: 'Internet', icon: <Download className="w-4 h-4 text-primary" />, values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', '80 Mbps', 'Custom'] },
+                  { label: 'Unlimited Data', values: [true, true, true, true, true, true, true] },
+                  { label: 'GGC', values: [true, true, true, true, true, true, true] },
+                  { label: 'BDIX Speed', values: ['50 Mbps', '50 Mbps', '100 Mbps', '100 Mbps', '100 Mbps', '100 Mbps', '10 Gbps'] },
+                  { label: '24/7 Support', values: [true, true, true, true, true, true, true] },
+                  { label: 'Real IP (+৳300/mo)', values: [false, false, false, true, true, true, true] },
+                  { label: 'Installation', values: ['৳1000', '৳1000', '৳500', '৳500', '৳500', '৳500', 'Custom'] },
+                  { label: 'Bufferless YT', values: [true, true, true, true, true, true, true] },
+                  { label: 'Gaming Ping', values: ['Standard', 'Standard', 'Better', 'Good', 'Best', 'Best', 'Ultra Low'] },
+                  { label: 'SLA Guarantee', values: [false, false, false, false, false, false, '99.9%'] },
                 ].map((row, idx) => (
                   <tr key={row.label} className={`border-b border-border ${idx % 2 === 0 ? 'bg-card/30' : ''}`}>
                     <td className="py-4 px-4 font-medium text-sm">
@@ -392,7 +410,7 @@ export function PricingPage() {
               },
               {
                 q: 'What\'s included in installation?',
-                a: 'Our technicians will install your modem, router, and run all necessary cables. Setup typically takes 1-2 hours.',
+                a: 'Our technicians will install your modem, router, and run all necessary cables. Setup time depends on area.',
               },
             ].map((faq) => (
               <div key={faq.q}>

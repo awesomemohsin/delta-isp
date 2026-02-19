@@ -230,54 +230,117 @@ export default function FAQPage() {
                     )}
                 </motion.div>
 
-                {/* Support Section */}
+                {/* Support Section - Redesigned & Dynamic */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-32 p-10 md:p-16 rounded-[4rem] bg-gradient-to-br from-[#0C58A4] to-[#0C58A4]/90 text-white relative overflow-hidden shadow-2xl shadow-[#0C58A4]/30"
+                    className="mt-32 relative group"
                 >
-                    {/* Decorative shapes */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl text-white pointer-events-none" />
+                    {/* Dynamic Background with Mesh-like Gradients */}
+                    <div className="absolute inset-0 rounded-[4rem] overflow-hidden">
+                        <motion.div
+                            animate={{
+                                x: [0, 50, 0],
+                                y: [0, -30, 0],
+                                scale: [1, 1.1, 1],
+                            }}
+                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                            className="absolute -top-[20%] -right-[10%] w-[120%] h-[120%] bg-gradient-to-br from-[#0C58A4] via-[#0C58A4] to-[#EA2630]/30 -z-10"
+                        />
+                        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    </div>
 
-                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
-                            <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
+                    <div className="relative z-10 p-8 md:p-16 flex flex-col items-center text-center space-y-12">
+                        {/* Title & Description */}
+                        <div className="max-w-3xl space-y-6">
+                            <motion.div
+                                animate={{ y: [0, -5, 0] }}
+                                transition={{ duration: 4, repeat: Infinity }}
+                                className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.4em]"
+                            >
+                                <span className="w-2 h-2 rounded-full bg-[#EA2630] animate-pulse" />
+                                Support Grid ONLINE
+                            </motion.div>
+
+                            <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.8] text-white">
                                 Still have <br />
-                                <span className="text-[#EA2630] contrast-125">Questions?</span>
+                                <span className="text-[#EA2630] drop-shadow-[0_0_30px_rgba(234,38,48,0.4)] contrast-125 italic">Questions?</span>
                             </h2>
-                            <p className="text-white/90 text-lg font-medium">
-                                Our support team is available 24/7 to assist you. Whether it&apos;s a technical issue or a billing query, we are here to help.
+
+                            <p className="text-white/80 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+                                Our elite support squad is on standby 24/7. Whether it&apos;s a complex technical challenge or a simple query, we&apos;re here to solve it.
                             </p>
-                            <div className="flex flex-wrap gap-4 pt-4">
-                                <a href={`tel:${contactInfo.phoneRaw}`}>
-                                    <Button className="bg-white text-[#0C58A4] hover:bg-[#EA2630] hover:text-white rounded-full px-8 py-6 font-black uppercase tracking-widest text-[10px] h-auto shadow-xl transition-all scale-100 hover:scale-105">
-                                        <PhoneCall className="mr-2 w-4 h-4" /> Call Hotline
-                                    </Button>
-                                </a>
-                                <Link href="/contact">
-                                    <Button className="bg-white/10 text-white hover:bg-white/20 border border-white/20 rounded-full px-8 py-6 font-black uppercase tracking-widest text-[10px] h-auto transition-all backdrop-blur-md scale-100 hover:scale-105">
-                                        Contact Us <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Button>
-                                </Link>
-                            </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        {/* Contact Interaction Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full h-full max-w-6xl">
                             {[
-                                { icon: MessageCircle, label: 'WhatsApp', sub: '24/7 Support', href: contactInfo.whatsappLink },
-                                { icon: Facebook, label: 'Facebook', sub: 'Instant Update', href: 'https://www.facebook.com/profile.php?id=61568434629601' },
-                                { icon: MapPin, label: 'Office', sub: 'Visit Us', href: '/contact' },
-                                { icon: HelpCircle, label: 'Guides', sub: 'Self Help', href: '#' },
+                                {
+                                    icon: MessageCircle,
+                                    label: 'WhatsApp',
+                                    sub: 'Live Chat',
+                                    href: contactInfo.whatsappLink,
+                                    color: 'bg-green-500/20 text-green-400 group-hover:bg-green-500 group-hover:text-white',
+                                    glow: 'group-hover:shadow-green-500/50'
+                                },
+                                {
+                                    icon: PhoneCall,
+                                    label: 'Hotline',
+                                    sub: 'Voice Link',
+                                    href: `tel:${contactInfo.phoneRaw}`,
+                                    color: 'bg-[#EA2630]/20 text-[#EA2630] group-hover:bg-[#EA2630] group-hover:text-white',
+                                    glow: 'group-hover:shadow-[#EA2630]/50'
+                                },
+                                {
+                                    icon: Facebook,
+                                    label: 'Updates',
+                                    sub: 'Delta Feed',
+                                    href: 'https://www.facebook.com/profile.php?id=61568434629601',
+                                    color: 'bg-[#0C58A4]/20 text-[#0C58A4] group-hover:bg-[#0C58A4] group-hover:text-white',
+                                    glow: 'group-hover:shadow-[#0C58A4]/50'
+                                },
+                                {
+                                    icon: MapPin,
+                                    label: 'Location',
+                                    sub: 'HQ Visit',
+                                    href: '/contact',
+                                    color: 'bg-white/10 text-white group-hover:bg-white group-hover:text-black',
+                                    glow: 'group-hover:shadow-white/50'
+                                },
                             ].map((item, i) => (
-                                <a key={i} href={item.href} target={item.href.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" className="group">
-                                    <div className="p-6 rounded-[2rem] bg-white/10 backdrop-blur-md border border-white/10 group-hover:bg-white/20 transition-all h-full scale-100 group-hover:scale-[1.02]">
-                                        <item.icon className="w-8 h-8 mb-4 text-[#EA2630] transition-transform group-hover:scale-110" />
-                                        <div className="font-bold uppercase tracking-tight text-white">{item.label}</div>
-                                        <div className="text-[10px] uppercase font-black tracking-widest opacity-60 text-white/80">{item.sub}</div>
+                                <motion.a
+                                    key={i}
+                                    href={item.href}
+                                    target={item.href.startsWith('http') ? '_blank' : '_self'}
+                                    rel="noopener noreferrer"
+                                    className="group/card relative"
+                                    whileHover={{ y: -10 }}
+                                >
+                                    <div className="p-8 rounded-[3rem] bg-white/5 backdrop-blur-xl border border-white/10 group-hover/card:bg-white/15 transition-all duration-500 h-full flex flex-col items-center gap-4 text-center">
+                                        <div className={`p-5 rounded-2xl transition-all duration-500 ${item.color} shadow-lg ${item.glow}`}>
+                                            <item.icon size={28} />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <div className="font-extrabold uppercase tracking-tight text-white text-lg">{item.label}</div>
+                                            <div className="text-[10px] uppercase font-black tracking-widest text-[#EA2630] opacity-80 group-hover/card:opacity-100">{item.sub}</div>
+                                        </div>
                                     </div>
-                                </a>
+                                    {/* Subtle Ambient Glow */}
+                                    <div className={`absolute inset-0 -z-10 rounded-[3rem] blur-2xl opacity-0 group-hover/card:opacity-20 transition-opacity duration-700 ${item.color.split(' ')[0]}`} />
+                                </motion.a>
                             ))}
+                        </div>
+
+                        {/* Direct Support Button */}
+                        <div className="pt-8">
+                            <Link href="/contact">
+                                <Button className="h-16 px-12 rounded-full bg-white text-[#0C58A4] hover:bg-[#EA2630] hover:text-white font-black uppercase tracking-[0.3em] text-[11px] shadow-[0_20px_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[#EA2630]/40 transition-all active:scale-95 group/btn">
+                                    Initialize Direct Access
+                                    <ArrowRight className="ml-3 h-5 w-5 group-hover/btn:translate-x-3 transition-transform" />
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </motion.div>

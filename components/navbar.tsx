@@ -19,9 +19,10 @@ export function Navbar() {
     { href: '/services', label: 'Services' },
     { href: '/packages', label: 'Packages' },
     { href: '/pay-bill', label: 'Pay Bill' },
-    { href: '/files/BTRC_Tariff_Delta.pdf', label: 'BTRC Tarrif' },
+    { href: '/btrc-tariff', label: 'BTRC Tarrif', external: true },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
+    { href: 'https://radius.yetfix.com/customer_login', label: 'Self Care', external: true },
   ]
 
   return (
@@ -47,10 +48,13 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             {links.map((link) => {
               const isActive = pathname === link.href
+              const isExternal = link.external || link.href.startsWith('http') || link.href.endsWith('.pdf')
               return (
                 <Link
                   key={link.href}
                   href={link.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
                   className={`text-[12px] font-black uppercase tracking-widest transition-all relative group py-1 ${DESIGN_VERSION === 'hot'
                     ? isActive
                       ? 'text-[#EA2630]'
@@ -102,10 +106,13 @@ export function Navbar() {
             }`}>
             {links.map((link) => {
               const isActive = pathname === link.href
+              const isExternal = link.external || link.href.startsWith('http') || link.href.endsWith('.pdf')
               return (
                 <Link
                   key={link.href}
                   href={link.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
                   className={`block px-4 py-3 text-sm font-bold tracking-tight rounded-xl transition-all ${DESIGN_VERSION === 'hot'
                     ? isActive
                       ? 'bg-[#0C58A4]/10 text-[#0C58A4] border-l-4 border-[#EA2630]'

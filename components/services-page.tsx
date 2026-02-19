@@ -52,21 +52,6 @@ const servicesDetail = [
     ],
     color: 'from-secondary to-cyan-400',
   },
-  {
-    icon: Shield,
-    title: 'Network Security',
-    shortDesc: 'Advanced DDoS protection, firewalls, and 24/7 security monitoring included',
-    fullDesc: 'Protect your business from cyber threats with our comprehensive security suite. Advanced threat detection, DDoS mitigation, and professional monitoring.',
-    features: [
-      'Advanced firewall protection',
-      'DDoS mitigation services',
-      '24/7 security monitoring',
-      'Intrusion detection systems',
-      'Regular security audits',
-      'Threat intelligence feeds',
-    ],
-    color: 'from-cyan-400 to-secondary',
-  },
 ]
 
 const containerVariants = {
@@ -215,28 +200,10 @@ export function ServicesPageContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: 'OTT Premium Access',
-                desc: 'Get access to Bioscope, Hoichoi, and Bongo with your connection.',
-                price: '৳150/mo',
-                icon: <Zap className="w-5 h-5 text-primary" />,
-              },
-              {
-                title: 'Safe Internet',
-                desc: 'Parental controls and malicious site blocking for your family.',
-                price: '৳100/mo',
-                icon: <Shield className="w-5 h-5 text-primary" />,
-              },
-              {
                 title: 'Public Real IP',
                 desc: 'Dedicated Real IP for hosting, gaming, or remote access.',
-                price: '৳200/mo',
+                price: '৳300/month per IP',
                 icon: <Building2 className="w-5 h-5 text-primary" />,
-              },
-              {
-                title: 'Gaming Boost',
-                desc: 'Low latency routing for professional gaming and competitive play.',
-                price: '৳150/mo',
-                icon: <Zap className="w-5 h-5 text-primary" />,
               },
               {
                 title: 'Mesh Wi-Fi System',
@@ -245,10 +212,16 @@ export function ServicesPageContent() {
                 icon: <Wifi className="w-5 h-5 text-primary" />,
               },
               {
-                title: 'BDIX Premium Cache',
-                desc: 'Uncapped speeds for local BDIX servers and file sharing.',
-                price: 'Free with Plus+',
-                icon: <CheckCircle className="w-5 h-5 text-primary" />,
+                title: 'OTT Premium Access',
+                desc: 'Get access to Bioscope, Hoichoi, and Bongo with your connection.',
+                price: 'Upcoming',
+                icon: <Zap className="w-5 h-5 text-primary" />,
+              },
+              {
+                title: 'Safe Internet',
+                desc: 'Parental controls and malicious site blocking for your family.',
+                price: 'Upcoming',
+                icon: <Shield className="w-5 h-5 text-primary" />,
               },
             ].map((addon) => (
               <motion.div

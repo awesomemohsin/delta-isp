@@ -9,6 +9,14 @@ const nextConfig = {
   turbopack: {
     root: '.',
   },
+  async rewrites() {
+    return [
+      {
+        source: '/btrc-tariff',
+        destination: '/files/BTRC_Tariff_Delta.pdf',
+      },
+    ]
+  },
 }
 
 export default nextConfig

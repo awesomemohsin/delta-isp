@@ -64,7 +64,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   return (
     <motion.div
       variants={itemVariants}
-      className="group h-full perspective-1000"
+      className="group h-full perspective-1000 w-full md:w-[calc(50%-1rem)] lg:w-[320px]"
     >
       <Link href={service.href}>
         <motion.div
@@ -160,7 +160,7 @@ export function ServicesOverview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="flex flex-wrap justify-center gap-6"
         >
           {services.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />

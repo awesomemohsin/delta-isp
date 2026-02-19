@@ -40,6 +40,7 @@ const sitemapData = [
             { label: 'Blog & Updates', href: '/blog' },
             { label: 'Help Center', href: '/support' },
             { label: 'FAQ', href: '/faq' },
+            { label: 'Speed Test', href: '/speedtest' },
             { label: 'BTRC Tariff', href: '/files/BTRC_Tariff_Delta.pdf' },
         ]
     },

@@ -124,7 +124,7 @@ export function SpeedTestSection() {
                                 >
                                     <DigitalReadout value="99.9%" label="Uptime" />
                                     <DigitalReadout value="<5ms" label="Latency" />
-                                    <DigitalReadout value="1Gbps" label="Max Cap" />
+                                    <DigitalReadout value="MAX" label="Speed" />
                                 </motion.div>
                             </div>
                         )}
@@ -235,11 +235,12 @@ export function SpeedTestSection() {
                                         </div>
 
                                         <div className="flex-grow relative group/frame bg-black overflow-hidden">
-                                            {/* Masking Container */}
-                                            <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden">
-                                                {/* Previous masked setting:
+                                            {/* Masking Container (Disabled for direct view) */}
+                                            <div className="absolute inset-0">
+                                                {/* 
+                                                Previous framing settings (for reference):
                                                 <iframe
-                                                    src="http://www.speedtest.sg/speedtest/"
+                                                    src="http://www.speedtest.com.sg/speedtest/"
                                                     className="w-[100%] h-[220%] border-none absolute -top-[65%] left-0"
                                                     title="Official Speedtest.sg"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -247,9 +248,9 @@ export function SpeedTestSection() {
                                                 />
                                                 */}
                                                 <iframe
-                                                    src="http://www.speedtest.com.sg/speedtest/"
+                                                    src="https://speedtest2.telecomclubbd.com/"
                                                     className="w-full h-full border-none"
-                                                    title="Official Speedtest.sg"
+                                                    title="Delta Speedtest"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                 />
                                             </div>

@@ -35,14 +35,6 @@ export const services = [
         color: 'from-[#000000] to-[#000000]/60',
         hotColor: '#000000'
     },
-    {
-        icon: Shield,
-        title: 'Network Security',
-        description: 'Advanced DDoS protection, firewalls, and 24/7 security monitoring included.',
-        href: '/services#network-security',
-        color: 'from-[#999A9B] to-[#999A9B]/60',
-        hotColor: '#999A9B'
-    },
 ]
 
 export const testimonials = [
@@ -84,8 +76,8 @@ export const ctaFeatures = [
 export const contactInfo = {
     phone: '+880 9611678064',
     phoneRaw: '+8809611678064',
-    whatsapp: '8801958113265',
-    whatsappLink: 'https://wa.me/8801958113265',
+    whatsapp: '8801777786560',
+    whatsappLink: 'https://wa.me/8801777786560',
     email: 'info@deltasoftwareandcommunication.com',
     address: 'House: 35, Sonargaon Janapath Road, Uttara, Dhaka -1230, Bangladesh.',
 }

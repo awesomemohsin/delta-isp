@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle2, CreditCard, Smartphone, HelpCircle, ArrowRight, X, Maximize2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { contactInfo } from '@/lib/homepage-data'
 
 const paymentMethods = [
     {
@@ -224,9 +225,9 @@ export function PayBillContent() {
                 >
                     <div className="inline-flex items-center gap-4 bg-card p-6 rounded-full border border-border shadow-lg">
                         <HelpCircle size={24} className="text-primary" />
-                        <p className="text-sm font-medium">Need help? WhatsApp us at <span className="text-primary font-bold">+880 1958113265</span></p>
+                        <p className="text-sm font-medium">Need help? WhatsApp us at <span className="text-primary font-bold">+{contactInfo.whatsapp}</span></p>
                         <a
-                            href="https://wa.me/8801958113265"
+                            href={contactInfo.whatsappLink}
                             target="_blank"
                             rel="noopener noreferrer"
                         >

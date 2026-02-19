@@ -18,6 +18,7 @@ import {
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
+import { contactInfo } from '@/lib/homepage-data'
 import { DESIGN_VERSION } from '@/lib/site-config'
 
 const sitemapData = [
@@ -49,7 +50,7 @@ const sitemapData = [
             { label: 'Technical Guides', href: '/support' },
             { label: 'Billing Support', href: '/faq#billing' },
             { label: 'Connection Support', href: '/faq#support' },
-            { label: 'Live Chat', href: 'https://wa.me/8801958113265' },
+            { label: 'Live Chat', href: contactInfo.whatsappLink },
         ]
     },
     {
@@ -95,7 +96,7 @@ export default function SitemapPage() {
                         transition={{ delay: 0.1 }}
                         className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium"
                     >
-                        A comprehensive overview of all pages and directories within the Delta Software and Communication Ltd website.
+                        A comprehensive overview of all pages and directories within the Delta Software & Communication Ltd website.
                     </motion.p>
                 </div>
 

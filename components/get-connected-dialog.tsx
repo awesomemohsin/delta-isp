@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dialog'
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
+import { contactInfo } from '@/lib/homepage-data'
 import { cn } from '@/lib/utils'
 
 export function GetConnectedDialog({ className }: { className?: string }) {
@@ -27,7 +28,7 @@ export function GetConnectedDialog({ className }: { className?: string }) {
             icon: MessageCircle,
             title: 'WhatsApp',
             description: 'Chat with us',
-            href: 'https://wa.me/8801958113265',
+            href: contactInfo.whatsappLink,
             color: 'text-green-500',
             bgColor: 'bg-green-500/10',
         },

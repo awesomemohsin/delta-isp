@@ -132,11 +132,11 @@ export function AboutPageContent() {
           </div>
           <h1 className="flex flex-col items-center gap-2 mb-6 uppercase text-balance">
             <span className="text-2xl md:text-5xl font-black tracking-tighter opacity-80">About</span>
-            <span className={`text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] md:whitespace-nowrap ${DESIGN_VERSION === 'hot'
+            <span className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] ${DESIGN_VERSION === 'hot'
               ? "text-[#0C58A4]"
               : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
               }`}>
-              Delta Software & Communication
+              Delta Software & Communication Ltd
             </span>
           </h1>
           <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto text-balance font-medium leading-relaxed opacity-80 mb-12">
@@ -184,7 +184,7 @@ export function AboutPageContent() {
             <div className="lg:col-span-7 space-y-12">
               <div className="space-y-6">
                 <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-medium">
-                  <span className="italic font-bold text-foreground">Delta Software and Communication Ltd.</span> is a leading nationwide Internet Service Provider (ISP) in Bangladesh, committed to delivering fast, reliable, and secure connectivity solutions. With a strong focus on innovation and customer satisfaction, we provide a wide range of internet and communication services tailored for both residential and corporate clients.
+                  <span className="italic font-bold text-foreground">Delta Software and Communication Ltd.</span> is a leading nationwide Internet Service Provider (ISP) in Bangladesh...
                 </p>
                 <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-medium">
                   We are deeply committed to our <span className="italic text-foreground font-bold">customers, vendors, and partners</span>, ensuring transparency, reliability, and long-term collaboration in every aspect of our service. Our operations are <span className="text-[#EA2630] font-black bg-[#EA2630]/5 px-2 rounded-md">fully domestic</span>, enabling us to maintain strong control over service quality, compliance, and customer experience across the country.
@@ -204,7 +204,7 @@ export function AboutPageContent() {
                       Supported by Bangladesh&apos;s best <span className="italic text-foreground font-bold">NTTN, IIG</span>, and an experienced <span className="font-bold text-[#0C58A4]">technology team</span>, we ensure high performance, stable connectivity, and dependable network support.
                     </p>
                     <p>
-                      Delta Software and Communication Ltd. always prioritizes and prefers <span className="text-foreground font-bold underline decoration-[#0C58A4] decoration-4 underline-offset-8">our own infrastructure</span>, allowing us to provide consistent service delivery and scalable solutions for growing digital demands.
+                      Delta Software & Communication Ltd. always prioritizes and prefers <span className="text-foreground font-bold underline decoration-[#0C58A4] decoration-4 underline-offset-8">our own infrastructure</span>...
                     </p>
                   </div>
                 </div>

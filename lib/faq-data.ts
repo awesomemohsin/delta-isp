@@ -15,8 +15,8 @@ export const faqData: FAQCategory[] = [
         id: "about",
         items: [
             {
-                question: "What services does Delta Software and Communication Ltd provide?",
-                answer: "Delta Software and Communication Ltd provides high-speed broadband internet services for residential and corporate customers."
+                question: "What services does Delta Software & Communication Ltd provide?",
+                answer: "Delta Software & Communication Ltd provides high-speed broadband internet services for residential and corporate customers."
             },
             {
                 question: "Which areas do you currently cover?",

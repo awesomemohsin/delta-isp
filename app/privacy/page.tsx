@@ -66,7 +66,7 @@ export default function PrivacyPage() {
                         </p>
 
                         <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 space-y-4 max-w-lg mx-auto lg:mx-0">
-                            <p className="font-bold text-slate-900 text-xl border-b border-slate-200 pb-2 mb-4">Delta Software and Communication Ltd.</p>
+                            <p className="font-bold text-slate-900 text-xl border-b border-slate-200 pb-2 mb-4">Delta Software & Communication Ltd.</p>
                             <div className="space-y-3">
                                 <p className="flex flex-col sm:flex-row sm:items-center gap-2">
                                     <span className="text-slate-400 font-medium sm:w-20 uppercase text-xs tracking-wider">Email</span>

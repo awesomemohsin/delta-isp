@@ -119,7 +119,7 @@ export default function BlogDetailPage() {
 
                     <div className="space-y-8 normal-case">
                         <p>
-                            In an era where connectivity is no longer a luxury but a fundamental necessity, Delta Software and Communication Ltd is pushing the boundaries of what is possible in the Bangladeshi internet landscape. This article explores our latest initiatives and the technological backbone that makes our &quot;Titan Speed&quot; a reality for thousands of users.
+                            In an era where connectivity is no longer a luxury but a fundamental necessity, Delta Software & Communication Ltd is pushing the boundaries of what is possible in the Bangladeshi internet landscape.
                         </p>
 
                         <h2 className="text-2xl font-black text-foreground uppercase tracking-tight">The Fiber-Optic Revolution</h2>

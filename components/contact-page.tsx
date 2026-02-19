@@ -287,7 +287,7 @@ export function ContactPageContent() {
           className="h-96 rounded-2xl border border-border bg-card overflow-hidden"
         >
           <iframe
-            title="Delta Software and Communication Location"
+            title="Delta Software & Communication Ltd Location"
             src={DESIGN_VERSION === 'hot'
               ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.435!2d90.395!3d23.874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4280b396791%3A0xf639a04a5840ca84!2sDelta%20Software%20And%20Communication!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd"
               : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.435!2d90.395!3d23.874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c428178149ef%3A0xa97b98f244588e7b!2sUttara%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd"

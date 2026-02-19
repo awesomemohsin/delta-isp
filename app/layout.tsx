@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     icon: '/images/delta-logo.svg',
   },
   openGraph: {
-    title: 'Delta Software and Communication',
+    title: 'Delta Software & Communication Ltd',
     description: 'Premium internet service provider offering fast, reliable, and unlimited internet for home and business.',
     type: 'website',
   },

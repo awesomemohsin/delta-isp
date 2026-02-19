@@ -21,7 +21,7 @@ export default function AccessibilityPage() {
                     <section>
                         <h2 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide">1. Our Commitment</h2>
                         <p>
-                            Delta Software and Communication Ltd is committed to providing a website that is accessible to the widest possible audience, regardless of technology or ability. We are actively working to increase the accessibility and usability of our website.
+                            Delta Software & Communication Ltd is committed to providing a website that is accessible to the widest possible audience, regardless of technology or ability. We are actively working to increase the accessibility and usability of our website.
                         </p>
                     </section>
 

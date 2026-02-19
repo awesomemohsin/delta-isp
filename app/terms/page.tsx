@@ -21,7 +21,7 @@ export default function TermsPage() {
                     <section>
                         <h2 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide">1. Agreement to Terms</h2>
                         <p>
-                            By accessing or using the services provided by Delta Software and Communication Ltd, you agree to be bound by these Terms of Service. If you do not agree to all of these terms, you are prohibited from using our services.
+                            By accessing or using the services provided by Delta Software & Communication Ltd, you agree to be bound by these Terms of Service.
                         </p>
                     </section>
 

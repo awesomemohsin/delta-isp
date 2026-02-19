@@ -31,11 +31,16 @@ const itemVariants = {
 }
 
 export function PricingTeaser() {
+  const [hasMounted, setHasMounted] = React.useState(false)
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
     slidesToScroll: 1,
   })
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   const intervalRef = React.useRef<NodeJS.Timeout>(null)
 
@@ -68,6 +73,21 @@ export function PricingTeaser() {
       resetAutoplay()
     }
   }, [emblaApi, resetAutoplay])
+
+  if (!hasMounted) {
+    return (
+      <section className="py-10 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="h-10 bg-muted animate-pulse rounded-2xl w-64 mx-auto mb-8" />
+          <div className="flex gap-4 overflow-hidden">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex-[0_0_100%] md:flex-[0_0_33.333%] h-[400px] bg-muted animate-pulse rounded-[2.5rem]" />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="py-10 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">

@@ -225,9 +225,9 @@ export function PayBillContent() {
                 >
                     <div className="inline-flex items-center gap-4 bg-card p-6 rounded-full border border-border shadow-lg">
                         <HelpCircle size={24} className="text-primary" />
-                        <p className="text-sm font-medium">Need help? WhatsApp us at <span className="text-primary font-bold">+{contactInfo.whatsapp}</span></p>
+                        <p className="text-sm font-medium">Need help? WhatsApp us at <span className="text-primary font-bold">+8801944455691</span></p>
                         <a
-                            href={contactInfo.whatsappLink}
+                            href="https://wa.me/8801944455691"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

@@ -54,8 +54,8 @@ const contactCards = [
   {
     icon: Clock,
     title: 'Business Hours',
-    content: '24/7 Service',
-    desc: 'Office: Sat - Thu (10 AM - 6 PM)',
+    content: '24/7 Support',
+    desc: 'Office: Sat - Thu (10 AM - 7 PM)',
   },
 ]
 

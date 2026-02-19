@@ -86,5 +86,5 @@ export const socialLinks = [
     { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61568434629601', label: 'Facebook' },
     { Icon: Instagram, href: 'https://www.instagram.com/dscl_2024', label: 'Instagram' },
     { Icon: Twitter, href: '#', label: 'Twitter' },
-    { Icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { Icon: Linkedin, href: 'https://www.linkedin.com/company/delta-software-and-communication-limited/', label: 'LinkedIn' },
 ]

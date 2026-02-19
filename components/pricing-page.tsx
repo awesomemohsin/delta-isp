@@ -1,13 +1,15 @@
 'use client'
 
 import Link from 'next/link'
-import { Check, X, ArrowRight, Download, Upload } from 'lucide-react'
+import { Check, X, ArrowRight, Download, Upload, Info, Zap, Shield, Headset, Clock, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { DESIGN_VERSION } from '@/lib/site-config'
+import { Navbar } from '@/components/navbar'
+import { Footer } from '@/components/footer'
 
 export const plans = [
   {
@@ -171,6 +173,30 @@ const itemVariants = {
 
 export function PricingPage() {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly')
+  const [hasMounted, setHasMounted] = useState(false)
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  if (!hasMounted) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center p-8">
+          <div className="max-w-7xl w-full">
+            <div className="h-20 bg-muted animate-pulse rounded-2xl mb-8" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-[500px] bg-muted animate-pulse rounded-[3rem]" />
+              ))}
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-8">

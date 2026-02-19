@@ -89,6 +89,7 @@ export default function FAQPage() {
     const [searchQuery, setSearchQuery] = useState('')
     const [openItems, setOpenItems] = useState<Record<string, boolean>>({})
     const [activeCategory, setActiveCategory] = useState<string>('all')
+    const [hasMounted, setHasMounted] = React.useState(false)
 
     const toggleItem = (categoryId: string, index: number) => {
         const key = `${categoryId}-${index}`
@@ -97,6 +98,10 @@ export default function FAQPage() {
             [key]: !prev[key]
         }))
     }
+
+    React.useEffect(() => {
+        setHasMounted(true)
+    }, [])
 
     const filteredData = useMemo(() => {
         // Deep clone-like mapping to ensure no mutations and fresh rendering identities
@@ -121,6 +126,21 @@ export default function FAQPage() {
                 return hasItems && matchesCategory
             })
     }, [searchQuery, activeCategory])
+
+    if (!hasMounted) {
+        return (
+            <div className="min-h-screen bg-background flex flex-col">
+                <Navbar />
+                <div className="flex-grow flex items-center justify-center">
+                    <div className="animate-pulse text-muted-foreground flex items-center gap-2">
+                        <HelpCircle className="animate-spin" />
+                        Initializing Knowledge Base...
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        )
+    }
 
     return (
         <div className="min-h-screen bg-background relative overflow-hidden flex flex-col">

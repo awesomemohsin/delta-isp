@@ -89,11 +89,11 @@ export function PricingTeaser() {
         </motion.div>
 
         {/* Slider Controls */}
-        <div className="absolute top-1/2 -left-8 -right-8 md:-left-16 md:-right-16 z-10 flex justify-between pointer-events-none translate-y-8 md:translate-y-0">
+        <div className="absolute top-[60%] -left-2 -right-2 md:-left-16 md:-right-16 z-30 flex justify-between pointer-events-none">
           <Button
             variant="outline"
             size="icon"
-            className="rounded-full bg-background/80 backdrop-blur-sm border-primary/20 pointer-events-auto hover:bg-primary/10 transition-colors hidden md:flex"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/90 backdrop-blur-sm border-primary/20 pointer-events-auto hover:bg-primary/10 transition-colors shadow-lg"
             onClick={scrollPrev}
           >
             <ChevronLeft className="h-6 w-6 text-primary" />
@@ -101,7 +101,7 @@ export function PricingTeaser() {
           <Button
             variant="outline"
             size="icon"
-            className="rounded-full bg-background/80 backdrop-blur-sm border-primary/20 pointer-events-auto hover:bg-primary/10 transition-colors hidden md:flex"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/90 backdrop-blur-sm border-primary/20 pointer-events-auto hover:bg-primary/10 transition-colors shadow-lg"
             onClick={scrollNext}
           >
             <ChevronRight className="h-6 w-6 text-primary" />

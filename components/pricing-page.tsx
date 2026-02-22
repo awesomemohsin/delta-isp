@@ -68,7 +68,7 @@ export const plans = [
     popular: true,
   },
   {
-    name: 'Delta Family Package',
+    name: 'Delta Family',
     speed: '50 Mbps',
     price: 840,
     period: '/month',

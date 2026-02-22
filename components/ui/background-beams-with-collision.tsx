@@ -12,6 +12,24 @@ export const BackgroundBeamsWithCollision = ({
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const parentRef = useRef<HTMLDivElement>(null);
+    const [hasMounted, setHasMounted] = useState(false);
+
+    useEffect(() => {
+        setHasMounted(true);
+    }, []);
+
+    if (!hasMounted) {
+        return (
+            <div
+                className={cn(
+                    "h-full bg-white dark:bg-black relative flex items-center w-full justify-center overflow-hidden",
+                    className
+                )}
+            >
+                {children}
+            </div>
+        );
+    }
 
     const beams = [
         { initialX: 10, translateX: 10, duration: 7, repeatDelay: 3, delay: 2 },

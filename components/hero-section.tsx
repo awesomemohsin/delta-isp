@@ -64,13 +64,31 @@ function FloatingDot({ className, delay = 0 }: { className?: string, delay?: num
 
 export function HeroSection() {
   const [index, setIndex] = useState(0)
+  const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!hasMounted) return
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % HEADLINE_PHRASES.length)
     }, 5000)
     return () => clearInterval(timer)
-  }, [])
+  }, [hasMounted])
+
+  if (!hasMounted) {
+    return (
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden py-10 px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto w-full text-center space-y-8">
+          <div className="h-10 w-64 bg-muted animate-pulse mx-auto rounded-2xl" />
+          <div className="h-20 w-full bg-muted animate-pulse rounded-2xl" />
+          <div className="h-16 w-full bg-muted animate-pulse rounded-2xl" />
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="relative min-h-[75vh] flex items-center overflow-hidden py-10 px-4 sm:px-6 lg:px-8">

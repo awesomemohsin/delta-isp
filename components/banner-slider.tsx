@@ -12,11 +12,27 @@ import { DESIGN_VERSION } from '@/lib/site-config'
 
 export function BannerSlider() {
     const [selectedIndex, setSelectedIndex] = useState(0)
+    const [hasMounted, setHasMounted] = useState(false)
     const intervalRef = useRef<NodeJS.Timeout>(null)
+
+    useEffect(() => {
+        setHasMounted(true)
+    }, [])
+
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: true,
         duration: 40,
     })
+
+    if (!hasMounted) {
+        return (
+            <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">
+                <div className="max-w-7xl mx-auto px-4 relative z-10">
+                    <div className="aspect-[21/9] md:aspect-video rounded-2xl bg-muted animate-pulse" />
+                </div>
+            </section>
+        )
+    }
 
     const onSelect = useCallback(() => {
         if (!emblaApi) return

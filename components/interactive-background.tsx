@@ -40,7 +40,14 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
         clickForce: 0
     })
 
+    const [hasMounted, setHasMounted] = React.useState(false)
+
     useEffect(() => {
+        setHasMounted(true)
+    }, [])
+
+    useEffect(() => {
+        if (!hasMounted) return
         const canvas = canvasRef.current
         if (!canvas) return
 

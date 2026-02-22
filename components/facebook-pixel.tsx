@@ -15,6 +15,10 @@ export function FacebookPixel() {
         }
     }, [pathname])
 
+    const pixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID
+
+    if (!pixelId) return null
+
     return (
         <>
             <Script
@@ -30,7 +34,7 @@ export function FacebookPixel() {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '886195874179351');
+            fbq('init', '${pixelId}');
             fbq('track', 'PageView');
           `,
                 }}
@@ -40,7 +44,7 @@ export function FacebookPixel() {
                     height="1"
                     width="1"
                     style={{ display: 'none' }}
-                    src="https://www.facebook.com/tr?id=886195874179351&ev=PageView&noscript=1"
+                    src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
                 />
             </noscript>
         </>

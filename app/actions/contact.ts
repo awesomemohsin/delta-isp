@@ -35,8 +35,12 @@ export async function sendContactEmail(data: ContactFormData) {
 
     try {
         // Send email
-        const senderEmail = process.env.SMTP_FROM_EMAIL || 'deltaisp2025@gmail.com'
-        const recipientEmail = process.env.SMTP_TO_EMAIL || 'deltaisp2025@gmail.com'
+        const senderEmail = process.env.SMTP_FROM_EMAIL
+        const recipientEmail = process.env.SMTP_TO_EMAIL
+
+        if (!senderEmail || !recipientEmail) {
+            throw new Error('SMTP_FROM_EMAIL or SMTP_TO_EMAIL is not configured in environment variables')
+        }
 
         await transporter.sendMail({
             from: `"Contact Form" <${senderEmail}>`,

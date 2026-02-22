@@ -35,11 +35,13 @@ export async function sendContactEmail(data: ContactFormData) {
 
     try {
         // Send email
-        const senderEmail = process.env.SMTP_FROM_EMAIL || 'mdmohsin.work@gmail.com'
+        const senderEmail = process.env.SMTP_FROM_EMAIL || 'deltaisp2025@gmail.com'
+        const recipientEmail = process.env.SMTP_TO_EMAIL || 'deltaisp2025@gmail.com'
+
         await transporter.sendMail({
             from: `"Contact Form" <${senderEmail}>`,
             replyTo: email,
-            to: 'mdmohsin.work@gmail.com',
+            to: recipientEmail,
             subject: `Delta Website contact: ${subject} (from ${name})`,
             text: `
 Name: ${name}

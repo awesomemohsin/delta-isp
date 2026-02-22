@@ -68,7 +68,7 @@ export const plans = [
     popular: true,
   },
   {
-    name: 'Delta Family',
+    name: 'Delta Family Package',
     speed: '50 Mbps',
     price: 840,
     period: '/month',
@@ -102,9 +102,6 @@ export const plans = [
       { name: '4k Streaming', included: true },
     ],
     cta: 'Get Started',
-    popular: true,
-    badgeText: "Best Seller",
-    badgeColor: "#eb262f",
   },
   {
     name: 'Delta Grand Family',

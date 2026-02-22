@@ -155,7 +155,7 @@ export function CTABanner() {
               {/* Trust Badge */}
               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#EA2630] rounded-full flex items-center justify-center p-6 text-white text-center shadow-2xl rotate-12 group hover:rotate-0 transition-transform hidden xl:flex">
                 <Shield className="w-16 h-16 opacity-20 absolute" />
-                <span className="text-[10px] font-black uppercase tracking-tight relative z-10 leading-tight">ISO CERTIFIED <br /> SECURITY</span>
+                <span className="text-[10px] font-black uppercase tracking-tight relative z-10 leading-tight">DELTA SECURE <br /> CERTIFIED</span>
               </div>
             </motion.div>
           </div>

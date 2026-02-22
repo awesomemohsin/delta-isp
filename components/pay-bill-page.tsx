@@ -141,10 +141,13 @@ export function PayBillContent() {
                                 </div>
 
                                 <Button
+                                    asChild
                                     className="w-full h-16 rounded-[1.25rem] font-bold text-lg bg-foreground text-background hover:bg-primary hover:text-white transition-all duration-300 shadow-xl shadow-primary/10"
                                 >
-                                    Proceed to Payment
-                                    <ArrowRight className="ml-2 h-5 w-5" />
+                                    <Link href="https://radius.yetfix.com/customer_login" target="_blank" rel="noopener noreferrer">
+                                        Proceed to Payment
+                                        <ArrowRight className="ml-2 h-5 w-5" />
+                                    </Link>
                                 </Button>
                             </div>
                         </motion.div>

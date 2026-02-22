@@ -24,16 +24,6 @@ export function BannerSlider() {
         duration: 40,
     })
 
-    if (!hasMounted) {
-        return (
-            <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">
-                <div className="max-w-7xl mx-auto px-4 relative z-10">
-                    <div className="aspect-[21/9] md:aspect-video rounded-2xl bg-muted animate-pulse" />
-                </div>
-            </section>
-        )
-    }
-
     const onSelect = useCallback(() => {
         if (!emblaApi) return
         setSelectedIndex(emblaApi.selectedScrollSnap())
@@ -82,6 +72,16 @@ export function BannerSlider() {
             resetAutoplay()
         }
     }, [emblaApi, resetAutoplay])
+
+    if (!hasMounted) {
+        return (
+            <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">
+                <div className="max-w-7xl mx-auto px-4 relative z-10">
+                    <div className="aspect-[21/9] md:aspect-video rounded-2xl bg-muted animate-pulse" />
+                </div>
+            </section>
+        )
+    }
 
     return (
         <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">

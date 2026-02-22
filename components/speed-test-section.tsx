@@ -220,7 +220,7 @@ export function SpeedTestSection() {
                                         initial={{ opacity: 0, y: 50, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                                        className="w-full max-w-6xl h-[550px] md:h-[650px] rounded-[3rem] overflow-hidden bg-white border-2 border-border flex flex-col shadow-2xl relative z-10"
+                                        className="w-full max-w-6xl h-[550px] md:h-[650px] rounded-[3rem] overflow-hidden bg-white border-2 border-border flex flex-col relative z-10"
                                     >
                                         <div className="flex items-center justify-between p-6 border-b border-border bg-muted/30 backdrop-blur-xl rounded-t-[3rem] z-20 relative">
                                             <div className="flex items-center gap-4">

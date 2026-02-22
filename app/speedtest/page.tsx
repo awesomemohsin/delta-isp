@@ -47,7 +47,7 @@ export default function SpeedTestPage() {
                 </div>
 
                 {/* Main Speedtest Section */}
-                <div className="bg-card/20 backdrop-blur-md rounded-[3rem] border border-border/50 overflow-hidden shadow-2xl shadow-primary/5">
+                <div className="bg-card/20 backdrop-blur-md rounded-[3rem] border border-border/50 overflow-hidden">
                     {/* Note: Reusing the component, but we'll show it prominently */}
                     <div className="md:block scale-100 py-12">
                         <SpeedTestSection />

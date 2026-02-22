@@ -215,12 +215,12 @@ export function SpeedTestSection() {
                                         initial={{ opacity: 0, y: 50, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                                        className="w-full max-w-6xl h-[600px] md:h-[800px] rounded-[3rem] overflow-hidden bg-black border-4 border-[#1a1a1a] flex flex-col shadow-2xl relative z-10"
+                                        className="w-full max-w-6xl h-[550px] md:h-[650px] rounded-[3rem] overflow-hidden bg-white border-2 border-border flex flex-col shadow-2xl relative z-10"
                                     >
-                                        <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/5 backdrop-blur-3xl rounded-t-[3rem] z-20 relative">
+                                        <div className="flex items-center justify-between p-6 border-b border-border bg-muted/30 backdrop-blur-xl rounded-t-[3rem] z-20 relative">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-                                                <span className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-white/60">
+                                                <span className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-muted-foreground/60">
                                                     Secure Terminal | v4.0.2
                                                 </span>
                                             </div>
@@ -234,36 +234,26 @@ export function SpeedTestSection() {
                                             </Button>
                                         </div>
 
-                                        <div className="flex-grow relative group/frame bg-black overflow-hidden">
-                                            {/* Masking Container (Disabled for direct view) */}
+                                        <div className="flex-grow relative group/frame bg-white overflow-hidden">
+                                            {/* Masking Container */}
                                             <div className="absolute inset-0">
-                                                {/* 
-                                                Previous framing settings (for reference):
                                                 <iframe
-                                                    src="http://www.speedtest.com.sg/speedtest/"
-                                                    className="w-[100%] h-[220%] border-none absolute -top-[65%] left-0"
-                                                    title="Official Speedtest.sg"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    scrolling="no"
-                                                />
-                                                */}
-                                                <iframe
-                                                    src="https://speedtest2.telecomclubbd.com/"
+                                                    src="https://speedtest2.telecomclubbd.com/?theme=light"
                                                     className="w-full h-full border-none"
                                                     title="Delta Speedtest"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                 />
                                             </div>
 
-                                            {/* CRT Scanline Overlay */}
-                                            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20 z-10" />
-                                            <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] z-10" />
+                                            {/* CRT Scanline Overlay - Lightened for Light Mode */}
+                                            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.05)_50%),linear-gradient(90deg,rgba(0,0,0,0.02),rgba(0,0,0,0.01),rgba(0,0,0,0.02))] bg-[length:100%_2px,3px_100%] opacity-10 z-10" />
+                                            <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_80px_rgba(255,255,255,0.2)] z-10" />
                                         </div>
 
                                         {/* Explainer Footer */}
-                                        <div className="p-4 bg-white/5 backdrop-blur-xl border-t border-white/5 text-center z-20 relative">
-                                            <p className="text-[10px] md:text-xs text-white/50 font-mono tracking-wider uppercase">
-                                                <span className="text-white/80 font-bold">Download/Upload:</span> Bandwidth Capacity • <span className="text-white/80 font-bold">Ping:</span> Server Latency • <span className="text-white/80 font-bold">Jitter:</span> Signal Stability
+                                        <div className="p-4 bg-muted/30 backdrop-blur-xl border-t border-border text-center z-20 relative">
+                                            <p className="text-[10px] md:text-xs text-muted-foreground font-mono tracking-wider uppercase">
+                                                <span className="text-foreground font-bold">Download/Upload:</span> Bandwidth Capacity • <span className="text-foreground font-bold">Ping:</span> Server Latency • <span className="text-foreground font-bold">Jitter:</span> Signal Stability
                                             </p>
                                         </div>
                                     </motion.div>

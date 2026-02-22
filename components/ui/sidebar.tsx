@@ -69,6 +69,11 @@ const SidebarProvider = React.forwardRef<
   ) => {
     const isMobile = useIsMobile()
     const [openMobile, setOpenMobile] = React.useState(false)
+    const [hasMounted, setHasMounted] = React.useState(false)
+
+    React.useEffect(() => {
+      setHasMounted(true)
+    }, [])
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
@@ -184,6 +189,11 @@ const Sidebar = React.forwardRef<
     ref,
   ) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+    const [hasMounted, setHasMounted] = React.useState(false)
+
+    React.useEffect(() => {
+      setHasMounted(true)
+    }, [])
 
     if (collapsible === 'none') {
       return (
@@ -200,7 +210,7 @@ const Sidebar = React.forwardRef<
       )
     }
 
-    if (isMobile) {
+    if (isMobile && hasMounted) {
       return (
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
           <SheetContent
@@ -622,7 +632,7 @@ const SidebarMenuAction = React.forwardRef<
         'peer-data-[size=lg]/menu-button:top-2.5',
         'group-data-[collapsible=icon]:hidden',
         showOnHover &&
-          'group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0',
+        'group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0',
         className,
       )}
       {...props}
@@ -658,10 +668,16 @@ const SidebarMenuSkeleton = React.forwardRef<
     showIcon?: boolean
   }
 >(({ className, showIcon = false, ...props }, ref) => {
+  const [hasMounted, setHasMounted] = React.useState(false)
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
   // Random width between 50 to 90%.
   const width = React.useMemo(() => {
+    if (!hasMounted) return "70%"
     return `${Math.floor(Math.random() * 40) + 50}%`
-  }, [])
+  }, [hasMounted])
 
   return (
     <div

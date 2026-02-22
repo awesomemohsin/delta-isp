@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -6,7 +7,13 @@ import { contactInfo, socialLinks } from '@/lib/homepage-data'
 import { DESIGN_VERSION } from '@/lib/site-config'
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const [hasMounted, setHasMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  const currentYear = hasMounted ? new Date().getFullYear() : "2026"
 
   const footerLinks = {
     'Company': [

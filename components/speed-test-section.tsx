@@ -45,10 +45,10 @@ export function SpeedTestSection() {
 
             <div className="max-w-7xl mx-auto">
                 <div className={`relative group overflow-hidden transition-all duration-700 ${isTesting
-                        ? 'p-0 bg-transparent border-none shadow-none'
-                        : `p-6 md:p-10 ${DESIGN_VERSION === 'hot'
-                            ? 'rounded-[2rem] border border-[#EA2630]/10 bg-card/40 backdrop-blur-xl shadow-lg'
-                            : 'rounded-[1.5rem] border border-border bg-card/20 backdrop-blur-lg'}`
+                    ? 'p-0 bg-transparent border-none shadow-none'
+                    : `p-6 md:p-10 ${DESIGN_VERSION === 'hot'
+                        ? 'rounded-[2rem] border border-[#EA2630]/10 bg-card/40 backdrop-blur-xl shadow-lg'
+                        : 'rounded-[1.5rem] border border-border bg-card/20 backdrop-blur-lg'}`
                     }`}>
 
                     {/* Background Texture & Gradients - Simplified */}
@@ -153,6 +153,7 @@ export function SpeedTestSection() {
                                             animate={{ rotate: 360 }}
                                             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                                             className={`absolute inset-0 rounded-full border border-dashed ${DESIGN_VERSION === 'hot' ? 'border-[#EA2630]/20' : 'border-primary/20'}`}
+                                            style={{ willChange: "transform" }}
                                         />
 
                                         {/* Counter Rotating Ring */}
@@ -160,6 +161,7 @@ export function SpeedTestSection() {
                                             animate={{ rotate: -360 }}
                                             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                                             className={`absolute inset-8 rounded-full border border-dotted ${DESIGN_VERSION === 'hot' ? 'border-[#0C58A4]/20' : 'border-secondary/20'}`}
+                                            style={{ willChange: "transform" }}
                                         />
 
                                         {/* Main Gauge SVG */}
@@ -180,6 +182,7 @@ export function SpeedTestSection() {
                                                 initial={{ pathLength: 0 }}
                                                 animate={{ pathLength: 0.75 }}
                                                 transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatType: "reverse" }}
+                                                style={{ willChange: "transform, stroke-dasharray, stroke-dashoffset" }}
                                             />
                                         </svg>
 

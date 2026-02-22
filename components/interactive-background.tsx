@@ -23,13 +23,13 @@ interface InteractiveBackgroundProps {
 }
 
 export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
-    particleCount = 150,
+    particleCount = 100,
     particleColor = 'rgba(100, 100, 255, 0.5)',
     lineColor = 'rgba(100, 100, 255, 0.2)',
-    connectionDistance = 150,
-    interactionRadius = 250,
-    speed = 0.6,
-    opacity = 0.6,
+    connectionDistance = 140,
+    interactionRadius = 220,
+    speed = 0.5,
+    opacity = 0.5,
     className,
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -120,14 +120,18 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
                 ctx.fillStyle = particleColor
                 ctx.fill()
 
-                // Connections
+                // Connections (Optimized)
+                const connectionDistanceSq = connectionDistance * connectionDistance
+                const lineBaseColor = lineColor.replace(/[\d.]+\)$/g, '')
+
                 for (let j = i + 1; j < points.length; j++) {
                     const p2 = points[j]
                     const dxLine = p.x - p2.x
                     const dyLine = p.y - p2.y
-                    const d = Math.sqrt(dxLine * dxLine + dyLine * dyLine)
+                    const dSq = dxLine * dxLine + dyLine * dyLine
 
-                    if (d < connectionDistance) {
+                    if (dSq < connectionDistanceSq) {
+                        const d = Math.sqrt(dSq)
                         ctx.beginPath()
                         ctx.moveTo(p.x, p.y)
                         ctx.lineTo(p2.x, p2.y)
@@ -137,7 +141,7 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
                         const alphaBase = (1 - d / connectionDistance)
                         const alpha = isNearMouse ? alphaBase * 0.6 : alphaBase * 0.25
 
-                        ctx.strokeStyle = lineColor.replace(/[\d.]+\)$/g, `${alpha})`)
+                        ctx.strokeStyle = `${lineBaseColor}${alpha})`
                         ctx.lineWidth = isNearMouse ? 1.2 : 0.8
                         ctx.stroke()
                     }

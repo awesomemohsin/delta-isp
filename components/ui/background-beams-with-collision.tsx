@@ -149,7 +149,7 @@ const CollisionMechanism = React.forwardRef<
             }
         };
 
-        const animationInterval = setInterval(checkCollision, 50);
+        const animationInterval = setInterval(checkCollision, 120);
 
         return () => clearInterval(animationInterval);
     }, [collision.detected, containerRef, parentRef]);
@@ -197,6 +197,7 @@ const CollisionMechanism = React.forwardRef<
                     "absolute left-0 top-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-primary via-primary/50 to-transparent",
                     beamOptions?.className
                 )}
+                style={{ willChange: "transform" }}
             />
             <AnimatePresence>
                 {collision.detected && collision.coordinates && (
@@ -217,7 +218,7 @@ const CollisionMechanism = React.forwardRef<
 CollisionMechanism.displayName = "CollisionMechanism";
 
 const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
-    const spans = Array.from({ length: 20 }, (_, i) => i);
+    const spans = Array.from({ length: 12 }, (_, i) => i);
 
     return (
         <div {...props} className={cn("absolute z-50 h-2 w-2", props.className)}>

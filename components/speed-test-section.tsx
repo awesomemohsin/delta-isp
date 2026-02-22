@@ -44,9 +44,11 @@ export function SpeedTestSection() {
             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full blur-[160px] -z-10 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/5' : 'bg-primary/5'}`} />
 
             <div className="max-w-7xl mx-auto">
-                <div className={`relative group overflow-hidden p-6 md:p-10 transition-all duration-700 ${DESIGN_VERSION === 'hot'
-                    ? 'rounded-[2rem] border border-[#EA2630]/10 bg-card/40 backdrop-blur-xl shadow-lg'
-                    : 'rounded-[1.5rem] border border-border bg-card/20 backdrop-blur-lg'
+                <div className={`relative group overflow-hidden transition-all duration-700 ${isTesting
+                        ? 'p-0 bg-transparent border-none shadow-none'
+                        : `p-6 md:p-10 ${DESIGN_VERSION === 'hot'
+                            ? 'rounded-[2rem] border border-[#EA2630]/10 bg-card/40 backdrop-blur-xl shadow-lg'
+                            : 'rounded-[1.5rem] border border-border bg-card/20 backdrop-blur-lg'}`
                     }`}>
 
                     {/* Background Texture & Gradients - Simplified */}

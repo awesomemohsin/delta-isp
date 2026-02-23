@@ -324,8 +324,7 @@ export function AboutPageContent() {
               }`}>
               {/* Image Left */}
               <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] overflow-hidden rounded-t-[3rem] md:rounded-l-[3rem] md:rounded-tr-none">
-                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover group-hover:rotate-1 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
+                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover transition-transform duration-1000" />
               </div>
 
               {/* Content Right */}
@@ -351,8 +350,7 @@ export function AboutPageContent() {
               }`}>
               {/* Image Right */}
               <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] overflow-hidden rounded-t-[3rem] md:rounded-r-[3rem] md:rounded-tl-none">
-                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover group-hover:-rotate-1 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
+                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover transition-transform duration-1000" />
               </div>
 
               {/* Content Left */}

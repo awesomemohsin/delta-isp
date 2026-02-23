@@ -200,7 +200,7 @@ export function ServicesPageContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: 'Public Real IP',
+                title: 'Real IP',
                 desc: 'Dedicated Real IP for hosting, gaming, or remote access.',
                 price: '৳300/month per IP',
                 icon: <Building2 className="w-5 h-5 text-primary" />,

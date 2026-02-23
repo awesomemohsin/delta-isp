@@ -295,7 +295,7 @@ export default function FAQPage() {
                         </div>
 
                         {/* Contact Interaction Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full h-full max-w-6xl">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-full max-w-5xl mx-auto">
                             {[
                                 {
                                     icon: MessageCircle,
@@ -320,15 +320,7 @@ export default function FAQPage() {
                                     href: 'https://www.facebook.com/profile.php?id=61568434629601',
                                     color: 'bg-[#0C58A4]/20 text-[#0C58A4] group-hover:bg-[#0C58A4] group-hover:text-white',
                                     glow: 'group-hover:shadow-[#0C58A4]/50'
-                                },
-                                {
-                                    icon: MapPin,
-                                    label: 'Location',
-                                    sub: 'HQ Visit',
-                                    href: '/contact',
-                                    color: 'bg-white/10 text-white group-hover:bg-white group-hover:text-black',
-                                    glow: 'group-hover:shadow-white/50'
-                                },
+                                }
                             ].map((item, i) => (
                                 <motion.a
                                     key={i}

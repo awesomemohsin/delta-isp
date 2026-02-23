@@ -37,19 +37,19 @@ export function Footer() {
 
           {/* 1. Brand Section */}
           <div className="lg:col-span-5 space-y-4">
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex flex-col items-center justify-center gap-4 group">
               <Image
                 src="/images/delta-logo.svg"
                 alt="Delta Logo"
                 width={90}
                 height={90}
-                className="h-16 w-auto object-contain transition-transform group-hover:scale-110 duration-500"
+                className="h-20 w-auto object-contain transition-transform group-hover:scale-110 duration-500"
               />
-              <span className={`font-black text-xl leading-[1.1] tracking-tighter uppercase ${DESIGN_VERSION === 'hot'
+              <span className={`font-black text-xl leading-[1.2] tracking-tighter uppercase text-center ${DESIGN_VERSION === 'hot'
                 ? 'text-foreground'
                 : 'text-foreground'
                 }`}>
-                Delta Software & <br /> Communication Ltd
+                Delta Software & <br /> Communication LIMITED
               </span>
             </Link>
             <p className="text-xs font-medium text-muted-foreground leading-relaxed max-w-sm">
@@ -140,7 +140,7 @@ export function Footer() {
             {/* Copyright */}
             {/* Copyright */}
             <p className="text-xs font-bold text-[#999A9B] tracking-tight pl-2 text-center md:text-left">
-              &copy; {currentYear} Delta Software & Communication Ltd. All rights reserved.
+              &copy; {currentYear} Delta Software & Communication LIMITED. All rights reserved.
             </p>
           </div>
         </div>

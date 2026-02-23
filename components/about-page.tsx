@@ -316,44 +316,60 @@ export function AboutPageContent() {
             <p className="text-muted-foreground max-w-2xl mx-auto font-medium">Guiding Delta Internet towards a connected future with vision and dedication.</p>
           </div>
 
-          <div className="flex flex-col gap-12 lg:gap-16 max-w-6xl mx-auto">
+          <div className="flex flex-col gap-16 lg:gap-24 max-w-6xl mx-auto">
             {/* Chairman */}
-            <div className={`group relative overflow-hidden flex flex-col md:flex-row items-stretch p-0 transition-all duration-700 ${DESIGN_VERSION === 'hot'
-              ? 'rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 to-transparent border border-[#0C58A4]/10 hover:border-[#0C58A4]/30 hover:shadow-2xl hover:shadow-[#0C58A4]/10'
+            <div className={`group relative flex flex-col md:flex-row items-stretch transition-all duration-700 ${DESIGN_VERSION === 'hot'
+              ? 'rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 via-transparent to-transparent border border-[#0C58A4]/20 hover:border-[#0C58A4]/40 hover:bg-[#0C58A4]/5'
               : 'rounded-3xl bg-card border border-border'
               }`}>
               {/* Image Left */}
-              <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] overflow-hidden">
-                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/20 md:to-background" />
+              <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] overflow-hidden rounded-t-[3rem] md:rounded-l-[3rem] md:rounded-tr-none">
+                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover group-hover:scale-110 group-hover:rotate-1 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/90 md:to-background pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
               </div>
 
               {/* Content Right */}
-              <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black mb-2 tracking-tight group-hover:text-[#0C58A4] transition-colors">Demo Name</h3>
-                <p className="text-sm font-black uppercase tracking-[0.3em] text-[#EA2630] mb-6">Chairman</p>
-                <div className="w-12 h-1 bg-[#0C58A4]/30 rounded-full mb-6 group-hover:w-24 group-hover:bg-[#0C58A4] transition-all duration-500" />
-                <p className="text-muted-foreground leading-relaxed font-medium md:text-lg">Leading with a visionary approach, focusing on nationwide digital inclusion and technological advancement. Committed to steering Delta Internet towards a future where seamless connectivity empowers every citizen.</p>
+              <div className="w-full md:w-1/2 p-10 md:p-14 lg:p-20 flex flex-col justify-center relative">
+                {/* Decorative Element */}
+                <div className="absolute top-10 right-10 opacity-5 group-hover:opacity-10 group-hover:rotate-12 transition-all duration-700">
+                  <Award size={100} className="text-[#0C58A4]" />
+                </div>
+
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 tracking-tighter group-hover:text-[#0C58A4] transition-colors duration-500">Demo Name</h3>
+                <p className="text-sm md:text-base font-black uppercase tracking-[0.4em] text-[#EA2630] mb-8">Chairman</p>
+                <div className="w-16 h-1.5 bg-gradient-to-r from-[#0C58A4] to-transparent rounded-full mb-8 group-hover:w-full transition-all duration-700 ease-in-out opacity-70 group-hover:opacity-100" />
+                <p className="text-muted-foreground leading-relaxed font-medium text-lg md:text-xl relative z-10 opacity-90 group-hover:opacity-100 transition-opacity">
+                  Leading with a visionary approach, focusing on nationwide digital inclusion and technological advancement. Committed to steering Delta Internet towards a future where seamless connectivity empowers every citizen.
+                </p>
               </div>
             </div>
 
             {/* Managing Director */}
-            <div className={`group relative overflow-hidden flex flex-col md:flex-row-reverse items-stretch p-0 transition-all duration-700 ${DESIGN_VERSION === 'hot'
-              ? 'rounded-[3rem] bg-gradient-to-br from-[#EA2630]/5 to-transparent border border-[#EA2630]/10 hover:border-[#EA2630]/30 hover:shadow-2xl hover:shadow-[#EA2630]/10'
+            <div className={`group relative flex flex-col md:flex-row-reverse items-stretch transition-all duration-700 ${DESIGN_VERSION === 'hot'
+              ? 'rounded-[3rem] bg-gradient-to-bl from-[#EA2630]/5 via-transparent to-transparent border border-[#EA2630]/20 hover:border-[#EA2630]/40 hover:bg-[#EA2630]/5'
               : 'rounded-3xl bg-card border border-border'
               }`}>
               {/* Image Right */}
-              <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] overflow-hidden">
-                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background/20 md:to-background" />
+              <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] overflow-hidden rounded-t-[3rem] md:rounded-r-[3rem] md:rounded-tl-none">
+                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover group-hover:scale-110 group-hover:-rotate-1 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/90 md:to-background pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
               </div>
 
               {/* Content Left */}
-              <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-left md:text-right">
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black mb-2 tracking-tight group-hover:text-[#EA2630] transition-colors">Md Benzir Rashed Khan</h3>
-                <p className="text-sm font-black uppercase tracking-[0.3em] text-[#0C58A4] mb-6">Managing Director</p>
-                <div className="w-12 h-1 bg-[#EA2630]/30 rounded-full mb-6 md:ml-auto group-hover:w-24 group-hover:bg-[#EA2630] transition-all duration-500" />
-                <p className="text-muted-foreground leading-relaxed font-medium md:text-lg">Driving operational excellence and executing strategies to ensure Delta remains the most reliable ISP in Bangladesh. Focused on innovation, customer satisfaction, and building a robust national infrastructure.</p>
+              <div className="w-full md:w-1/2 p-10 md:p-14 lg:p-20 flex flex-col justify-center text-left md:text-right relative">
+                {/* Decorative Element */}
+                <div className="absolute top-10 left-10 md:right-10 md:left-auto opacity-5 group-hover:opacity-10 group-hover:-rotate-12 transition-all duration-700">
+                  <Award size={100} className="text-[#EA2630]" />
+                </div>
+
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 tracking-tighter group-hover:text-[#EA2630] transition-colors duration-500 text-balance">Md Benzir Rashed Khan</h3>
+                <p className="text-sm md:text-base font-black uppercase tracking-[0.4em] text-[#0C58A4] mb-8">Managing Director</p>
+                <div className="w-16 h-1.5 bg-gradient-to-l from-[#EA2630] to-transparent rounded-full mb-8 md:ml-auto group-hover:w-full transition-all duration-700 ease-in-out opacity-70 group-hover:opacity-100" />
+                <p className="text-muted-foreground leading-relaxed font-medium text-lg md:text-xl relative z-10 opacity-90 group-hover:opacity-100 transition-opacity text-balance">
+                  Driving operational excellence and executing strategies to ensure Delta remains the most reliable ISP in Bangladesh. Focused on innovation, customer satisfaction, and building a robust national infrastructure.
+                </p>
               </div>
             </div>
           </div>

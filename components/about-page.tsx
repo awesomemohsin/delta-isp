@@ -347,11 +347,11 @@ export function AboutPageContent() {
 
         {/* Departments Section */}
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8 }}
-           viewport={{ once: true }}
-           className="mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-24"
         >
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-4">Our Teams</h2>
@@ -359,7 +359,7 @@ export function AboutPageContent() {
             <p className="text-muted-foreground max-w-2xl mx-auto font-medium">The dedicated professionals working tirelessly behind the scenes.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 gap-12 lg:gap-16">
             {[
               { name: 'Sales Team', desc: 'Connecting customers with the right broadband solutions.', img: '/images/demo-sales.webp', color: 'from-[#0C58A4]/90' },
               { name: 'Marketing Team', desc: 'Spreading the word and building the Delta brand.', img: '/images/marketing.webp', color: 'from-[#EA2630]/90' },
@@ -373,19 +373,19 @@ export function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className={`group relative h-80 overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[2.5rem] shadow-xl shadow-black/5' : 'rounded-3xl border border-border bg-card'}`}
+                className={`group relative h-[400px] md:h-[500px] w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem] shadow-2xl shadow-black/10' : 'rounded-3xl border border-border bg-card'}`}
               >
                 <div className="absolute inset-0 w-full h-full bg-muted/20">
                   <Image src={dept.img} alt={dept.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                 </div>
                 {/* Gradient Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-t ${dept.color} via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500`} />
-                
+
                 {/* Content */}
                 <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end h-full">
-                   <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{dept.name}</h3>
-                   <div className="h-1 w-12 bg-white/30 rounded-full mb-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100" />
-                   <p className="text-white/90 font-medium text-sm translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150 leading-relaxed">{dept.desc}</p>
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{dept.name}</h3>
+                  <div className="h-1 w-12 bg-white/30 rounded-full mb-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100" />
+                  <p className="text-white/90 font-medium text-sm translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150 leading-relaxed">{dept.desc}</p>
                 </div>
               </motion.div>
             ))}

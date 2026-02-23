@@ -303,61 +303,91 @@ export function AboutPageContent() {
           </motion.div>
         </motion.div>
 
-        {/* Team Section */}
+        {/* Top Leadership Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className={`p-10 mb-16 border relative overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3.5rem] bg-card/20 border-[#0C58A4]/10 shadow-inner' : 'rounded-3xl bg-card border-border'
-            }`}
+          className="mb-24"
         >
-          {/* Subtle bg glow */}
-          {DESIGN_VERSION === 'hot' && (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#0C58A4]/1 cursor-none pointer-events-none blur-[100px]" />
-          )}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-4">Leadership</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-medium">Guiding Delta Internet towards a connected future with vision and dedication.</p>
+          </div>
 
-          <h2 className="text-2xl md:text-3xl font-black text-center mb-8 tracking-tight">Our Leadership</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto relative z-10">
-            {[
-              {
-                name: 'Md Benzir Rashed Khan',
-                role: 'Managing Director',
-                dept: 'Leadership',
-                image: '/images/md.webp'
-              },
-              {
-                name: 'Md Kawcher Ahmed',
-                role: 'Marketing Head',
-                dept: 'Marketing',
-                image: '/images/marketing.webp'
-              },
-            ].map((member) => (
-              <div
-                key={member.name}
-                className={`p-10 transition-all hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] group flex flex-col md:flex-row items-center gap-10 ${DESIGN_VERSION === 'hot'
-                  ? 'rounded-[3.5rem] border border-white/5 bg-background/40 backdrop-blur-md hover:border-[#EA2630]/20'
-                  : 'rounded-3xl border border-border bg-background'
-                  }`}
-              >
-                <div className={`relative flex-shrink-0 overflow-hidden transition-all duration-700 ${DESIGN_VERSION === 'hot'
-                  ? 'w-48 h-48 rounded-[2.5rem] ring-8 ring-primary/5 group-hover:ring-primary/10 group-hover:scale-105'
-                  : 'w-40 h-40 rounded-full'
-                  }`}>
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover transition-transform duration-700"
-                  />
-                </div>
-                <div className="text-center md:text-left">
-                  <h3 className="text-2xl lg:text-3xl font-black tracking-tighter mb-2">{member.name}</h3>
-                  <p className={`font-black uppercase tracking-[0.2em] text-sm mb-4 ${DESIGN_VERSION === 'hot' ? 'text-[#EA2630]' : 'text-primary'}`}>{member.role}</p>
-                  <p className="text-sm text-muted-foreground font-medium uppercase tracking-widest opacity-60">Department: {member.dept}</p>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+            {/* Chairman */}
+            <div className={`group relative overflow-hidden flex flex-col items-center text-center p-8 md:p-12 transition-all duration-700 ${DESIGN_VERSION === 'hot'
+              ? 'rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 to-transparent border border-[#0C58A4]/10 hover:border-[#0C58A4]/30 hover:shadow-2xl hover:shadow-[#0C58A4]/10'
+              : 'rounded-3xl bg-card border border-border'
+              }`}>
+              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-8 relative ring-4 ring-offset-4 ring-[#0C58A4]/20 group-hover:ring-[#0C58A4] transition-all duration-700">
+                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
               </div>
+              <h3 className="text-3xl md:text-4xl font-black mb-2 tracking-tight group-hover:text-[#0C58A4] transition-colors">Demo Name</h3>
+              <p className="text-sm font-black uppercase tracking-[0.3em] text-[#EA2630] mb-6">Chairman</p>
+              <p className="text-muted-foreground leading-relaxed font-medium">Leading with a visionary approach, focusing on nationwide digital inclusion and technological advancement.</p>
+            </div>
+
+            {/* Managing Director */}
+            <div className={`group relative overflow-hidden flex flex-col items-center text-center p-8 md:p-12 transition-all duration-700 ${DESIGN_VERSION === 'hot'
+              ? 'rounded-[3rem] bg-gradient-to-br from-[#EA2630]/5 to-transparent border border-[#EA2630]/10 hover:border-[#EA2630]/30 hover:shadow-2xl hover:shadow-[#EA2630]/10'
+              : 'rounded-3xl bg-card border border-border'
+              }`}>
+              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-8 relative ring-4 ring-offset-4 ring-[#EA2630]/20 group-hover:ring-[#EA2630] transition-all duration-700">
+                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-black mb-2 tracking-tight group-hover:text-[#EA2630] transition-colors">Md Benzir Rashed Khan</h3>
+              <p className="text-sm font-black uppercase tracking-[0.3em] text-[#0C58A4] mb-6">Managing Director</p>
+              <p className="text-muted-foreground leading-relaxed font-medium">Driving operational excellence and executing strategies to ensure Delta remains the most reliable ISP in Bangladesh.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Departments Section */}
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.8 }}
+           viewport={{ once: true }}
+           className="mb-24"
+        >
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-4">Our Teams</h2>
+            <div className={`h-1 w-20 mx-auto rounded-full mb-6 ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]' : 'bg-primary'}`} />
+            <p className="text-muted-foreground max-w-2xl mx-auto font-medium">The dedicated professionals working tirelessly behind the scenes.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {[
+              { name: 'Sales Team', desc: 'Connecting customers with the right broadband solutions.', img: '/images/demo-sales.webp', color: 'from-[#0C58A4]/90' },
+              { name: 'Marketing Team', desc: 'Spreading the word and building the Delta brand.', img: '/images/marketing.webp', color: 'from-[#EA2630]/90' },
+              { name: 'Support & NOC', desc: '24/7 network monitoring and dedicated customer assistance.', img: '/images/demo-support.webp', color: 'from-[#000000]/90' },
+              { name: 'HR & Admin', desc: 'Nurturing talent and ensuring smooth company operations.', img: '/images/demo-hr.webp', color: 'from-[#0C58A4]/90' },
+              { name: 'Fiber / Transmission', desc: 'Building and maintaining our robust nationwide network infrastructure.', img: '/images/demo-fiber.webp', color: 'from-[#EA2630]/90' },
+            ].map((dept, i) => (
+              <motion.div
+                key={dept.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className={`group relative h-80 overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[2.5rem] shadow-xl shadow-black/5' : 'rounded-3xl border border-border bg-card'}`}
+              >
+                <div className="absolute inset-0 w-full h-full bg-muted/20">
+                  <Image src={dept.img} alt={dept.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                </div>
+                {/* Gradient Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-t ${dept.color} via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500`} />
+                
+                {/* Content */}
+                <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end h-full">
+                   <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{dept.name}</h3>
+                   <div className="h-1 w-12 bg-white/30 rounded-full mb-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100" />
+                   <p className="text-white/90 font-medium text-sm translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150 leading-relaxed">{dept.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

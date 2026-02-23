@@ -316,31 +316,45 @@ export function AboutPageContent() {
             <p className="text-muted-foreground max-w-2xl mx-auto font-medium">Guiding Delta Internet towards a connected future with vision and dedication.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          <div className="flex flex-col gap-12 lg:gap-16 max-w-6xl mx-auto">
             {/* Chairman */}
-            <div className={`group relative overflow-hidden flex flex-col items-center text-center p-8 md:p-12 transition-all duration-700 ${DESIGN_VERSION === 'hot'
+            <div className={`group relative overflow-hidden flex flex-col md:flex-row items-stretch p-0 transition-all duration-700 ${DESIGN_VERSION === 'hot'
               ? 'rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 to-transparent border border-[#0C58A4]/10 hover:border-[#0C58A4]/30 hover:shadow-2xl hover:shadow-[#0C58A4]/10'
               : 'rounded-3xl bg-card border border-border'
               }`}>
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-8 relative ring-4 ring-offset-4 ring-[#0C58A4]/20 group-hover:ring-[#0C58A4] transition-all duration-700">
-                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+              {/* Image Left */}
+              <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] overflow-hidden">
+                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/20 md:to-background" />
               </div>
-              <h3 className="text-3xl md:text-4xl font-black mb-2 tracking-tight group-hover:text-[#0C58A4] transition-colors">Demo Name</h3>
-              <p className="text-sm font-black uppercase tracking-[0.3em] text-[#EA2630] mb-6">Chairman</p>
-              <p className="text-muted-foreground leading-relaxed font-medium">Leading with a visionary approach, focusing on nationwide digital inclusion and technological advancement.</p>
+
+              {/* Content Right */}
+              <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black mb-2 tracking-tight group-hover:text-[#0C58A4] transition-colors">Demo Name</h3>
+                <p className="text-sm font-black uppercase tracking-[0.3em] text-[#EA2630] mb-6">Chairman</p>
+                <div className="w-12 h-1 bg-[#0C58A4]/30 rounded-full mb-6 group-hover:w-24 group-hover:bg-[#0C58A4] transition-all duration-500" />
+                <p className="text-muted-foreground leading-relaxed font-medium md:text-lg">Leading with a visionary approach, focusing on nationwide digital inclusion and technological advancement. Committed to steering Delta Internet towards a future where seamless connectivity empowers every citizen.</p>
+              </div>
             </div>
 
             {/* Managing Director */}
-            <div className={`group relative overflow-hidden flex flex-col items-center text-center p-8 md:p-12 transition-all duration-700 ${DESIGN_VERSION === 'hot'
+            <div className={`group relative overflow-hidden flex flex-col md:flex-row-reverse items-stretch p-0 transition-all duration-700 ${DESIGN_VERSION === 'hot'
               ? 'rounded-[3rem] bg-gradient-to-br from-[#EA2630]/5 to-transparent border border-[#EA2630]/10 hover:border-[#EA2630]/30 hover:shadow-2xl hover:shadow-[#EA2630]/10'
               : 'rounded-3xl bg-card border border-border'
               }`}>
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-8 relative ring-4 ring-offset-4 ring-[#EA2630]/20 group-hover:ring-[#EA2630] transition-all duration-700">
-                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+              {/* Image Right */}
+              <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] overflow-hidden">
+                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background/20 md:to-background" />
               </div>
-              <h3 className="text-3xl md:text-4xl font-black mb-2 tracking-tight group-hover:text-[#EA2630] transition-colors">Md Benzir Rashed Khan</h3>
-              <p className="text-sm font-black uppercase tracking-[0.3em] text-[#0C58A4] mb-6">Managing Director</p>
-              <p className="text-muted-foreground leading-relaxed font-medium">Driving operational excellence and executing strategies to ensure Delta remains the most reliable ISP in Bangladesh.</p>
+
+              {/* Content Left */}
+              <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-left md:text-right">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black mb-2 tracking-tight group-hover:text-[#EA2630] transition-colors">Md Benzir Rashed Khan</h3>
+                <p className="text-sm font-black uppercase tracking-[0.3em] text-[#0C58A4] mb-6">Managing Director</p>
+                <div className="w-12 h-1 bg-[#EA2630]/30 rounded-full mb-6 md:ml-auto group-hover:w-24 group-hover:bg-[#EA2630] transition-all duration-500" />
+                <p className="text-muted-foreground leading-relaxed font-medium md:text-lg">Driving operational excellence and executing strategies to ensure Delta remains the most reliable ISP in Bangladesh. Focused on innovation, customer satisfaction, and building a robust national infrastructure.</p>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -373,7 +387,7 @@ export function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className={`group relative h-[400px] md:h-[500px] w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem] shadow-2xl shadow-black/10' : 'rounded-3xl border border-border bg-card'}`}
+                className={`group relative h-[400px] md:h-[600px] xl:h-[800px] w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem] shadow-2xl shadow-black/10' : 'rounded-3xl border border-border bg-card'}`}
               >
                 <div className="absolute inset-0 w-full h-full bg-muted/20">
                   <Image src={dept.img} alt={dept.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />

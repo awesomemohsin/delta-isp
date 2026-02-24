@@ -90,26 +90,22 @@ function StatCard({ value, label, index }: { value: string, label: string, index
     <motion.div
       ref={ref}
       variants={itemVariants}
-      whileHover={{ y: -8, scale: 1.02 }}
-      className={`p-10 transition-all duration-500 text-center flex flex-col items-center justify-center relative overflow-hidden group ${DESIGN_VERSION === 'hot'
-        ? 'rounded-[3rem] border-2 border-[#0C58A4]/20 bg-card/40 backdrop-blur-xl shadow-2xl hover:border-[#EA2630]/40 dark:border-white/10 dark:hover:border-[#EA2630]/60'
+      whileHover={{ y: -10, scale: 1.05 }}
+      className={`p-8 md:p-12 transition-all duration-700 text-center flex flex-col items-center justify-center relative overflow-hidden group ${DESIGN_VERSION === 'hot'
+        ? 'rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-br from-background/80 to-background/40 backdrop-blur-2xl border border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(12,88,164,0.1)] hover:border-[#0C58A4]/30'
         : 'rounded-2xl border border-border bg-card'
         }`}
     >
-      {/* Dynamic Background Elements for Hot Theme */}
+      {/* Background glow on hover */}
       {DESIGN_VERSION === 'hot' && (
-        <>
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#EA2630]/30 to-transparent group-hover:via-[#EA2630] transition-all duration-500" />
-          <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-[#0C58A4]/10 rounded-full blur-3xl group-hover:bg-[#0C58A4]/20 transition-colors duration-700" />
-          <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#EA2630]/10 rounded-full blur-3xl group-hover:bg-[#EA2630]/20 transition-colors duration-700" />
-        </>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C58A4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       )}
 
-      <div className={`text-4xl md:text-5xl font-black mb-3 tracking-tighter transition-all group-hover:scale-110 ${DESIGN_VERSION === 'hot' ? 'text-[#0C58A4] drop-shadow-[0_2px_10px_rgba(12,88,164,0.15)]' : 'text-primary'
+      <div className={`text-5xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 tracking-tighter transition-all duration-500 group-hover:scale-110 ${DESIGN_VERSION === 'hot' ? 'text-[#0C58A4] group-hover:text-[#EA2630]' : 'text-primary'
         }`}>
         {displayValue}
       </div>
-      <div className="text-[8px] md:text-[9px] text-muted-foreground uppercase tracking-[0.4em] font-black opacity-60 group-hover:opacity-100 group-hover:text-[#EA2630] transition-all">
+      <div className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-[0.3em] font-black group-hover:text-foreground transition-all duration-500">
         {label}
       </div>
     </motion.div>
@@ -120,42 +116,50 @@ export function AboutPageContent() {
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EA2630]/10 border border-[#EA2630]/20 text-[#EA2630] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-            <Zap size={14} /> Our Journey
+        {/* Dynamic Hero Section */}
+        <div className="relative mb-32 pt-10 md:pt-20 pb-20 md:pb-32">
+          {/* Abstract glowing background blobs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 flex items-center justify-center">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0C58A4]/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }} />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#EA2630]/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '5s' }} />
           </div>
-          <h1 className="flex flex-col items-center gap-2 mb-6 uppercase text-balance">
-            <span className="text-2xl md:text-5xl font-black tracking-tighter opacity-80">About</span>
-            <span className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] ${DESIGN_VERSION === 'hot'
-              ? "text-[#0C58A4]"
-              : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-              }`}>
-              Delta Software & Communication Ltd
-            </span>
-          </h1>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto text-balance font-medium leading-relaxed opacity-80 mb-12">
-            Pioneering the next generation of connectivity with innovative solutions and an unwavering commitment to reliability across Bangladesh.
-          </p>
-        </motion.div>
 
-        {/* Stats Section with Cards and Animation */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-32"
-        >
-          {stats.map((stat, index) => (
-            <StatCard key={stat.label} value={stat.value} label={stat.label} index={index} />
-          ))}
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="text-center max-w-5xl mx-auto px-4"
+          >
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-background/50 backdrop-blur-md border border-border shadow-sm text-foreground text-[11px] font-black uppercase tracking-[0.3em] mb-8">
+              <span className="w-2 h-2 rounded-full bg-[#EA2630] animate-ping" />
+              Our Journey
+            </div>
+
+            <h1 className="text-balance leading-[1.1] mb-8 uppercase">
+              <span className="block text-xl md:text-3xl font-black tracking-widest text-[#EA2630] mb-4">Discover</span>
+              <span className={`block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter ${DESIGN_VERSION === 'hot' ? 'text-[#0C58A4]' : 'bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'}`}>
+                Delta Internet
+              </span>
+            </h1>
+
+            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto font-medium leading-relaxed mb-16 text-balance opacity-90">
+              Pioneering the next generation of connectivity with innovative solutions and an unwavering commitment to reliability across Bangladesh. Experience the absolute best in high-speed digital infrastructure.
+            </p>
+          </motion.div>
+
+          {/* Stats Section */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto relative z-10 px-4 mt-8"
+          >
+            {stats.map((stat, index) => (
+              <StatCard key={stat.label} value={stat.value} label={stat.label} index={index} />
+            ))}
+          </motion.div>
+        </div>
 
         {/* Detailed Brand Story Section */}
         <div className="mb-32">

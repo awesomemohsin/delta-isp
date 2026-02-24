@@ -36,16 +36,16 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
 
           {/* 1. Brand Section */}
-          <div className="lg:col-span-5 space-y-4">
-            <Link href="/" className="flex flex-col items-center justify-center gap-4 group">
+          <div className="lg:col-span-5 space-y-4 flex flex-col justify-center">
+            <Link href="/" className="flex items-center gap-4 group">
               <Image
                 src="/images/delta-logo.svg"
                 alt="Delta Logo"
-                width={90}
-                height={90}
-                className="h-20 w-auto object-contain transition-transform group-hover:scale-110 duration-500"
+                width={80}
+                height={80}
+                className="h-16 w-auto object-contain transition-transform group-hover:scale-110 duration-500"
               />
-              <span className={`font-black text-xl leading-[1.2] tracking-tighter uppercase text-center ${DESIGN_VERSION === 'hot'
+              <span className={`font-black text-xl md:text-2xl leading-[1.1] tracking-tighter uppercase ${DESIGN_VERSION === 'hot'
                 ? 'text-foreground'
                 : 'text-foreground'
                 }`}>

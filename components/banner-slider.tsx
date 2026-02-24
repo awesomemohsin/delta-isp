@@ -86,7 +86,7 @@ export function BannerSlider() {
     return (
         <section className="relative w-full overflow-hidden bg-transparent py-2 md:py-4">
             <div className="max-w-7xl mx-auto px-4 relative group z-10">
-                <div className={`embla overflow-hidden transition-all duration-700 ${DESIGN_VERSION === 'hot' ? 'rounded-[2.5rem] border-2 border-[#EA2630]/20 shadow-[0_40px_80px_-20px_rgba(12,88,164,0.4)]' : 'rounded-2xl border border-border'}`} ref={emblaRef}>
+                <div className={`embla overflow-hidden transition-all duration-700 ${DESIGN_VERSION === 'hot' ? 'rounded-[2.5rem] border-2 border-[#EA2630]/20' : 'rounded-2xl border border-border'}`} ref={emblaRef}>
                     <div className="embla__container flex">
                         {banners.map((src, index) => (
                             <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 relative aspect-[21/9] md:aspect-video overflow-hidden">

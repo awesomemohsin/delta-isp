@@ -97,18 +97,18 @@ export function CTABanner() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="/contact" className="w-full sm:w-auto">
-                  <Button className={`h-14 px-8 rounded-xl font-black text-base transition-all shadow-xl relative overflow-hidden group/btn w-full ${DESIGN_VERSION === 'hot'
-                    ? "bg-[#0C58A4] hover:bg-[#084175] text-white hover:shadow-[#0C58A4]/50"
-                    : "bg-gradient-to-r from-primary to-secondary hover:shadow-primary/50"
-                    }`}>
+                <Button asChild className={`h-14 px-8 rounded-xl font-black text-base transition-all shadow-xl relative overflow-hidden group/btn w-full sm:w-auto ${DESIGN_VERSION === 'hot'
+                  ? "bg-[#0C58A4] hover:bg-[#084175] text-white hover:shadow-[#0C58A4]/50"
+                  : "bg-gradient-to-r from-primary to-secondary hover:shadow-primary/50"
+                  }`}>
+                  <Link href="/contact">
                     <span className="relative z-10 flex items-center gap-2">
                       APPLY FOR NEW CONNECTION
                       <Zap className="h-5 w-5 group-hover/btn:rotate-12 transition-transform" />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
                 <a href={`tel:${contactInfo.phoneRaw}`} className="w-full sm:w-auto block">
                   <Button asChild variant="outline" className="h-14 px-8 rounded-xl border-2 border-[#EA2630] text-[#EA2630] hover:bg-[#EA2630] hover:text-white font-black text-base bg-transparent transition-all shadow-lg group/phone w-full">
                     <span>

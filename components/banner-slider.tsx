@@ -106,7 +106,6 @@ export function BannerSlider() {
                                 </motion.div>
                                 {DESIGN_VERSION === 'hot' && (
                                     <>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
                                         <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
                                     </>
                                 )}

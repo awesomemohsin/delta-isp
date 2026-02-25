@@ -21,7 +21,6 @@ export const plans = [
     currency: '৳',
     features: [
       { name: '20 Mbps Speed', included: true },
-      { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
       { name: 'Real IP (+৳300/mo)', included: false },
@@ -39,12 +38,11 @@ export const plans = [
     currency: '৳',
     features: [
       { name: '30 Mbps Speed', included: true },
-      { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
       { name: 'Real IP (+৳300/mo)', included: false },
       { name: 'BDIX Connected', included: true },
-      { name: '4k Streaming', included: true },
+      { name: '4k Streaming', included: false },
     ],
     cta: 'Get Started',
   },
@@ -57,12 +55,11 @@ export const plans = [
     currency: '৳',
     features: [
       { name: '40 Mbps Speed', included: true },
-      { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
-      { name: 'Real IP (+৳300/mo)', included: false },
+      { name: 'Real IP (+৳300/mo)', included: true },
       { name: 'BDIX Connected', included: true },
-      { name: '4k Streaming', included: true },
+      { name: '4k Streaming', included: false },
     ],
     cta: 'Get Started',
     popular: true,
@@ -76,7 +73,6 @@ export const plans = [
     currency: '৳',
     features: [
       { name: '50 Mbps Speed', included: true },
-      { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
       { name: 'Real IP (+৳300/mo)', included: true },
@@ -97,7 +93,6 @@ export const plans = [
     currency: '৳',
     features: [
       { name: '60 Mbps Speed', included: true },
-      { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
       { name: 'Real IP (+৳300/mo)', included: true },
@@ -115,7 +110,6 @@ export const plans = [
     currency: '৳',
     features: [
       { name: '80 Mbps Speed', included: true },
-      { name: 'Unlimited Data', included: true },
       { name: '24/7 Support', included: true },
       { name: 'Fiber Optic', included: true },
       { name: 'Real IP (+৳300/mo)', included: true },
@@ -136,7 +130,6 @@ export const plans = [
     currency: '৳',
     features: [
       { name: 'Custom Speed', included: true },
-      { name: 'Unlimited Data', included: true },
       { name: 'Priority Support', included: true },
       { name: 'SLA Guarantee', included: true },
       { name: 'Dedicated Manager', included: true },
@@ -377,15 +370,14 @@ export function PricingPage() {
               <tbody>
                 {[
                   { label: 'Internet', icon: <Download className="w-4 h-4 text-primary" />, values: ['20 Mbps', '30 Mbps', '40 Mbps', '50 Mbps', '60 Mbps', '80 Mbps', 'Custom'] },
-                  { label: 'Unlimited Data', values: [true, true, true, true, true, true, true] },
-                  { label: 'GGC', values: [true, true, true, true, true, true, true] },
+                  { label: 'Facebook', values: ['Bufferless Video', 'Bufferless Video', 'Bufferless Video', 'Bufferless Video & Streaming', 'Bufferless Video & Streaming', 'Bufferless Video & Streaming', 'Bufferless Video & 4K Streaming'] },
+                  { label: 'Youtube', values: ['Bufferless HD Video', 'Bufferless HD Video', 'Bufferless HD Video', 'Bufferless 4K Video', 'Bufferless 4K Video', 'Bufferless 4K Video', 'Bufferless 8K Video'] },
                   { label: 'BDIX Speed', values: ['50 Mbps', '50 Mbps', '100 Mbps', '100 Mbps', '100 Mbps', '100 Mbps', '10 Gbps'] },
-                  { label: '24/7 Support', values: [true, true, true, true, true, true, true] },
-                  { label: 'Real IP (+৳300/mo)', values: [false, false, false, true, true, true, true] },
+                  { label: 'Tiktok', values: ['Bufferless Video', 'Bufferless Video', 'Bufferless Video', 'Bufferless HD Video', 'Bufferless HD Video', 'Bufferless HD Video', 'Bufferless 4K Video'] },
+                  { label: '24/7 Online Support', values: [true, true, true, true, true, true, '24/7 & First Restore'] },
+                  { label: 'Real IP 300MRC', values: [false, false, 'IPv6', 'IPv6', 'IPv6', 'IPv6', 'IPv4 & IPv6'] },
                   { label: 'Installation', values: ['৳1000', '৳1000', '৳500', '৳500', '৳500', '৳500', 'Custom'] },
-                  { label: 'Bufferless YT', values: [true, true, true, true, true, true, true] },
                   { label: 'Gaming Ping', values: ['Standard', 'Standard', 'Better', 'Good', 'Best', 'Best', 'Ultra Low'] },
-                  { label: 'SLA Guarantee', values: [false, false, false, false, false, false, '99.9%'] },
                 ].map((row, idx) => (
                   <tr key={row.label} className={`border-b border-border ${idx % 2 === 0 ? 'bg-card/30' : ''}`}>
                     <td className="py-4 px-4 font-medium text-sm">

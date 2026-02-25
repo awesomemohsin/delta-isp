@@ -66,7 +66,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       variants={itemVariants}
       className="group h-full perspective-1000 w-full md:w-[calc(50%-1rem)] lg:w-[320px]"
     >
-      <Link href={service.href}>
+      <Link href={service.href} className="block h-full w-full">
         <motion.div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -175,19 +175,20 @@ export function ServicesOverview() {
           viewport={{ once: true }}
           className="text-center mt-20"
         >
-          <Link href="/services">
-            <Button
-              variant="outline"
-              size="lg"
-              className={`h-12 px-8 rounded-xl font-black uppercase tracking-widest transition-all text-xs ${DESIGN_VERSION === 'hot'
-                ? "border-2 border-[#0C58A4] text-[#0C58A4] hover:bg-[#0C58A4] hover:text-white shadow-xl hover:shadow-[#0C58A4]/20 hover:-translate-y-1"
-                : "border-primary/50 hover:bg-primary/10 bg-transparent"
-                }`}
-            >
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className={`h-12 px-8 rounded-xl font-black uppercase tracking-widest transition-all text-xs ${DESIGN_VERSION === 'hot'
+              ? "border-2 border-[#0C58A4] text-[#0C58A4] hover:bg-[#0C58A4] hover:text-white shadow-xl hover:shadow-[#0C58A4]/20 hover:-translate-y-1"
+              : "border-primary/50 hover:bg-primary/10 bg-transparent"
+              }`}
+          >
+            <Link href="/services">
               Discover All Services
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

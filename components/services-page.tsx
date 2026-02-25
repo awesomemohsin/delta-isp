@@ -138,17 +138,18 @@ export function ServicesPageContent() {
                       ))}
                     </ul>
 
-                    <Link href={idx < 2 ? "/packages" : "/contact"}>
-                      <Button
-                        className={`transition-all ${DESIGN_VERSION === 'hot'
-                          ? 'h-14 px-8 rounded-2xl bg-[#0C58A4] hover:bg-[#0C58A4]/90 shadow-lg shadow-[#0C58A4]/20'
-                          : 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
-                          }`}
-                      >
+                    <Button
+                      asChild
+                      className={`transition-all ${DESIGN_VERSION === 'hot'
+                        ? 'h-14 px-8 rounded-2xl bg-[#0C58A4] hover:bg-[#0C58A4]/90 shadow-lg shadow-[#0C58A4]/20'
+                        : 'bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50'
+                        }`}
+                    >
+                      <Link href={idx < 2 ? "/packages" : "/contact"}>
                         {idx < 2 ? "Explore Packages" : "Learn More & Contact"}
                         <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
+                      </Link>
+                    </Button>
                   </motion.div>
                 </div>
 
@@ -257,12 +258,12 @@ export function ServicesPageContent() {
           <p className="text-muted-foreground mb-8">
             Contact our sales team to find the perfect service solution for your needs.
           </p>
-          <Link href="/contact">
-            <Button className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 transition-all px-8 py-6">
+          <Button asChild className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 transition-all px-8 py-6">
+            <Link href="/contact">
               Get In Touch
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </div>

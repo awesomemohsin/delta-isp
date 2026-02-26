@@ -10,6 +10,7 @@ import { GetConnectedDialog } from '@/components/get-connected-dialog'
 import { DESIGN_VERSION } from '@/lib/site-config'
 import { usePathname } from 'next/navigation'
 
+// Professional Navbar implementation with responsive design
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()

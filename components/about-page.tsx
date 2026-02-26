@@ -145,6 +145,7 @@ function StatCard({ value, label, index }: { value: string, label: string, index
   )
 }
 
+
 export function AboutPageContent() {
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent">

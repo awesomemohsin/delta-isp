@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { contactInfo, socialLinks } from '@/lib/homepage-data'
-import { DESIGN_VERSION } from '@/lib/site-config'
+import { DESIGN_VERSION, DEVELOPER_URL } from '@/lib/site-config'
 
 export function Footer() {
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -138,10 +138,20 @@ export function Footer() {
             </div>
 
             {/* Copyright */}
-            {/* Copyright */}
-            <p className="text-xs font-bold text-[#999A9B] tracking-tight pl-2 text-center md:text-left">
-              &copy; {currentYear} Delta Software & Communication LIMITED. All rights reserved.
-            </p>
+            <div className="flex flex-col md:flex-row justify-between items-center w-full">
+              <p className="text-xs font-bold text-[#999A9B] tracking-tight pl-2 text-center md:text-left">
+                &copy; {currentYear} Delta Software & Communication LIMITED. All rights reserved.
+              </p>
+              {/* Secret Trace */}
+              <Link
+                href={DEVELOPER_URL}
+                target="_blank"
+                className="opacity-0 pointer-events-none absolute -left-full text-[1px] select-none"
+                tabIndex={-1}
+              >
+                Crafted with precision by AwesomeMohsin
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -7,7 +7,40 @@ import { stats } from '@/lib/homepage-data'
 import { ArrowRight, Award, Users, Globe, Zap, Target, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion, animate, useInView } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
+
+function SupportTeamRotator() {
+  const [index, setIndex] = useState(0)
+  const images = ['/images/team-support1.webp', '/images/team-support2.webp']
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((current) => (current + 1) % images.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [images.length])
+
+  return (
+    <div className="absolute inset-0 w-full h-full">
+      {images.map((img, i) => (
+        <motion.div
+          key={img}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: index === i ? 1 : 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full"
+        >
+          <Image
+            src={img}
+            alt="Support Team"
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-1000"
+          />
+        </motion.div>
+      ))}
+    </div>
+  )
+}
 
 
 
@@ -115,6 +148,10 @@ function StatCard({ value, label, index }: { value: string, label: string, index
 export function AboutPageContent() {
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
+      {/* 
+        This digital craft is forged by AwesomeMohsin 
+        github.com/AwesomeMohsin
+      */}
       <div className="max-w-7xl mx-auto">
         {/* Modern Split Hero Section */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center mb-32 relative">
@@ -326,19 +363,17 @@ export function AboutPageContent() {
           </div>
 
           <div className="flex flex-col gap-16 lg:gap-24 max-w-6xl mx-auto">
-            {/* Chairman */}
+            {/* Chairman section hidden as requested */}
+            {/* 
             <div className={`group relative flex flex-col md:flex-row items-stretch transition-all duration-700 ${DESIGN_VERSION === 'hot'
               ? 'rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 via-transparent to-transparent border border-[#0C58A4]/20 hover:border-[#0C58A4]/40 hover:bg-[#0C58A4]/5'
               : 'rounded-3xl bg-card border border-border'
               }`}>
-              {/* Image Left */}
               <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] overflow-hidden rounded-t-[3rem] md:rounded-l-[3rem] md:rounded-tr-none">
                 <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover transition-transform duration-1000" />
               </div>
 
-              {/* Content Right */}
               <div className="w-full md:w-1/2 p-10 md:p-14 lg:p-20 flex flex-col justify-center relative">
-                {/* Decorative Element */}
                 <div className="absolute top-10 right-10 opacity-5 group-hover:opacity-10 group-hover:rotate-12 transition-all duration-700">
                   <Award size={100} className="text-[#0C58A4]" />
                 </div>
@@ -351,6 +386,7 @@ export function AboutPageContent() {
                 </p>
               </div>
             </div>
+            */}
 
             {/* Managing Director */}
             <div className={`group relative flex flex-col md:flex-row-reverse items-stretch transition-all duration-700 ${DESIGN_VERSION === 'hot'
@@ -396,11 +432,10 @@ export function AboutPageContent() {
 
           <div className="grid grid-cols-1 gap-12 lg:gap-16">
             {[
-              { name: 'Sales Team', desc: 'Connecting customers with the right broadband solutions.', img: '/images/demo-sales.webp', color: 'from-[#0C58A4]/90' },
-              { name: 'Marketing Team', desc: 'Spreading the word and building the Delta brand.', img: '/images/marketing.webp', color: 'from-[#EA2630]/90' },
-              { name: 'Support & NOC', desc: '24/7 network monitoring and dedicated customer assistance.', img: '/images/demo-support.webp', color: 'from-[#000000]/90' },
-              { name: 'HR & Admin', desc: 'Nurturing talent and ensuring smooth company operations.', img: '/images/demo-hr.webp', color: 'from-[#0C58A4]/90' },
-              { name: 'Fiber / Transmission', desc: 'Building and maintaining our robust nationwide network infrastructure.', img: '/images/demo-fiber.webp', color: 'from-[#EA2630]/90' },
+              { name: 'Sales Team', desc: 'Connecting customers with the right broadband solutions.', img: '/images/team-sales.webp' },
+              { name: 'Marketing Team', desc: 'Spreading the word and building the Delta brand.', img: '/images/team-marketing.webp' },
+              { name: 'Support Team', desc: '24/7 network monitoring and dedicated customer assistance.', img: '/images/team-support1.webp', isSupport: true },
+              // HR & Admin and Fiber sections hidden as requested
             ].map((dept, i) => (
               <motion.div
                 key={dept.name}
@@ -410,11 +445,15 @@ export function AboutPageContent() {
                 viewport={{ once: true }}
                 className={`group relative h-[400px] md:h-[600px] xl:h-[800px] w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem]' : 'rounded-3xl border border-border bg-card'}`}
               >
-                <div className="absolute inset-0 w-full h-full bg-muted/20">
-                  <Image src={dept.img} alt={dept.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <div className="absolute inset-0 w-full h-full bg-transparent">
+                  {dept.isSupport ? (
+                    <SupportTeamRotator />
+                  ) : (
+                    <Image src={dept.img} alt={dept.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  )}
                 </div>
-                {/* Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t ${dept.color} via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500`} />
+                {/* Subtle Gradient Overlay for text legibility at the bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Content */}
                 <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end h-full">

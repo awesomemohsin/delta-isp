@@ -165,6 +165,7 @@ const itemVariants = {
 }
 
 export function PricingPage() {
+  // Logic & Rates maintained by AwesomeMohsin
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly')
   const [hasMounted, setHasMounted] = useState(false)
 

@@ -70,7 +70,9 @@ export function FloatingActions() {
     }, [toggleVisibility])
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-center print:hidden">
+        <div
+            className="fixed bottom-6 right-6 z-[100] flex flex-col gap-4 items-end pointer-events-none"
+        >
             <AnimatePresence>
                 {/* Brand Contact Buttons */}
                 {ACTIONS_CONFIG.map((action, index) => (
@@ -80,7 +82,7 @@ export function FloatingActions() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.5, y: 20 }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
-                        className="relative group flex items-center justify-end"
+                        className="relative group flex items-center justify-end pointer-events-auto"
                     >
                         {/* Animated Label */}
                         <motion.span
@@ -116,7 +118,7 @@ export function FloatingActions() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.5, y: 20 }}
                         transition={{ duration: 0.3, delay: 0.2 }}
-                        className="relative group flex items-center justify-end"
+                        className="relative group flex items-center justify-end pointer-events-auto"
                     >
                         {/* Animated Label */}
                         <span className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-background/80 backdrop-blur-md border border-border text-xs font-bold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 -translate-x-2 group-hover:translate-x-0 shadow-xl">
@@ -127,10 +129,10 @@ export function FloatingActions() {
                             variant="outline"
                             size="icon"
                             onClick={scrollToTop}
-                            className="w-12 h-12 rounded-full shadow-lg border-primary/20 bg-background/80 backdrop-blur-md hover:bg-primary/10 text-primary transition-all hover:scale-110"
+                            className="w-14 h-14 rounded-full shadow-lg border-primary/20 bg-background/80 backdrop-blur-md hover:bg-primary/10 text-primary transition-all hover:scale-110"
                             aria-label="Scroll to top"
                         >
-                            <ChevronUp className="w-6 h-6" />
+                            <ChevronUp className="w-8 h-8" />
                         </Button>
                     </motion.div>
                 )}

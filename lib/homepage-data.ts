@@ -1,3 +1,7 @@
+/**
+ * Delta Homepage Content Data
+ * Curated & Structured by AwesomeMohsin
+ */
 import { Wifi, Building2, Zap, Shield, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
 
 export const banners = [
@@ -8,12 +12,14 @@ export const banners = [
     '/images/banner5.webp',
     '/images/banner6.webp',
     '/images/banner7.webp',
+    '/images/banner8.webp',
 ]
 
 export const services = [
     {
         icon: Wifi,
         title: 'Home Internet',
+        image: '/images/home.webp',
         description: 'Blazing-fast speeds perfect for streaming, gaming, and working from home with no data caps.',
         href: '/services#home-internet',
         color: 'from-[#0C58A4] to-[#0C58A4]/60',
@@ -22,6 +28,7 @@ export const services = [
     {
         icon: Building2,
         title: 'Corporate Internet',
+        image: '/images/corporate.webp',
         description: 'Enterprise-grade connectivity with dedicated bandwidth and SLA guarantees for businesses.',
         href: '/services#corporate-internet',
         color: 'from-[#EA2630] to-[#EA2630]/60',
@@ -30,6 +37,7 @@ export const services = [
     {
         icon: Zap,
         title: 'Dedicated Bandwidth',
+        image: '/images/dedicated.webp',
         description: 'Guaranteed speeds with priority support. Perfect for bandwidth-heavy applications.',
         href: '/services#dedicated-bandwidth',
         color: 'from-[#000000] to-[#000000]/60',

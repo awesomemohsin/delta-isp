@@ -14,6 +14,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
+  // Dev Trace: [AwesomeMohsin] - Architect of Connectivity
+
   const links = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },

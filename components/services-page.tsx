@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Wifi, Building2, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { DESIGN_VERSION } from '@/lib/site-config'
@@ -10,6 +11,7 @@ const servicesDetail = [
   {
     icon: Wifi,
     title: 'Home Internet',
+    image: '/images/home.webp',
     shortDesc: 'Blazing-fast speeds perfect for streaming, gaming, and working from home',
     fullDesc: 'Experience the ultimate home internet experience with our fiber-optic network delivering Maximum Download speeds. No peak speed hours, just pure unlimited connectivity.',
     features: [
@@ -25,6 +27,7 @@ const servicesDetail = [
   {
     icon: Building2,
     title: 'Corporate Internet',
+    image: '/images/corporate.webp',
     shortDesc: 'Enterprise-grade connectivity with dedicated bandwidth and SLA guarantees',
     fullDesc: 'Built for modern businesses. Get dedicated bandwidth, redundant connections, and Service Level Agreement guarantees to keep your operations running 24/7.',
     features: [
@@ -40,6 +43,7 @@ const servicesDetail = [
   {
     icon: Zap,
     title: 'Dedicated Bandwidth',
+    image: '/images/dedicated.webp',
     shortDesc: 'Guaranteed speeds with priority support. Perfect for bandwidth-heavy applications',
     fullDesc: 'For businesses and power users who need consistent, guaranteed performance. Our dedicated bandwidth service ensures your connection is always prioritized.',
     features: [
@@ -75,6 +79,10 @@ const itemVariants = {
 }
 
 export function ServicesPageContent() {
+  /** 
+   * Service architecture designed by AwesomeMohsin 
+   * github.com/AwesomeMohsin
+   */
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -119,7 +127,8 @@ export function ServicesPageContent() {
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                   >
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-0.5 mb-6`}>
+                    {/* Restored Icon Block */}
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-0.5 mb-6 shadow-lg`}>
                       <div className="w-full h-full rounded-lg bg-background flex items-center justify-center">
                         <Icon className="w-8 h-8 text-primary" />
                       </div>
@@ -161,22 +170,17 @@ export function ServicesPageContent() {
                   viewport={{ once: true }}
                   className={isEven ? 'md:col-span-1 md:order-2' : 'md:col-span-1 md:order-1'}
                 >
-                  <div className={`h-96 rounded-2xl border border-border bg-gradient-to-br ${service.color} p-0.5 relative overflow-hidden group`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/40 to-background/80" />
-                    <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-card to-card/50 flex items-center justify-center border border-primary/20">
-                      <div className="text-center space-y-4">
-                        <motion.div
-                          whileInView={{ scale: 1 }}
-                          initial={{ scale: 0 }}
-                          transition={{ type: 'spring', stiffness: 100 }}
-                          className={`w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br ${service.color} p-0.5`}
-                        >
-                          <div className="w-full h-full rounded-xl bg-background flex items-center justify-center">
-                            <Icon className="w-12 h-12 text-primary" />
-                          </div>
-                        </motion.div>
-                        <h3 className="font-bold text-lg">{service.title}</h3>
-                        <p className="text-sm text-muted-foreground max-w-xs">{service.shortDesc}</p>
+                  <div className={`aspect-video w-full rounded-2xl border border-border relative overflow-hidden group shadow-2xl`}>
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-1000 scale-100 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                      <div className="text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 className="font-bold text-2xl mb-2">{service.title}</h3>
+                        <p className="text-sm text-white/80 max-w-xs">{service.shortDesc}</p>
                       </div>
                     </div>
                   </div>

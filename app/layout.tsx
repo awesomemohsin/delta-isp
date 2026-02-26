@@ -6,6 +6,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { FloatingActions } from '@/components/floating-actions'
 import { FacebookPixel } from '@/components/facebook-pixel'
+import { DevTrace } from '@/components/dev-trace'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-space-mono' })
@@ -17,6 +18,8 @@ export const metadata: Metadata = {
   },
   description: 'Premium internet service provider offering fast, reliable, and unlimited internet for home and business.',
   metadataBase: new URL('https://deltaisp.com'),
+  creator: 'AwesomeMohsin',
+  authors: [{ name: 'AwesomeMohsin', url: 'https://github.com/AwesomeMohsin' }],
   icons: {
     icon: '/images/delta-logo.svg',
   },
@@ -44,9 +47,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* 
+        Tracing the digital architect: AwesomeMohsin 
+        Constructing the backbone of Delta Internet.
+      */}
       <body className={`${inter.variable} ${spaceMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
+          <DevTrace />
           <FacebookPixel />
           <FloatingActions />
         </ThemeProvider>

@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
@@ -64,9 +65,9 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   return (
     <motion.div
       variants={itemVariants}
-      className="group h-full perspective-1000 w-full md:w-[calc(50%-1rem)] lg:w-[320px]"
+      className="group flex perspective-1000 w-full md:w-[calc(50%-1rem)] lg:w-[320px]"
     >
-      <Link href={service.href} className="block h-full w-full">
+      <Link href={service.href} className="flex flex-col flex-1 w-full">
         <motion.div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -80,7 +81,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
               boxShadow: `0 20px 40px -20px ${service.hotColor}20`
             } : {})
           } as any}
-          className={`h-full p-5 transition-all duration-500 relative flex flex-col overflow-hidden ${DESIGN_VERSION === 'hot'
+          className={`flex-1 p-5 transition-all duration-500 relative flex flex-col overflow-hidden ${DESIGN_VERSION === 'hot'
             ? `rounded-[1.5rem] border-t-4 backdrop-blur-md bg-card/60 shadow-xl hover:shadow-2xl`
             : 'rounded-xl border border-border bg-card'
             }`}
@@ -108,7 +109,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           </div>
 
           {/* Content */}
-          <div className="relative z-10" style={{ transform: "translateZ(30px)" }}>
+          <div className="relative z-10 flex-grow flex flex-col" style={{ transform: "translateZ(30px)" }}>
             <h3 className="text-lg font-bold mb-2 tracking-tight group-hover:text-[#0C58A4] transition-colors">{service.title}</h3>
             <p className="text-xs text-muted-foreground mb-6 flex-grow leading-relaxed">{service.description}</p>
           </div>
@@ -160,7 +161,7 @@ export function ServicesOverview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-6"
+          className="flex flex-wrap justify-center gap-6 items-stretch"
         >
           {services.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />

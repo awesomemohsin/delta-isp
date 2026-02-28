@@ -231,10 +231,10 @@ export function PricingPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 mb-12"
         >
-          {plans.map((plan, index) => {
-            const displayPrice = billingPeriod === 'yearly' && !plan.isEnterprise
+          {plans.filter(p => !p.isEnterprise).map((plan) => {
+            const displayPrice = billingPeriod === 'yearly'
               ? Math.floor(plan.price * 12 * 0.9)
               : plan.price
 
@@ -243,7 +243,7 @@ export function PricingPage() {
                 key={plan.name}
                 variants={itemVariants}
                 whileHover={DESIGN_VERSION === 'hot' ? { y: -8, scale: 1.03 } : { y: -8 }}
-                className={`relative h-full transition-all duration-300 flex flex-col ${index === 6 ? 'lg:col-start-2 md:col-span-2 lg:col-span-1 max-w-md mx-auto w-full' : ''} ${DESIGN_VERSION === 'hot'
+                className={`relative h-full transition-all duration-300 flex flex-col ${DESIGN_VERSION === 'hot'
                   ? `rounded-[2rem] border-t-4 backdrop-blur-md ${plan.popular
                     ? 'border-t-[#EA2630] border-x border-b border-[#EA2630]/20 bg-card/80 shadow-[0_20px_40px_-15px_rgba(234,38,48,0.15)] md:scale-105'
                     : 'border-t-[#0C58A4] border-x border-b border-border bg-card/60 hover:shadow-[0_20px_40px_-15px_rgba(12,88,164,0.15)]'
@@ -273,21 +273,15 @@ export function PricingPage() {
                   <div className="mb-8">
                     <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                     <div className="text-primary font-bold mb-2 text-xl md:text-2xl">{plan.speed}</div>
-                    <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
+                    <p className="text-sm text-muted-foreground mb-6 line-clamp-2">{plan.description}</p>
                     <div className="flex items-baseline gap-1">
-                      {plan.isEnterprise ? (
-                        <span className="text-3xl font-bold">Contact Sales</span>
-                      ) : (
-                        <>
-                          <span className="text-5xl font-black flex items-baseline gap-[-0.1em]">
-                            <span className="text-4xl md:text-5xl tracking-tight">৳</span>
-                            {displayPrice}
-                          </span>
-                          <span className="text-muted-foreground text-sm">{billingPeriod === 'yearly' ? '/year' : '/month'}</span>
-                        </>
-                      )}
+                      <span className="text-5xl font-black flex items-baseline gap-[-0.1em]">
+                        <span className="text-4xl md:text-5xl tracking-tight">৳</span>
+                        {displayPrice}
+                      </span>
+                      <span className="text-muted-foreground text-sm">{billingPeriod === 'yearly' ? '/year' : '/month'}</span>
                     </div>
-                    {billingPeriod === 'yearly' && !plan.isEnterprise && (
+                    {billingPeriod === 'yearly' && (
                       <p className="text-xs text-secondary mt-2 flex items-center gap-1.5 font-medium">
                         <span className="line-through opacity-50">৳{plan.price}</span>
                         <span className="text-secondary font-bold">৳{Math.floor(displayPrice / 12)}/month</span>
@@ -348,6 +342,88 @@ export function PricingPage() {
             )
           })}
         </motion.div>
+
+        {/* Enterprise Horizontal Plan */}
+        {plans.find(p => p.isEnterprise) && (() => {
+          const plan = plans.find(p => p.isEnterprise)!
+          return (
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ y: -4 }}
+              className={`relative overflow-hidden transition-all duration-500 mb-16 ${DESIGN_VERSION === 'hot'
+                ? 'rounded-[2.5rem] border border-[#0C58A4]/20 bg-card/60 backdrop-blur-xl shadow-[0_20px_40px_-15px_rgba(12,88,164,0.1)]'
+                : 'rounded-3xl border border-primary/20 bg-gradient-to-r from-primary/5 via-background to-secondary/5'
+                }`}
+            >
+              {/* Decorative Background Elements */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none" />
+
+              <div className="relative p-8 md:p-12 flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+                {/* Left side: Branding & Title */}
+                <div className="w-full lg:w-1/3 text-center lg:text-left">
+                  <Badge
+                    className="mb-6 px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#0C58A4] text-white shadow-lg"
+                  >
+                    {plan.badgeText || 'For Business'}
+                  </Badge>
+                  <h3 className="text-3xl md:text-4xl font-black mb-3 text-balance capitalize tracking-tight">
+                    {plan.name}
+                  </h3>
+                  <div className="text-primary font-black mb-4 text-2xl tracking-tight uppercase">Dedicated Solutions</div>
+                  <p className="text-muted-foreground font-medium text-balance max-w-sm mx-auto lg:mx-0">
+                    {plan.description}
+                  </p>
+                </div>
+
+                {/* Middle: Features Grid */}
+                <div className="w-full lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                  {plan.features.map((feature, i) => (
+                    <motion.div
+                      key={feature.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-3 group/item"
+                    >
+                      <div className={`p-1.5 rounded-full ${DESIGN_VERSION === 'hot' ? 'bg-[#0C58A4]/10' : 'bg-primary/10'}`}>
+                        <Check className={`w-3.5 h-3.5 ${DESIGN_VERSION === 'hot' ? 'text-[#0C58A4]' : 'text-primary'}`} />
+                      </div>
+                      <span className="text-sm font-bold text-foreground/80 group-hover/item:text-primary transition-colors">
+                        {feature.name}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Right side: CTA */}
+                <div className="w-full lg:w-1/4 flex flex-col items-center lg:items-end gap-4">
+                  <div className="text-center lg:text-right">
+                    <div className="text-3xl md:text-4xl font-black tracking-tighter mb-1 uppercase">Custom Pricing</div>
+                    <p className="text-xs font-black uppercase tracking-widest text-muted-foreground opacity-60">SLA Guaranteed</p>
+                  </div>
+                  <Button
+                    asChild
+                    size="lg"
+                    className={`w-full sm:w-auto px-10 h-14 rounded-2xl text-base font-black transition-all duration-300 shadow-xl ${DESIGN_VERSION === 'hot'
+                      ? 'bg-[#0C58A4] hover:bg-[#EA2630] text-white hover:shadow-[#EA2630]/30'
+                      : 'bg-gradient-to-r from-primary to-secondary hover:shadow-primary/40'
+                      }`}
+                  >
+                    <Link href="/contact">
+                      {plan.cta}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          )
+        })()}
 
         {/* Feature Comparison Table */}
         <motion.div

@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { FloatingActions } from '@/components/floating-actions'
 import { FacebookPixel } from '@/components/facebook-pixel'
 import { DevTrace } from '@/components/dev-trace'
+import { TooltipProvider } from '@/components/ui/tooltip'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-space-mono' })
@@ -54,10 +55,12 @@ export default function RootLayout({
       */}
       <body className={`${inter.variable} ${spaceMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          {children}
-          <DevTrace />
-          <FacebookPixel />
-          <FloatingActions />
+          <TooltipProvider>
+            {children}
+            <DevTrace />
+            <FacebookPixel />
+            <FloatingActions />
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

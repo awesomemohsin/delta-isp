@@ -7,8 +7,13 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
 import { GetConnectedDialog } from '@/components/get-connected-dialog'
-import { DESIGN_VERSION } from '@/lib/site-config'
+import { DESIGN_VERSION, DEVELOPER_URL } from '@/lib/site-config'
 import { usePathname } from 'next/navigation'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 
 // Professional Navbar implementation with responsive design
 export function Navbar() {
@@ -36,16 +41,30 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-12 md:h-14">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <Image
-              src="/images/delta-logo.svg"
-              alt="Delta Internet"
-              width={320}
-              height={64}
-              className={`h-10 md:h-16 w-auto object-contain transition-transform duration-500 ${DESIGN_VERSION === 'hot' ? 'group-hover:scale-105' : 'group-hover:scale-105'}`}
-              priority
-            />
-          </Link>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href="/" className="flex items-center group">
+                <Image
+                  src="/images/delta-logo.svg"
+                  alt="Delta Internet"
+                  width={320}
+                  height={64}
+                  className={`h-10 md:h-16 w-auto object-contain transition-transform duration-500 ${DESIGN_VERSION === 'hot' ? 'group-hover:scale-105' : 'group-hover:scale-105'}`}
+                  priority
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" className="text-xs font-black p-3 bg-background border-primary/20 shadow-xl">
+              <div className="flex flex-col gap-1">
+                <span className="text-foreground uppercase tracking-tight text-sm">
+                  Delta Software & Communication LIMITED
+                </span>
+                <span className="text-muted-foreground font-medium text-[10px] italic border-t border-border/50 pt-1">
+                  - Reliable Connectivity. Proven Performance.
+                </span>
+              </div>
+            </TooltipContent>
+          </Tooltip>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-4">

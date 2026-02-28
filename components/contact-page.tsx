@@ -38,12 +38,14 @@ const contactCards = [
     title: 'Call Us',
     content: centralizedContactInfo.phone,
     desc: 'Available 24/7 for support',
+    href: `tel:${centralizedContactInfo.phoneRaw}`,
   },
   {
     icon: Mail,
     title: 'Email Us',
     content: centralizedContactInfo.email,
     desc: 'Response within 2 hours',
+    href: `mailto:${centralizedContactInfo.email}`,
   },
   {
     icon: MapPin,
@@ -138,6 +140,21 @@ export function ContactPageContent() {
           >
             {contactCards.map((info) => {
               const Icon = info.icon
+              const CardContent = (
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary p-0.5 flex-shrink-0">
+                    <div className="w-full h-full rounded-md bg-background flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">{info.title}</h3>
+                    <p className="font-medium text-primary text-sm mb-1">{info.content}</p>
+                    <p className="text-xs text-muted-foreground">{info.desc}</p>
+                  </div>
+                </div>
+              )
+
               return (
                 <motion.div
                   key={info.title}
@@ -145,18 +162,13 @@ export function ContactPageContent() {
                   whileHover={{ x: 4 }}
                   className="p-6 rounded-xl border border-border bg-card hover:bg-card/80 transition-all"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary p-0.5 flex-shrink-0">
-                      <div className="w-full h-full rounded-md bg-background flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">{info.title}</h3>
-                      <p className="font-medium text-primary text-sm mb-1">{info.content}</p>
-                      <p className="text-xs text-muted-foreground">{info.desc}</p>
-                    </div>
-                  </div>
+                  {info.href ? (
+                    <a href={info.href} className="block hover:opacity-80 transition-opacity">
+                      {CardContent}
+                    </a>
+                  ) : (
+                    CardContent
+                  )}
                 </motion.div>
               )
             })}

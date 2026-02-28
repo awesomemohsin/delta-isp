@@ -56,9 +56,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${spaceMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <TooltipProvider>
+            <FacebookPixel />
             {children}
             <DevTrace />
-            <FacebookPixel />
             <FloatingActions />
           </TooltipProvider>
         </ThemeProvider>

@@ -9,9 +9,11 @@ export function FacebookPixel() {
     const pathname = usePathname()
 
     useEffect(() => {
-        // This will run on every route change
-        if (typeof window !== 'undefined' && (window as any).fbq) {
-            (window as any).fbq('track', 'PageView')
+        if (typeof window !== 'undefined') {
+            const fbq = (window as any).fbq
+            if (fbq) {
+                fbq('track', 'PageView')
+            }
         }
     }, [pathname])
 

@@ -365,13 +365,12 @@ export function AboutPageContent() {
 
           <div className="flex flex-col gap-16 lg:gap-24 max-w-6xl mx-auto">
             {/* Chairman section hidden as requested */}
-            {/* 
             <div className={`group relative flex flex-col md:flex-row items-stretch transition-all duration-700 ${DESIGN_VERSION === 'hot'
               ? 'rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 via-transparent to-transparent border border-[#0C58A4]/20 hover:border-[#0C58A4]/40 hover:bg-[#0C58A4]/5'
               : 'rounded-3xl bg-card border border-border'
               }`}>
               <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] overflow-hidden rounded-t-[3rem] md:rounded-l-[3rem] md:rounded-tr-none">
-                <Image src="/images/demo-chairman.webp" alt="Chairman" fill className="object-cover transition-transform duration-1000" />
+                <Image src="/images/chairman.webp" alt="Samrat Shahjahan - Chairman" fill className="object-cover object-top transition-transform duration-1000" />
               </div>
 
               <div className="w-full md:w-1/2 p-10 md:p-14 lg:p-20 flex flex-col justify-center relative">
@@ -379,15 +378,14 @@ export function AboutPageContent() {
                   <Award size={100} className="text-[#0C58A4]" />
                 </div>
 
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 tracking-tighter group-hover:text-[#0C58A4] transition-colors duration-500">Demo Name</h3>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 tracking-tighter group-hover:text-[#0C58A4] transition-colors duration-500">Samrat Shahjahan</h3>
                 <p className="text-sm md:text-base font-black uppercase tracking-[0.4em] text-[#EA2630] mb-8">Chairman</p>
                 <div className="w-16 h-1.5 bg-gradient-to-r from-[#0C58A4] to-transparent rounded-full mb-8 group-hover:w-full transition-all duration-700 ease-in-out opacity-70 group-hover:opacity-100" />
                 <p className="text-muted-foreground leading-relaxed font-medium text-lg md:text-xl relative z-10 opacity-90 group-hover:opacity-100 transition-opacity">
-                  Leading with a visionary approach, focusing on nationwide digital inclusion and technological advancement. Committed to steering Delta Internet towards a future where seamless connectivity empowers every citizen.
+                  A visionary leader committed to revolutionizing Bangladesh&apos;s digital landscape. Under his guidance, Delta Software & Communication Limited has emerged as a powerhouse of connectivity, driven by the mission to bridge the digital divide with world-class internet solutions.
                 </p>
               </div>
             </div>
-            */}
 
             {/* Managing Director */}
             <div className={`group relative flex flex-col md:flex-row-reverse items-stretch transition-all duration-700 ${DESIGN_VERSION === 'hot'
@@ -396,7 +394,7 @@ export function AboutPageContent() {
               }`}>
               {/* Image Right */}
               <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[600px] overflow-hidden rounded-t-[3rem] md:rounded-r-[3rem] md:rounded-tl-none">
-                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover transition-transform duration-1000" />
+                <Image src="/images/md.webp" alt="Managing Director" fill className="object-cover object-top transition-transform duration-1000" />
               </div>
 
               {/* Content Left */}

@@ -15,9 +15,7 @@ export function FacebookPixel() {
         }
     }, [pathname])
 
-    const pixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID
-
-    if (!pixelId) return null
+    const pixelId = "886195874179351"
 
     return (
         <>

@@ -221,6 +221,9 @@ export function PricingPage() {
               </TabsTrigger>
             </TabsList>
           </Tabs>
+          <p className="mt-4 text-xs font-semibold text-muted-foreground/60 tracking-wide animate-in fade-in slide-in-from-top-1 duration-1000 uppercase">
+            Inclusive of 5% VAT on all plans
+          </p>
         </motion.div>
 
         {/* Pricing Cards */}

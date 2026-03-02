@@ -48,7 +48,7 @@ export function Footer() {
                 ? 'text-foreground'
                 : 'text-foreground'
                 }`}>
-                Delta Software & <br /> Communication LIMITED
+                Delta Software & <br /> Communication Limited
               </span>
             </Link>
             <p className="text-xs font-medium text-muted-foreground leading-relaxed max-w-sm">
@@ -139,7 +139,7 @@ export function Footer() {
             {/* Copyright */}
             <div className="flex flex-col md:flex-row justify-between items-center w-full">
               <p className="text-xs font-bold text-[#999A9B] tracking-tight pl-2 text-center md:text-left">
-                &copy; {currentYear} Delta Software & Communication LIMITED. All rights reserved.
+                &copy; {currentYear} Delta Software & Communication Limited. All rights reserved.
               </p>
               {/* Secret Trace */}
               <Link

@@ -179,7 +179,7 @@ export function AboutPageContent() {
                 : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
                 }`}>
                 Delta Software & Communication <br className="hidden lg:block" />
-                LIMITED
+                Limited
               </span>
             </h1>
 

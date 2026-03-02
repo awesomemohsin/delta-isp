@@ -57,7 +57,7 @@ export function Navbar() {
             <TooltipContent side="bottom" className="text-xs font-black p-3 bg-background border-primary/20 shadow-xl">
               <div className="flex flex-col gap-1">
                 <span className="text-foreground uppercase tracking-tight text-sm">
-                  Delta Software & Communication LIMITED
+                  Delta Software & Communication Limited
                 </span>
                 <span className="text-muted-foreground font-medium text-[10px] italic border-t border-border/50 pt-1">
                   - Reliable Connectivity. Proven Performance.

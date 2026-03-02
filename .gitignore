@@ -5,7 +5,31 @@ __v0_jsx-dev-runtime.ts
 instrumentation-client.js
 instrumentation-client.ts
 
-# Common ignores
+# Next.js
+.next/
+out/
+
+# Production
+build/
+
+# Dependency directories
 node_modules/
+jspm_packages/
+
+# Environment variables
 .env*.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
 .DS_Store
+Thumbs.db

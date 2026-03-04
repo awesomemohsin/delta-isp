@@ -49,14 +49,14 @@ export const testimonials = [
     {
         quote: "Delta Internet has completely transformed our work-from-home experience. The speeds are incredible and the connection is rock solid.",
         author: 'Md. Mohsin',
-        role: 'Software Engineer',
+        role: 'Freelancer',
         initials: 'MM',
         image: '/images/review1.webp'
     },
     {
         quote: "We switched our business to Delta Internet and couldn't be happier. Their support team is responsive and the uptime guarantee gives us peace of mind.",
         author: 'Nahidul Islam',
-        role: 'Manager',
+        role: 'Home User',
         initials: 'NI',
         image: '/images/review2.webp'
     },

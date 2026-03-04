@@ -40,7 +40,7 @@ export function Testimonials() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-balance">
-            Voices of <span className={DESIGN_VERSION === 'hot' ? "text-[#EA2630]" : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"}>Trust</span>
+            Customer <span className={DESIGN_VERSION === 'hot' ? "text-[#EA2630]" : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"}>Reviews</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance leading-relaxed">
             Join thousands of satisfied users who experience the exceptional reliability and speed of Delta Internet every day.

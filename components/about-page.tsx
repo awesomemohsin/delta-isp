@@ -170,16 +170,16 @@ export function AboutPageContent() {
               <Zap size={14} /> Our Journey
             </div>
 
-            <h1 className="flex flex-col gap-2 mb-8 uppercase text-balance">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter opacity-80 text-foreground">
+            <h1 className="flex flex-col gap-2 mb-8 uppercase">
+              <span className="text-xl md:text-3xl lg:text-4xl font-black tracking-tighter opacity-80 text-foreground">
                 About
               </span>
-              <span className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] ${DESIGN_VERSION === 'hot'
+              <span className={`text-2xl leading-none sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-black tracking-tight sm:leading-[1.1] ${DESIGN_VERSION === 'hot'
                 ? "text-[#0C58A4] drop-shadow-sm"
                 : "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
                 }`}>
-                Delta Software & Communication <br className="hidden lg:block" />
-                Limited
+                Delta Software & <br />
+                <span className="whitespace-nowrap">Communication Limited</span>
               </span>
             </h1>
 
@@ -213,14 +213,14 @@ export function AboutPageContent() {
             viewport={{ once: true }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start"
           >
-            <div className="lg:col-span-5 space-y-8 sticky top-32">
+            <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-32">
               <div className="space-y-4">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-none uppercase">
                   Our <br />
                   <span className={DESIGN_VERSION === 'hot' ? 'text-[#EA2630]' : 'text-primary'}>Legacy</span>
                 </h2>
               </div>
-              <div className="relative p-8 rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 to-transparent border border-[#0C58A4]/10 shadow-sm overflow-hidden">
+              <div className="relative p-8 rounded-[3rem] bg-gradient-to-br from-[#0C58A4]/5 to-transparent border border-[#0C58A4]/10 shadow-sm overflow-hidden hidden lg:block">
                 <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-[#0C58A4]/5 rounded-full blur-3xl" />
                 <p className="text-lg md:text-xl font-medium text-foreground/80 leading-relaxed italic relative z-10">
                   &quot;Driving digital transformation and empowering connectivity for a smarter, more connected Bangladesh.&quot;
@@ -441,8 +441,7 @@ export function AboutPageContent() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className={`group relative h-[400px] md:h-[600px] xl:h-[800px] w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem]' : 'rounded-3xl border border-border bg-card'}`}
+                className={`group relative h-[250px] sm:h-[400px] md:h-[600px] xl:h-[800px] w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem]' : 'rounded-3xl border border-border bg-card'}`}
               >
                 <div className="absolute inset-0 w-full h-full bg-transparent">
                   {dept.isSupport ? (

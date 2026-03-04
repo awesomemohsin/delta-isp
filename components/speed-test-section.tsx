@@ -71,11 +71,11 @@ export function SpeedTestSection() {
                                         : 'bg-primary/10 border border-primary/20 text-primary'
                                         }`}>
                                         <Activity className="w-4 h-4 animate-pulse" />
-                                        Diagnostic Protocol ACTIVE
+                                        CHECK YOUR INTERNET SPEED
                                     </div>
                                     <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-balance leading-[0.9] uppercase italic group-hover:not-italic transition-all duration-500">
-                                        Unleash <br />
-                                        <span className={DESIGN_VERSION === 'hot' ? "text-[#EA2630] drop-shadow-[0_4px_15px_rgba(234,38,48,0.3)]" : "bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"}>Titan Speed</span>
+                                        Unlock the Power of <br />
+                                        <span className={DESIGN_VERSION === 'hot' ? "text-[#EA2630] drop-shadow-[0_4px_15px_rgba(234,38,48,0.3)]" : "bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"}>Delta</span>
                                     </h2>
                                     <p className="text-sm text-muted-foreground max-w-xl mx-auto lg:mx-0 text-balance leading-relaxed font-medium">
                                         Verify your real-time fiber performance. Experience the consistent, high-speed stability that defines Delta Internet.
@@ -146,7 +146,8 @@ export function SpeedTestSection() {
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                                        className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex items-center justify-center group/gauge"
+                                        className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex items-center justify-center group/gauge cursor-pointer"
+                                        onClick={handleStartTest}
                                     >
                                         {/* Outer Rotating Ring */}
                                         <motion.div
@@ -193,7 +194,7 @@ export function SpeedTestSection() {
                                                     DELTA
                                                 </span>
                                                 <span className="text-sm font-bold opacity-70">
-                                                    FIBER
+                                                    INTERNET
                                                 </span>
                                             </div>
                                             <div className="text-[10px] uppercase tracking-[0.2em] opacity-50 font-bold mt-1">
@@ -211,7 +212,7 @@ export function SpeedTestSection() {
                                             className={`absolute -bottom-4 bg-background/90 backdrop-blur border px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl flex items-center gap-2 ${DESIGN_VERSION === 'hot' ? 'border-[#EA2630]/30 text-[#EA2630]' : 'border-primary/30 text-primary'}`}
                                         >
                                             <RefreshCw className="w-3 h-3 animate-spin" />
-                                            GRID ONLINE
+                                            START
                                         </motion.div>
                                     </motion.div>
                                 ) : (

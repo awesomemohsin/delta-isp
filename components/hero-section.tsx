@@ -160,7 +160,7 @@ export function HeroSection() {
                 Delta Software
               </span>
               <span className={DESIGN_VERSION === 'hot' ? "text-black" : "text-foreground"}>
-                & Communication Ltd
+                & Communication Limited
               </span>
             </motion.h1>
 

@@ -34,7 +34,7 @@ function SupportTeamRotator() {
             src={img}
             alt="Support Team"
             fill
-            className="object-cover group-hover:scale-110 transition-transform duration-1000"
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-1000"
           />
         </motion.div>
       ))}
@@ -434,20 +434,20 @@ export function AboutPageContent() {
               { name: 'Sales Team', desc: 'Connecting customers with the right broadband solutions.', img: '/images/team-sales.webp' },
               { name: 'Marketing Team', desc: 'Spreading the word and building the Delta brand.', img: '/images/team-marketing.webp' },
               { name: 'Support Team', desc: '24/7 network monitoring and dedicated customer assistance.', img: '/images/team-support1.webp', isSupport: true },
-              // HR & Admin and Fiber sections hidden as requested
+              { name: 'Transmission Team', desc: 'Maintaining and expanding our high-speed fiber network infrastructure.', img: '/images/team-transmission.webp' },
             ].map((dept, i) => (
               <motion.div
                 key={dept.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`group relative h-[250px] sm:h-[400px] md:h-[600px] xl:h-[800px] w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem]' : 'rounded-3xl border border-border bg-card'}`}
+                className={`group relative aspect-[16/10] sm:aspect-video w-full overflow-hidden ${DESIGN_VERSION === 'hot' ? 'rounded-[3rem]' : 'rounded-3xl border border-border bg-card'}`}
               >
                 <div className="absolute inset-0 w-full h-full bg-transparent">
                   {dept.isSupport ? (
                     <SupportTeamRotator />
                   ) : (
-                    <Image src={dept.img} alt={dept.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                    <Image src={dept.img} alt={dept.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-1000" />
                   )}
                 </div>
                 {/* Subtle Gradient Overlay for text legibility at the bottom */}
